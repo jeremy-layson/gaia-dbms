@@ -41,19 +41,16 @@
 
     <!-- Loop through each municipalities and baranggays -->
     <?php 
+        $included = [];
         $municipalities = [];
 
         $query = "SELECT * FROM municipality";
         $result = $link->query($query);
 
         while ($row = $result->fetch_assoc()) {
-            $municipalities[$row['municipality']][] = $row['baranggay'];
+            $municipalities[$row['municipality']][] = array($row['baranggay'], $row['wildcard']);
         }
-    ?>
 
-    <!-- echo each tables -->
-
-    <?php 
         $total = array(
             'SO_R'      => array(0, 0),
             'SO_MU'     => array(0, 0),
@@ -79,8 +76,7 @@
             );
 
             $isFirst = true;
-    ?>
-            <?php 
+
                 foreach ($baranggays as $baranggay) {
                     $rowspan = count($baranggays);
                     echo "<tr>";
@@ -88,8 +84,8 @@
                         echo "<td rowspan='$rowspan'>$municipality</td>";
                         $isFirst = false;
                     }
-                    echo '<td>' . $baranggay . '</td>';
-                    printData($municipality, $baranggay, $link, $subtotal);
+                    echo '<td>' . $baranggay[0] . '</td>';
+                    printData($municipality, $baranggay[1], $link, $subtotal);
                     echo "</tr>";
                 }
                 
@@ -107,6 +103,7 @@
                 $total['Excess'] = array_merge($total['Excess'], $subtotal['Excess']);
                 echo '</tr>';
     }
+
     //total print
     echo '<tr>';
     echo '<td colspan="2">Grand Total</td>';
@@ -115,7 +112,16 @@
         echo '<td>' . $total[$key][1] . '</td>';
     }
     echo '</tr>';
+    //returns the wildcarded string
+    function getWildcard($wildcard) {
+        $ret = '';
+        $wc = explode(',', $wildcard);
+        foreach ($wc as $card) {
+            $ret = $ret . " address LIKE '%" . trim($card) . "%' OR";
+        }
 
+        return substr($ret, 0, -3);
+    }
     //9 sets of stay/move
     function printData($municipality, $baranggay, $link, &$subtotal) {
         $aData = array(
@@ -128,7 +134,7 @@
         );
 
         //get data
-        $query = "SELECT * FROM survey WHERE `type` = 'ISF' AND `address` LIKE '%" . $baranggay . "%' OR address LIKE '%" . str_replace('Baranggay', 'Brgy.', $baranggay) . "%'";
+        $query = "SELECT * FROM survey WHERE `type` = 'ISF' AND " . getWildcard($baranggay);
         $result = $link->query($query);
         while ($row = $result->fetch_assoc()) {
             $displacement = isStay($row['displacement']);
@@ -169,12 +175,12 @@
             }
             
             if ($isExcess === false) {
+                $included[] = $row['uid'];
                 $aData['Total'][$displacement]++;
                 $subtotal['Total'][$displacement]++;
             }
             
         }
-
         //print
 
         $order = array('SO_R', 'SO_MU', 'SO_CIBE', 'SO_I', 'RR', 'Total');
@@ -239,6 +245,7 @@ echo '<tbody>';
     echo '</tr>';
 echo '</tbody>';
 echo '</table>';
+var_dump($included);
 ?>
 
 <br><br>
@@ -254,8 +261,9 @@ echo '</table>';
         ?>
     </thead> 
     <tbody>
-        <?php 
-            $query = 'SELECT * FROM survey WHERE `type` = "LEGAL" AND NOT(address LIKE "%Tikay%" OR address LIKE "%Bulihan%" OR address LIKE "%San Pablo%" OR address LIKE "%Catmon%" OR address LIKE "%Poblacion%" OR address LIKE "%Tuktukan%" OR address LIKE "%Sta. Cruz%" OR address LIKE "%Tabang%" OR address LIKE "%Burol I%" OR address LIKE "%Taal%" OR address LIKE "%Igulot%" OR address LIKE "%Bundukan%" OR address LIKE "%Abangan Norte%" OR address LIKE "%Saog%" OR address LIKE "%Ibayo%" OR address LIKE "%Pandayan%" OR address LIKE "%Tugatog%" OR address LIKE "%Bancal%" OR address LIKE "%Malhacan%" OR address LIKE "%Baranggay 9%" OR address LIKE "%Baranggay 15%" OR address LIKE "%Baranggay 17%" OR address LIKE "%Baranggay 19%" OR address LIKE "%Baranggay 21%" OR address LIKE "%Baranggay 25%" OR address LIKE "%Baranggay 29%" OR address LIKE "%Baranggay 32%" OR address LIKE "%Baranggay 33%" OR address LIKE "%Baranggay 152%" OR address LIKE "%Baranggay 155%" OR address LIKE "%Baranggay 156%" OR address LIKE "%Baranggay 159%" OR address LIKE "%Baranggay 164%" OR address LIKE "%Baranggay 165%" OR address LIKE "%Baranggay 184%" OR address LIKE "%Baranggay 185%" OR address LIKE "%Baranggay 186%" OR address LIKE "%Baranggay 199%" OR address LIKE "%Baranggay 200%" OR address LIKE "%Baranggay 204%" OR address LIKE "%Baranggay 48%" OR address LIKE "%Baranggay 50%" OR address LIKE "%Baranggay 51%" OR address LIKE "%Baranggay 53%" OR address LIKE "%Malanday%" OR address LIKE "%Dalandanan%" OR address LIKE "%Malinta%" OR address LIKE "%Brgy.9%" OR address LIKE "%Brgy.15%" OR address LIKE "%Brgy.17%" OR address LIKE "%Brgy.19%" OR address LIKE "%Brgy.21%" OR address LIKE "%Brgy.25%" OR address LIKE "%Brgy.29%" OR address LIKE "%Brgy.32%" OR address LIKE "%Brgy.33%" OR address LIKE "%Brgy.152%" OR address LIKE "%Brgy.155%" OR address LIKE "%Brgy.156%" OR address LIKE "%Brgy.159%" OR address LIKE "%Brgy.164%" OR address LIKE "%Brgy.165%" OR address LIKE "%Brgy.184%" OR address LIKE "%Brgy.185%" OR address LIKE "%Brgy.186%" OR address LIKE "%Brgy.199%" OR address LIKE "%Brgy.200%" OR address LIKE "%Brgy.204%" OR address LIKE "%Brgy.48%" OR address LIKE "%Brgy.50%" OR address LIKE "%Brgy.51%" OR address LIKE "%Brgy.53%" OR address LIKE "%Malanday%" OR address LIKE "%Dalandanan%" OR address LIKE "%Malinta%")';
+        <?php
+            $query = 'SELECT * FROM survey WHERE `uid` IN (' . implode(', ', $included) . ')';
+            echo $query;
             $result = $link->query($query);
             while ($data = $result->fetch_assoc()) {
                 echo '<tr>';

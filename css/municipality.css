@@ -1,0 +1,36 @@
+body {
+    padding: 10px;
+}
+
+.list {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.table-municipality {
+    border: 1px solid #e3e3e3;
+}
+
+.table-municipality tr td{
+    padding: 0px;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.table-municipality tr td button{
+    margin: 0px;
+}
+
+.table-municipality tr td input[type="text"] {
+    margin: 0px;
+}
+
+.municipality-form {
+    border: 1px solid #e3e3e3;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.municipality-form input {
+    margin: 0px;
+}
