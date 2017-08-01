@@ -56,7 +56,7 @@
 <br><br>
 <h3>Unread Data (Address format)</h3>
 <table border="1" cellpadding="3" cellspacing="0">
-    <?php $class->printUnincluded(); ?>
+    <?php $class->printUnincluded('ISF'); ?>
 </table>
 </body>
 </html>

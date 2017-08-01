@@ -7,12 +7,23 @@ include_once('../baranggayClass.php');
 */
 class Illegal extends Baranggay
 {
-    private $rawTotal;
-    private $fields;
 
     public function buildTable()
     {
+        $this->total = array(
+            'SO_R'      => array(0, 0),
+            'SO_MU'     => array(0, 0),
+            'SO_CIBE'   => array(0, 0),
+            'SO_I'      => array(0, 0),
+            'RR'        => array(0, 0),
+            'Total'     => array(0, 0),
+            'Excess'    => array()
+        );
+
+        $this->order = array('SO_R', 'SO_MU', 'SO_CIBE', 'SO_I', 'RR', 'Total');
+
         $this->rawTotal = $this->total;
+
         foreach ($this->municipalities as $municipality => $baranggays) {
             //add subtotal
             $subtotal = $this->rawTotal;
@@ -64,6 +75,7 @@ class Illegal extends Baranggay
         $query = "SELECT * FROM survey WHERE `type` = 'ISF' AND " . $this->getWildcard($baranggay);
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
+            $this->included[] = $row['uid'];
             $displacement = $this->isStay($row['displacement']);
             //loop through each data and put under category
 
@@ -93,16 +105,15 @@ class Illegal extends Baranggay
                     $aData['RR'][$displacement]++;
                     $subtotal['RR'][$displacement]++;
                 } else {
-                    $subtotal['Excess'][] = $row['uid'];
+                    $subtotal['Excess'][] = array($row['uid'], 'Parameter');
                     $isExcess = true;
                 }
             } else {
                 $isExcess = true;
-                $subtotal['Excess'][] = $row['uid'];
+                $subtotal['Excess'][] = array($row['uid'], 'Displacement');
             }
             
             if ($isExcess === false) {
-                $this->included[] = $row['uid'];
                 $aData['Total'][$displacement]++;
                 $subtotal['Total'][$displacement]++;
             }
@@ -115,68 +126,6 @@ class Illegal extends Baranggay
         }
     }
     
-    public function printUncategorized()
-    {
-        $this->fields = array(
-            'Asset #'           => 'asset_num',
-            'Name'              => 'name',
-            'Address'           => 'address',
-            'Structure Type'    => 'structure_type',
-            'Structure Owner'   => 'structure_owner',
-            'Use'               => 'structure_use',
-            'DP Type'           => 'structure_dp',
-            'Displacement'      => 'displacement'
-        );
-        echo '<table border="1" cellpadding="3" cellspacing="0">';
-        echo '<thead>';
-            echo '<tr>';
-            foreach ($this->fields as $key => $val) {
-                echo "<td>$key</td>";
-            }
-            echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-            foreach ($this->total['Excess'] as $excess) {
-                $query = 'SELECT * FROM survey WHERE uid = ' . $excess;
-                $result = $this->db->query($query);
-                $data = $result->fetch_assoc();
-
-                echo '<tr>';
-                    foreach ($this->fields as $key => $val) {
-                        echo "<td>" . $data[$val] . "</td>";
-                    }
-                echo '</tr>';
-            }
-            echo '<tr>';
-                echo '<td colspan="' . count($this->fields) . '">Total Count: ' . count($this->total['Excess']) . '</td>';
-            echo '</tr>';
-        echo '</tbody>';
-        echo '</table>';
-    }
-
-    public function printUnincluded()
-    {
-        echo '<thead>';
-            echo '<tr>';
-            foreach ($this->fields as $key => $val) {
-                echo "<td>$key</td>";
-            }
-            echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-            $query = 'SELECT * FROM survey WHERE `type` = "ISF" AND `uid` NOT IN (' . implode(', ', $this->included) . ')';
-            $result = $this->db->query($query);
-            while ($data = $result->fetch_assoc()) {
-                echo '<tr>';
-                foreach ($this->fields as $key => $val) {
-                    echo "<td>" . $data[$val] . "</td>";
-                    
-                }
-                echo '</tr>';
-            }
-                echo '<td colspan="' . count($this->fields) . '">Total Count: ' . $result->num_rows . '</td>';
-            echo '</tr>';
-        echo '</tbody>';
-    }
+    
 
 }
