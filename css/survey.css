@@ -1,0 +1,30 @@
+.data-list {
+    max-height: 80vh;
+    overflow: scroll;
+    border: 1px solid black;
+    position: relative;
+}
+
+.data-list table {
+    white-space: nowrap;
+    margin: 0px;
+    padding: 0px;
+}
+
+.data-list table {
+    border-collapse: collapse;
+}
+
+.data-list table button {
+    margin: 0px;
+}
+
+.form {
+    padding: 3%;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+.form label {
+    text-align: right;
+}
