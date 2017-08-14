@@ -15,7 +15,7 @@
     <tr>
         <td rowspan="2">Type of Loss</td>
         <td colspan="3">Number of PAFs</td>
-        <td colspan="3">Number of PAFs</td>
+        <td colspan="3">Number of Affected PAPs</td>
     </tr>
     <tr>
         <td>Legal<sup>1</sup></td>
