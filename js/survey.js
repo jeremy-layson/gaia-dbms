@@ -132,4 +132,21 @@ $(document).ready(function(){
         }
     });
      
+    //get GET parameter if a default ID is selected
+    function checkEdit() {
+        location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === 'id') {
+            var id = decodeURIComponent(tmp[1]);
+            $('[data-id="' + id + '"]').focus();
+            $('[data-id="' + id + '"]')[0].click();
+            $($('[data-id="' + id + '"]')[0]).parent().parent().css('background-color', '#3adb76');
+        }
+        });
+    }
+    
+    checkEdit();
 });

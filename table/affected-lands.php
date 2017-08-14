@@ -294,8 +294,11 @@ class AreaAffected
                 $data = $result->fetch_assoc();
 
                 echo '<tr>';
+                echo '<td><a target="new" href="/survey/view.php?id=' . $data['uid'] . '">' . $data['uid'] . '</a></td>';
                 foreach ($fields as $key => $val) {
-                    echo "<td>" . $data[$val] . "</td>";
+                    if ($val != 'uid') {
+                        echo "<td>" . $data[$val] . "</td>";
+                    }
                 }
                 echo "<td>" . $ex[1] . "</td>";
                 echo '</tr>';

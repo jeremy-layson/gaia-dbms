@@ -85,8 +85,9 @@ Abstract class Baranggay
                 $data = $result->fetch_assoc();
 
                 echo '<tr>';
+                echo '<td><a target="new" href="/survey/view.php?id=' . $data['uid'] . '">' . $data['uid'] . '</a></td>';
                     foreach ($this->fields as $key => $val) {
-                        if ($val != 'REASON') {
+                        if ($val != 'REASON' && $val != 'uid') {
                             echo "<td>" . $data[$val] . "</td>";
                         }
                     }
@@ -114,8 +115,9 @@ Abstract class Baranggay
             $result = $this->db->query($query);
             while ($data = $result->fetch_assoc()) {
                 echo '<tr>';
+                echo '<td><a target="new" href="/survey/view.php?id=' . $data['uid'] . '">' . $data['uid'] . '</a></td>';
                 foreach ($this->fields as $key => $val) {
-                    if ($val != 'REASON') {
+                    if ($val != 'REASON' && $val !='uid') {
                         echo "<td>" . $data[$val] . "</td>";
                     }
                 }
