@@ -12,7 +12,7 @@
 <div class="top-header">
     <a href="/" class="button">Home</a>
 </div>
-<h1>Table 4.1-2 Affected Lands</h1>
+<h1>Table 4.1-2</h1>
 <table border="1" cellpadding="3" cellspacing="0">
     <thead>
     <tr>
