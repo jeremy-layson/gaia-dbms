@@ -18,7 +18,7 @@
                 <h3>Tables</h3>
                 <div class="large-12">
                     <div class="large-3 column">
-                        <a href="/4-1-2.php" class="button primary full-width">Table 4.1-2 Affected Lands</a>
+                        <a href="/table/view-affected-lands.php" class="button primary full-width">Table 4.1-2 Affected Lands</a>
                     </div>
                     <div class="large-3 column">
                         <a href="/baranggay/legal/view.php" class="button primary full-width">Table 4.1-3 Legal PAFs</a>
