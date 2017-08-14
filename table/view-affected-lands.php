@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="table.css">
 </head>
 <body>
+<div class="top-header">
+    <a href="/" class="button">Home</a>
+</div>
 <h1>Table 4.1-2 Affected Lands</h1>
 <table border="1" cellpadding="3" cellspacing="0">
     <thead>

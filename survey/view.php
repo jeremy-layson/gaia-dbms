@@ -33,6 +33,9 @@
     </script>
 </head>
 <body>
+    <div class="top-header">
+        <a href="/" class="button">Home</a>
+    </div>
     <div class="container row">
         <div class="large-12">
             <h3>Manage Data</h3>
