@@ -20,17 +20,27 @@ class Survey
     }
 
     public function create($data) {
-        if (!($stmt = $this->db->prepare("INSERT INTO municipality VALUES(NULL, ?, ?, ?)"))) {
+        $data = $data['data'];
+        unset($data['uid']);
+        $rows = [];
+        $vals = [];
+        $fields = '';
+        foreach ($data as $key => $val) {
+            $rows[] = "?";
+            $vals[] = $val;
+            $fields = $fields . 's';
+        }
+        if (!($stmt = $this->db->prepare("INSERT INTO survey VALUES(NULL, " . implode(", ", $rows) . ")"))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
         }
 
-        $stmt->bind_param('sss', $data['municipality'], $data['baranggay'], $data['wildcard']);
+        $stmt->bind_param($fields, ...$vals);
            
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
-        header("Location: /municipality/view.php");
+        return array_merge(array('uid' => $this->db->insert_id), $data);
     }
 
     public function delete($id) {

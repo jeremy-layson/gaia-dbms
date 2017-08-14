@@ -2,7 +2,9 @@
 include_once('../baranggayClass.php');
 
 /**
-* 
+* legal class extends baranggay
+* @author Jeremy Layson <jeremy.b.layson@gmail.com>
+* @since 2017 . 07 . 30
 */
 class Legal extends Baranggay
 {
