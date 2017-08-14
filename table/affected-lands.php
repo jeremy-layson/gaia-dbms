@@ -211,7 +211,7 @@ class AreaAffected
                     $category = 'Institutional';
                 } else {
                     //excess
-                    $this->excess[] = $data['uid'];
+                    $this->excess[] = array($data['uid'], 'Legal/Uncategorized');
                 }
 
                 if ($category != 'EXCESS') {
@@ -244,7 +244,7 @@ class AreaAffected
                     $category = 'Mixed';
                 } else {
                     //excess
-                    $this->excess[] = $data['uid'];
+                    $this->excess[] = array($data['uid'], 'ISF/Uncategorized')
                 }
 
                 if ($category != 'EXCESS') {
@@ -259,7 +259,7 @@ class AreaAffected
                     $this->displaced['Subtotal']['PAP_Total'] += $hh_count;
                 }
             } else {
-                $this->excess[] = $data['uid'];
+                $this->excess[] = array($data['uid'], 'Displacement');
             }
         }
     }
@@ -284,18 +284,20 @@ class AreaAffected
             foreach ($fields as $key => $val) {
                 echo "<td>$key</td>";
             }
+            echo "<td>Reason</td>";
             echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
             foreach ($this->excess as $ex) {
-                $query = 'SELECT * FROM survey WHERE uid = ' . $ex;
+                $query = 'SELECT * FROM survey WHERE uid = ' . $ex[0];
                 $result = $this->db->query($query);
                 $data = $result->fetch_assoc();
 
                 echo '<tr>';
-                    foreach ($fields as $key => $val) {
-                        echo "<td>" . $data[$val] . "</td>";
-                    }
+                foreach ($fields as $key => $val) {
+                    echo "<td>" . $data[$val] . "</td>";
+                }
+                echo "<td>" . $ex[1] . "</td>";
                 echo '</tr>';
             }
             echo '<tr>';
