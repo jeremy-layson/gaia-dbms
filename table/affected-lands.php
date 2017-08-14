@@ -244,7 +244,7 @@ class AreaAffected
                     $category = 'Mixed';
                 } else {
                     //excess
-                    $this->excess[] = array($data['uid'], 'ISF/Uncategorized')
+                    $this->excess[] = array($data['uid'], 'ISF/Uncategorized');
                 }
 
                 if ($category != 'EXCESS') {
