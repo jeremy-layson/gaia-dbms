@@ -1,19 +1,18 @@
 <?php 
-    require_once('../municipality/municipalityClass.php');
+    require_once('../zone/municipalityClass.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Manage Municipalities</title>
+    <title>Manage Municipalities (4.1-1)</title>  
     <script type="text/javascript">
-      var mode = "municipality";
+      var mode = "zone";
     </script>
     <link rel="stylesheet" type="text/css" href="/css/foundation.min.css">
     <link rel="stylesheet" type="text/css" href="/css/municipality.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/foundation.min.js"></script>
     <script type="text/javascript" src="/js/municipality.js"></script>
-    
 </head>
 <body>
     <div class="top-header">
@@ -62,7 +61,7 @@
                    </tbody>
                </table>
                <div class="municipality-form large-12 row">
-                   <form method="POST" action="/municipality/add.php">
+                   <form method="POST" action="/zone/add.php">
                         <div class="large-3 column"><input type="text" name="municipality" placeholder="Municipality"></div>
                         <div class="large-3 column"><input type="text" name="baranggay" placeholder="Baranggay"></div>
                         <div class="large-3 column"><input type="text" name="wildcard" placeholder="Wildcard (comma separated)"></div>

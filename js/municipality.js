@@ -21,7 +21,11 @@ $(document).ready(function(){
                 var me = $(this);
                 var id = $(this).attr('data-id');
                 //send data to delete.php
-                $.post("/municipality/delete.php", 
+                var link = "/municipality/delete.php";
+                if (mode == 'zone') {
+                    link = "/zone/delete.php";
+                }
+                $.post(link, 
                     {id: id},
                     function(data) {
                         if (data !== false) {
@@ -63,7 +67,12 @@ $(document).ready(function(){
             var brgy = $($(row).find('input')[1]).val();
             var wcard = $($(row).find('input')[2]).val();
             var id = $(this).attr('data-id');
-            $.post("/municipality/edit.php", 
+
+            var link = "/zone/edit.php";
+                if (mode == 'zone') {
+                    link = "/zone/edit.php";
+                }
+            $.post(link, 
                 {id: id, municipality: mun, baranggay: brgy, wildcard: wcard},
                 function(data) {
                     if (data !== false) {

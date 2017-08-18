@@ -85,22 +85,22 @@
                         if ($col[0] == "1") {
                 ?>
                     
-                        <div class="large-2 column">
+                        <div class="large-3 column">
                             <label for="<?=$field?>"><?=$text?></label>
                         </div>
-                        <div class="large-4 column">
+                        <div class="large-3 column">
                             <input type="text" name="<?=$field?>" id="<?=$field?>">
                         </div>
                     
                 <?php
                         }
                     }
-                    if ($columns->num_rows % 2 === 0) {
+                    if ($columns->num_rows % 2 === 1) {
                 ?>
-                    <div class="large-2 column">
+                    <div class="large-3 column">
                         &nbsp;
                     </div>
-                    <div class="large-4 column">
+                    <div class="large-3 column">
                         &nbsp;
                     </div>
                 <?php
@@ -108,11 +108,11 @@
                 ?>
                 </div>
                 <div class="row">
-                    <div class="large-2 column">
+                    <div class="large-3 column">
                         &nbsp;
                         <input type="hidden" name="uid" id="uid">
                     </div>
-                    <div class="large-10 column">
+                    <div class="large-9 column">
                         <input type="submit" value="Create New" class="button primary form-submit">
                         <button type="button" class="button warning form-reset">Reset</button>
                     </div>

@@ -268,6 +268,7 @@ class AreaAffected
         //Excess IDs
 
         $fields = array(
+            'ID'                => 'uid',
             'Asset #'           => 'asset_num',
             'Type'              => 'type',
             'Name'              => 'name',
