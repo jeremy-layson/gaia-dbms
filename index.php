@@ -17,29 +17,60 @@
             <div class="tools row">
                 <h3>Tables</h3>
                 <div class="large-12 column">
-                    <a href="/table/4_1_1.php" class="button primary full-width">Table 4.1-1 Affected Cities and Municipalities and Corresponding Baranggays by NSCR Project</a>
+                    <a href="/table/4_1_1.php" target="_blank" class="button primary full-width">Table 4.1-1 Affected Cities and Municipalities and Corresponding Baranggays by NSCR Project</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_2_1.php" class="button primary full-width">Table 4.2-1 Affected Lands: Area (m<sup>2</sup>)</a>
+                    <a href="/table/4_2_1.php" target="_blank" class="button primary full-width">Table 4.2-1 Affected Lands: Area (m<sup>2</sup>)</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_2_5.php" class="button primary full-width">Table 4.2-5 Affected Trees</a>
+                    <a href="/table/4_2_5.php" target="_blank" class="button primary full-width">Table 4.2-5 Affected Trees</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_1.php" class="button primary full-width">Table 4.3-1 Affected Population by Gender</a>
+                    <a href="/table/4_3_1.php" target="_blank" class="button primary full-width">Table 4.3-1 Affected Population by Gender</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_2.php" class="button primary full-width">Table 4.3-2 Size of Household</a>
+                    <a href="/table/4_3_2.php" target="_blank" class="button primary full-width">Table 4.3-2 Size of Household</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_3.php" class="button primary full-width">Table 4.3-3 Affected Population by Age</a>
+                    <a href="/table/4_3_3.php" target="_blank" class="button primary full-width">Table 4.3-3 Affected Population by Age</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_4.php" class="button primary full-width">Table 4.3-4 Educational Attainment of Household Members</a>
+                    <a href="/table/4_3_4.php" target="_blank" class="button primary full-width">Table 4.3-4 Educational Attainment of Household Members</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_9.php" class="button primary full-width">Table 4.3-9 Monthly Income of Household</a>
+                    <a href="/table/4_3_5.php" target="_blank" class="button primary full-width">Table 4.3-5 Length of Stay in Present Place</a>
                 </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_6.php" target="_blank" class="button primary full-width">Table 4.3-6 Reason for Establishing Residence in Present Place</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_9.php" target="_blank" class="button primary full-width">Table 4.3-9 Monthly Income of Household</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_10.php" target="_blank" class="button primary full-width">Table 4.3-10 Monthly Expenditure of Household</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_11.php" target="_blank" class="button primary full-width">Table 4.3-11 Place of Employment of Male Household Head</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_12.php" target="_blank" class="button primary full-width">Table 4.3-12 Place of Employment of Female Household Head</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_4_1.php" target="_blank" class="button primary full-width">Table 4.4-1 Gender of Household Head</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_4_2.php" target="_blank" class="button primary full-width">Table 4.4-2 Persons Who Need Special Assistance</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_4_3.php" target="_blank" class="button primary full-width">Table 4.4-3 Vulnerable Groups</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_5_6.php" target="_blank" class="button primary full-width">Table 4.5-6 Factors Considered in Choosing Relocation Sites</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_5_7.php" target="_blank" class="button primary full-width">Table 4.5-7 Most Desired Services and Facilities in Relocation Site</a>
+                </div>
+                
                 <!-- <div class="large-12">
                     <div class="large-3 column">
                         <a href="/table/view-affected-lands.php" class="button primary full-width">Table 4.1-2 Affected Lands</a>

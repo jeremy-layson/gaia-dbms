@@ -38,7 +38,7 @@
 </head>
 <body>
 <a href="/">Back</a>
-
+<h3>Table 4.2-1 Affected Lands: Area(m<sup>2</sup>)</h3>
 <table border="1">
     <thead>
         <tr>

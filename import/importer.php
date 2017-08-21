@@ -236,6 +236,8 @@ class Importer
                 //get data
                 $row = [];
                 foreach ($this->columns as $key => $value) {
+                    //flush cache
+                    PHPExcel_Calculation::getInstance($this->phpExcel)->flushInstance();
                     $cellValue = $worksheet->getCell($key . $i)->getCalculatedValue();
                     $color = $worksheet->getStyle($key . $i)->getFill()->getStartColor()->getRGB();
 
@@ -259,6 +261,50 @@ class Importer
                     if ($value[0] == 'trees_cash' && ($data == '')) $data = '0';
                     if ($value[0] == 'baranggay') $data = str_replace('Barangay', 'Baranggay', $data);
 
+                    //Valenzuela Depot
+                    if (($value[0] == 'address') && 
+                        (strpos($data, 'Valenzuela') != FALSE) &&
+                        (strpos($data, 'Malanday') != FALSE)) {
+                        $data = str_replace('Valenzuela', 'Valenzuela (Depot)', $data);
+                    }
+
+                    if ($value[0] == 'hdi_length_stay') {
+                        $data = str_replace('rys', 'years', $data);
+                        $data = str_replace('yrs', 'years', $data);
+                        $data = trim($data) == 'More than 15' ? 'More than 15 years' : $data;
+                    }
+
+                    //misspelling
+
+                    $data = str_replace('Velenzuela', 'Valenzuela', $data);
+                    $data = str_replace('Meycauyan', 'Meycauayan', $data);
+
+                    //hdi_reason_econ
+                    if ($value[0] == 'hdi_reason_econ') {
+                        $data = str_replace(' ti ', ' to ', $data);
+                        $data = str_replace('Livelihod', 'livelihood', $data);
+                        $data = str_replace('ivelihood', 'livelihood', $data);
+                        $data = str_replace('ivellihood', 'livelihood', $data);
+                        $data = str_replace('Llivelihood', 'livelihood', $data);
+                        $data = str_replace('llivelihood', 'livelihood', $data);
+                        
+                        $data = str_replace('Rent fee', 'rental fee', $data);
+                        $data = str_replace('Retal', 'rental', $data);
+                        $data = str_replace('Affordable Rent free', 'Affordable rental fee', $data);
+                        
+                        $data = str_replace('Rent fee', 'Rent free', $data);
+                        $data = str_replace('Rrent', 'rent', $data);
+                    }
+
+                    if ($value[0] == 'hdi_reason_other') {
+                        // $data = str_replace('Verbal Agreement (Relative)', 'Verbal agreement', $data);
+                        // $data = str_replace('Verbal agreement to be the caretaker for the fish', 'Verbal agreement', $data);
+                        // $data = str_replace('Acquired rights/birth', 'Acquired rights', $data);
+                        // $data = str_replace('Inherited', 'Inheritance/Residence Since Birth', $data);
+                        // $data = str_replace('Since Birth', 'Inheritance/Residence Since Birth', $data);
+                        // $data = str_replace('Born here', 'Inheritance/Residence Since Birth', $data);
+                          
+                    } 
 
 
                     //HH Head color conditional

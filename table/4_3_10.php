@@ -1,6 +1,6 @@
 <?php  
-    include('Class_4_3_9.php');
-    $class = new Class_4_3_9();
+    include('Class_4_3_10.php');
+    $class = new Class_4_3_10();
     $data = $class->getData();
 ?>
 
@@ -39,21 +39,16 @@
 <a href="/">Back</a>
 
 <table border="1">
-    <h3>Table 4.3-9 Monthly Income of Household (LGU Level)</h3>
+    <h3>Table 4.3-10 Monthly Expenditure of Household (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td colspan="7">Income Range (PhP)</td>
-            <td rowspan="2">Total</td>
-        </tr>
-        <tr>
-            <td><5,000</td>
-            <td>5,000-10,000</td>
-            <td>10,001-15,000</td>
-            <td>15,001-20,000</td>
-            <td>20,000-30,000</td>
-            <td>30,001-50,000</td>
-            <td>>50,001</td>
+            <td>Municipalities and Cities</td>
+            <td><3,000</td>
+            <td>3,000-5,000</td>
+            <td>5,001-10,000</td>
+            <td>10,001-30,000</td>
+            <td>>30,001</td>
+            <td>Total</td>
         </tr>
     </thead>
     <tbody>
@@ -70,9 +65,9 @@
             echo "<tr>";
                 echo "<td>$mun</td>";
                 foreach ($class->tbl_cols as $colm) {
-                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_total_hh_income&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                 }
-                echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_total_hh_income&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
             echo "</tr>";
         }
         foreach ($class->tbl_cols as $colm) {
@@ -92,22 +87,17 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-9 Monthly Income of Household (Baranggay Level)</h3>
+    <h3>Table 4.3-10 Monthly Expenditure of Household (Baranggay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
-            <td colspan="7">Income Range (PhP)</td>
-            <td rowspan="2">Total</td>
-        </tr>
-        <tr>
-            <td><5,000</td>
-            <td>5,000-10,000</td>
-            <td>10,001-15,000</td>
-            <td>15,001-20,000</td>
-            <td>20,000-30,000</td>
-            <td>30,001-50,000</td>
-            <td>>50,001</td>
+            <td>Municipalities and Cities</td>
+            <td>Baranggay</td>
+            <td><3,000</td>
+            <td>3,000-5,000</td>
+            <td>5,001-10,000</td>
+            <td>10,001-30,000</td>
+            <td>>30,001</td>
+            <td>Total</td>
         </tr>
     </thead>
     <tbody>
@@ -128,9 +118,9 @@
                     if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
                     echo "<td>$brgy</td>";
                     foreach ($class->tbl_cols as $colm) {
-                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_total_hh_income&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                     }
-                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_total_hh_income&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
                 echo "</tr>";
             }
         }
@@ -149,7 +139,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,shi_total_hh_income&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

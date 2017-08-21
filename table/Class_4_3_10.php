@@ -1,11 +1,11 @@
 <?php 
 
 /**
-* 4.3-9 Monthly Income of Household
+* 4.3-10 Monthly Expenditure of Household
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 08. 19
+* @since 2017 . 08. 20
 */
-class Class_4_3_9
+class Class_4_3_10
 {
     private $db;
     public $unclaimed;
@@ -27,7 +27,7 @@ class Class_4_3_9
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('5K', '10K', '15K', '20K', '30K', '50K', 'else');
+        $this->tbl_cols = $tbl_cols = array('3K', '5K', '10K', '30K', 'else');
         
         foreach ($tbl_cols as $colm) {
             $col_total['Total']['Total'][$colm] = array('COUNT' => 0);
@@ -48,25 +48,21 @@ class Class_4_3_9
                 $data[$mun][$col[0]]['Total'] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
-                $result = $this->db->query($query = "SELECT uid,address,baranggay,shi_total_hh_income FROM survey WHERE `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT uid,address,baranggay,he_total_expenses FROM survey WHERE `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
-                    if ($row['shi_total_hh_income'] != '') {
+                    if ($row['he_total_expenses'] != '') {
                         unset($this->unclaimed[$row['uid']]);
                         
-                        $hh = floatval($row['shi_total_hh_income']);
+                        $hh = floatval($row['he_total_expenses']);
 
-                        if ($hh < 5000) {
+                        if ($hh < 3000) {
+                            $key = '3K';
+                        } elseif ($hh <= 5000) {
                             $key = '5K';
                         } elseif ($hh <= 10000) {
                             $key = '10K';
-                        } elseif ($hh <= 15000) {
-                            $key = '15K';
-                        } elseif ($hh <= 20000) {
-                            $key = '20K';
                         } elseif ($hh <= 30000) {
                             $key = '30K';
-                        } elseif ($hh <= 50000) {
-                            $key = '50K';
                         } else {
                             $key = 'else';
                         }

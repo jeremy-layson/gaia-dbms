@@ -38,7 +38,7 @@
 </head>
 <body>
 <a href="/">Back</a>
-
+<h3>Table 4.2-5 Affected Trees</h3>
 <table border="1">
     <thead>
         <tr>

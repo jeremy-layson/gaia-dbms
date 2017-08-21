@@ -1,15 +1,14 @@
 <?php 
 
 /**
-* 4.3-9 Monthly Income of Household
+* 4.3-5 Length of Stay in Present Place
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 08. 19
+* @since 2017 . 08. 18
 */
-class Class_4_3_9
+class Class_4_3_5
 {
     private $db;
     public $unclaimed;
-    public $tbl_cols;
 
     public function __construct()
     {
@@ -27,65 +26,62 @@ class Class_4_3_9
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('5K', '10K', '15K', '20K', '30K', '50K', 'else');
-        
-        foreach ($tbl_cols as $colm) {
-            $col_total['Total']['Total'][$colm] = array('COUNT' => 0);
-        }
+
+        $col_total['Total']['Total']['less'] = array('COUNT' => 0);
+        $col_total['Total']['Total']['110yrs'] = array('COUNT' => 0);
+        $col_total['Total']['Total']['else'] = array('COUNT' => 0);
         $col_total['Total']['Total']['Total'] = array('COUNT' => 0);
 
 
         foreach ($columns as $mun => $brgys) {
-            foreach ($tbl_cols as $colm) {
-                $data[$mun]['Sub Total'][$colm] = array('COUNT' => 0);
-            }
+            $data[$mun]['Sub Total']['less'] = array('COUNT' => 0); //4-6
+            $data[$mun]['Sub Total']['110yrs'] = array('COUNT' => 0); //7-9
+            $data[$mun]['Sub Total']['else'] = array('COUNT' => 0); // >9
             $data[$mun]['Sub Total']['Total'] = array('COUNT' => 0);
 
             foreach ($brgys as $brgy => $col) {
-                foreach ($tbl_cols as $colm) {
-                    $data[$mun][$col[0]][$colm] = array('COUNT' => 0);
-                }
+                $data[$mun][$col[0]]['less'] = array('COUNT' => 0);
+                $data[$mun][$col[0]]['110yrs'] = array('COUNT' => 0);
+                $data[$mun][$col[0]]['else'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['Total'] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
-                $result = $this->db->query($query = "SELECT uid,address,baranggay,shi_total_hh_income FROM survey WHERE `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT uid,address,baranggay,hdi_length_stay FROM survey WHERE `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
-                    if ($row['shi_total_hh_income'] != '') {
+                    
+                    $hh = strtoupper($row['hdi_length_stay']);
+
+                    if ($hh == '1-3 YEARS' || $hh == '3-6YEARS' || $hh == '3-6 YEARS' || $hh == '6-10 YEARS') {
+                        $hh = '110yrs';
+                    }
+
+                    if ($hh == '10-15 YEARS' || $hh == 'MORE THAN 15 YEARS') {
+                        $hh = 'else';
+                    }
+
+                    if ($hh == 'LESS THAN ONE YEAR') {
+                        $hh = 'less';
+                    }
+
+                    if ($hh == '110yrs' || $hh == 'else' || $hh =='less') {
                         unset($this->unclaimed[$row['uid']]);
-                        
-                        $hh = floatval($row['shi_total_hh_income']);
-
-                        if ($hh < 5000) {
-                            $key = '5K';
-                        } elseif ($hh <= 10000) {
-                            $key = '10K';
-                        } elseif ($hh <= 15000) {
-                            $key = '15K';
-                        } elseif ($hh <= 20000) {
-                            $key = '20K';
-                        } elseif ($hh <= 30000) {
-                            $key = '30K';
-                        } elseif ($hh <= 50000) {
-                            $key = '50K';
-                        } else {
-                            $key = 'else';
-                        }
-
-                        $data[$mun][$col[0]][$key][] = $row['uid'];
-                        $data[$mun][$col[0]][$key]['COUNT']++;
+                        $data[$mun][$col[0]][$hh][] = $row['uid'];
+                        $data[$mun][$col[0]][$hh]['COUNT']++;
                         $data[$mun][$col[0]]['Total'][] = $row['uid'];
                         $data[$mun][$col[0]]['Total']['COUNT']++;
 
-                        $data[$mun]['Sub Total'][$key][] = $row['uid'];
-                        $data[$mun]['Sub Total'][$key]['COUNT']++;
+                        $data[$mun]['Sub Total'][$hh][] = $row['uid'];
+                        $data[$mun]['Sub Total'][$hh]['COUNT']++;
                         $data[$mun]['Sub Total']['Total'][] = $row['uid'];
                         $data[$mun]['Sub Total']['Total']['COUNT']++;
                         
-                        $col_total['Total']['Total'][$key][] = $row['uid'];
-                        $col_total['Total']['Total'][$key]['COUNT']++;
+                        $col_total['Total']['Total'][$hh][] = $row['uid'];
+                        $col_total['Total']['Total'][$hh]['COUNT']++;
                         $col_total['Total']['Total']['Total'][] = $row['uid'];
                         $col_total['Total']['Total']['Total']['COUNT']++;
+                        
                     }
+
                 }
             }
             $sub = $data[$mun]['Sub Total'];
