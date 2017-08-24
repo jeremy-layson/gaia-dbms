@@ -35,6 +35,9 @@
                     <a href="/table/4_2_2.php" target="_blank" class="button primary full-width">Table 4.2-2 Number of Affected Structures</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_2_3.php" target="_blank" class="button primary full-width">Table 4.2-3 Affected Improvements</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table/4_2_5.php" target="_blank" class="button primary full-width">Table 4.2-5 Affected Trees</a>
                 </div>
                 <div class="large-12 column">
@@ -97,26 +100,38 @@
                 <div class="large-12 column">
                     <a href="/table/4_5_7.php" target="_blank" class="button primary full-width">Table 4.5-7 Most Desired Services and Facilities in Relocation Site</a>
                 </div>
-                
-                <!-- <div class="large-12">
-                    <div class="large-3 column">
-                        <a href="/table/view-affected-lands.php" class="button primary full-width">Table 4.1-2 Affected Lands</a>
-                    </div>
-                    <div class="large-3 column">
-                        <a href="/baranggay/legal/view.php" class="button primary full-width">Table 4.1-3 Legal PAFs</a>
-                    </div>
-                    <div class="large-3 column">
-                        <a href="/baranggay/illegal/view.php" class="button primary full-width">Table 4.1-4 ISF</a>
-                    </div>
-                    <div class="large-3 column">
-                        <a href="/area-affected.php" class="button primary full-width">Area Affected (New)</a>
-                    </div>
-                </div> -->
             </div>
             <div class="tools row">
                 <h3>Chapter 12</h3>
                 <div class="large-12 column">
-                    <a href="/table/4_1_1.php" target="_blank" class="button primary full-width">Table 4.1-1 Affected Cities and Municipalities and Corresponding Baranggays by NSCR Project</a>
+                    <a href="/table_manager/12_1_2_view.php" target="_blank" class="button primary full-width">Table 12.1-2 Market Values for the Project Affected Lands (PhP/sq.m)</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_3_view.php" target="_blank" class="button primary full-width">Table 12.1-3 Estimated Replacement Cost of Private Lands</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_4_view.php" target="_blank" class="button primary full-width">Table 12.1-4 Estimated Unit Construction Costs by Materials</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_5_view.php" target="_blank" class="button primary full-width">Table 12.1-5 Estimate Costs for Structures of Light Materials</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_6_view.php" target="_blank" class="button primary full-width">Table 12.1-6 Estimate Costs for Structures of Semi-concrete</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_7_view.php" target="_blank" class="button primary full-width">Table 12.1-7 Estimate Costs for Structures of Concrete</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_8_view.php" target="_blank" class="button primary full-width">Table 12.1-8 Summary of Estimated Costs of Structures</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_9_view.php" target="_blank" class="button primary full-width">Table 12.1-9 Summary of Affected Improvements</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table_manager/12_1_10_view.php" target="_blank" class="button primary full-width">Table 12.1-10 Summary of Affected Trees and Plants</a>
+                </div>
+                
+            </div>
             <div class="database row">
                 <h3>Manage Database</h3>
                 <div class="large-12">
@@ -130,8 +145,15 @@
                         <a href="/zone/view.php" class="button success full-width">Manage 4.1-1 Table</a>
                     </div>
                     <div class="large-3 column">
-                        <a href="/area-affected.php" class="button primary full-width">NONE</a>
+                        <a href="/table_manager/12_1_2.php" class="button primary full-width">Manage market value (12.1-2)</a>
                     </div>
+                    <div class="large-3 column">
+                        <a href="/table_manager/12_1_4.php" class="button primary full-width">Manage Construction Cost by Materials (12.1-4)</a>
+                    </div>
+                    <div class="large-3 column">
+                        <a href="/table_manager/constant.php" class="button primary full-width">Manage other constants</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>

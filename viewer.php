@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <h1>Data Count: <?=count(explode(",", $ids))?></h1>
+    <h1>Data Count: <?=count($result)?></h1>
     <table>
         <thead>
             <tr>

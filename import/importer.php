@@ -87,6 +87,27 @@ class Importer
                 'BW' => array('dms_affected', 'D. Affected Area'), //affected area
                 'BY' => array('extent', 'D. Extent of Impact'), //extent of impact
 
+                'CQ' => array('improve_fence', 'D1A. Fence'),
+                'CS' => array('improve_gate', 'D1B. Gate'),
+                'CU' => array('improve_post', 'D1C. Post'),
+                'DC' => array('improve_well', 'D1D. Well'),
+                'DL' => array('improve_pigpen', 'D1E. Pig Pen'),
+                'ED' => array('improve_bcourt', 'D1G. Basketball Court'),
+                'EM' => array('improve_bridge', 'D1H. Pedestrian/Bridge Pathway/Overpass'),
+                'ES' => array('improve_terminal', 'D1I. Transport Terminal'),
+                'EY' => array('improve_shed', 'D1J. Waiting Shed'),
+                'FG' => array('improve_storage', 'D1K. Storage Area/Stock Room'),
+                'FN' => array('improve_toilet', 'D1L. Comfort Room/Toilet and Bath'),
+                'FV' => array('improve_watertank', 'D1M. Water Tank'),
+                'GD' => array('improve_extension', 'D1N. House Extension'),
+                'GL' => array('improve_fishpond', 'D1O. Fish Pond'),
+                'GT' => array('improve_garage', 'D1P. Garage'),
+                'HB' => array('improve_sarisari', 'D1Q. Sari-sari Store'),
+                'HJ' => array('improve_playground', 'D1R. Playground'),
+                'HR' => array('improve_table', 'D1S. Playground'),
+                'HZ' => array('improve_parking', 'D1T. Parking Lot'),
+                
+
                 //D2. Residential Structure Arrangements
                 'JR' => array('displacement', 'D2. Displacement'), //Displacement (Residential Structure Arrangements)
 
