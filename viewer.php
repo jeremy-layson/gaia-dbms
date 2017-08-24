@@ -6,6 +6,7 @@
         echo "No data";
         exit();
     }
+
     include('sql.php');
     $result = $link->query("show full columns from survey");
     $columns[] = array('uid', 'ID');
@@ -18,7 +19,7 @@
 
     
 
-    $query = "SELECT * FROM survey WHERE uid IN ($ids)";
+    $query = "SELECT * FROM survey WHERE uid IN ($ids) AND is_deleted = 0";
     $result = $link->query($query)->fetch_all(MYSQLI_ASSOC);
 
     if (isset($_GET['field'])) {

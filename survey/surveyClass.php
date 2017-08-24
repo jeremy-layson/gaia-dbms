@@ -44,7 +44,7 @@ class Survey
     }
 
     public function delete($id) {
-        if (!($stmt = $this->db->prepare("DELETE FROM survey WHERE uid = ?"))) {
+        if (!($stmt = $this->db->prepare("UPDATE survey SET is_deleted = 1 WHERE uid = ?"))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
             return false;
         }
@@ -88,6 +88,22 @@ class Survey
         $data = array_merge(array('uid' => $lastval), $data);
 
         return $data;
+    }
+
+    public function restore($id) {
+        if (!($stmt = $this->db->prepare("UPDATE survey SET is_deleted = 0 WHERE uid = ?"))) {
+            echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
+            return false;
+        }
+
+        $stmt->bind_param('i', $id);
+           
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            return false;
+        }
+
+        return $id;
     }
 }
 ?>

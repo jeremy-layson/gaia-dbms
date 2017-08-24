@@ -81,7 +81,7 @@
             echo "<td>Total</td>";
             $vals = [];
             foreach ($class->tbl_cols as $col) {
-                $vals[$col] = $class->total[$col]['COUNT'];
+                $vals[$col] = $class->total[$col]['COUNT'];unset($class->total[$col]);
             }
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,shi_place_employment,family_head_gender&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";

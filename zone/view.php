@@ -68,6 +68,38 @@
                         <div class="large-3 column"><input type="submit" class="button primary" value="Add"></div>
                     </form>
                </div>
+               <h3>Deleted Records</h3>
+               <table>
+                   <thead>
+                       <tr>
+                           <td width="20%">Municipality</td>
+                           <td width="20%">Baranggay</td>
+                           <td width="40%">Wildcard</td>
+                           <td width="20%">Action</td>
+                       </tr>
+                   </thead>
+                   <tbody>
+                        <?php
+                            $data = $municipality->getDeleted();
+                            foreach ($data as $value) {
+                                $key = $value['municipality'];
+                                $brgy = $value['baranggay'];
+                                $wildcard = $value['wildcard'];
+                                $id = $value['uid'];
+                        ?>
+                                <tr>
+                                    <td><?=$key?></td>
+                                    <td><?=$brgy?></td>
+                                    <td><?=$wildcard?></td>
+                                    <td>
+                                        <button class="button alert mun-restore" data-id="<?=$id?>">Restore</button>
+                                    </td>
+                                </tr>
+                        <?php 
+                            }
+                        ?>
+                   </tbody>
+               </table>
            </div>
        </div> 
     </div>

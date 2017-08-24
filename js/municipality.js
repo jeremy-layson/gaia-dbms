@@ -1,4 +1,26 @@
 $(document).ready(function(){
+
+    $(".mun-restore").on('click', function(){
+        var ans = prompt("Type yes to confirm restoring this item").toUpperCase().trim();
+        if (ans === "YES") {
+            var me = $(this);
+            var id = $(this).attr('data-id');
+            //send data to delete.php
+            var link = "/municipality/restore.php";
+            if (mode == 'zone') {
+                link = "/zone/restore.php";
+            }
+            $.post(link, 
+                {id: id},
+                function(data) {
+                    if (data !== false) {
+                        //remove row
+                        $(me).parent().parent().remove();
+                    }
+                }
+            );
+        }   
+    });
     $(".mun-delete").on('click', function(){
         var caption = $(this).html();
         var row = $(this).parent().parent();

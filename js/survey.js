@@ -17,6 +17,24 @@ $(document).ready(function(){
         $('.form h3').html('Modify existing');
     });
 
+    $('.data-restore').on('click', '.survey-restore' , function(){
+        var ans = prompt("Type yes to confirm restoring this record").toUpperCase().trim();
+            if (ans === "YES") {
+                var me = $(this);
+                var id = $(this).attr('data-id');
+                //send data to delete.php
+                $.post("/survey/restore.php", 
+                    {id: id},
+                    function(data) {
+                        if (data !== false) {
+                            //remove row
+                            $(me).parent().parent().remove();
+                        }
+                    }
+                );
+            }
+    });
+
     $('.data-list').on('click', '.survey-delete' , function(){
         var ans = prompt("Type yes to confirm deleting this record").toUpperCase().trim();
             if (ans === "YES") {

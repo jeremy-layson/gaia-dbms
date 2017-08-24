@@ -15,6 +15,11 @@
     border-collapse: collapse;
 }
 
+.data-restore table {
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
 .data-list table button {
     margin: 0px;
 }

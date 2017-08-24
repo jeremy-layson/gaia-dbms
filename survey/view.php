@@ -12,7 +12,7 @@
     <?php 
         //retrieve all data
         include_once('../sql.php');
-        $result = $link->query("SELECT * FROM survey");
+        $result = $link->query("SELECT * FROM survey WHERE is_deleted = 0");
         $columns = $link->query("show full columns from survey");
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -118,6 +118,40 @@
                     </div>
                 </div>
             </form>
+        </div>
+
+        <h3>Deleted records</h3>
+        <div class="data-restore">
+            <table s>
+                <thead>
+                    <tr>
+                        <?php 
+                        mysqli_data_seek($columns, 0);
+                            echo "<td>Actions</td>";
+                            while ($row = $columns->fetch_assoc()) {
+                                $col = explode("|", $row['Comment']);
+                                echo "<td>" . $col[1] . "</td>";
+                            }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $query = "SELECT * FROM survey WHERE is_deleted = 1";
+                        $result = $link->query($query);
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                                echo '<td><button class="button warning survey-restore" data-id="' . $row['uid'] . '">Restore</button></td>';
+                                foreach ($row as $key => $value) {
+                                    echo "<td>" . $value . "</td>";
+                                }
+
+                            echo "</tr>";
+                        }
+
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

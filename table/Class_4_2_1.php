@@ -15,7 +15,7 @@ class Class_4_2_1
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey`";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -44,16 +44,24 @@ class Class_4_2_1
             $data[$col]['MIXED USE'] = array('COUNT' => 0);
             $data[$col]['Total'] = array('COUNT' => 0);
             
+            if ($col == 'Valenzuela') {
+                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
+            } else {
+                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE `address` LIKE '%" . $col . "%'");
+            }
             
-            $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE `address` LIKE '%" . $col . "%'");
             while ($row = $result->fetch_assoc()) {
                 unset($this->unclaimed[$row['uid']]);
                 $data[$col][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
                 $col_total['Grand Total'][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
+                $col_total['Grand Total']['Total']['COUNT'] += floatval($row['alo_affectedarea']);
+                
                 $data[$col]['Total']['COUNT'] += floatval($row['alo_affectedarea']);
 
                 $data[$col][strtoupper($row['use'])][] = $row['uid'];
                 $col_total['Grand Total'][strtoupper($row['use'])][] = $row['uid'];
+                $col_total['Grand Total']['Total'][] = $row['uid'];
+                
                 $data[$col]['Total'][] = $row['uid'];
                 
             }
@@ -64,7 +72,7 @@ class Class_4_2_1
 
     private function getMunicipality()
     {
-        $query = "SELECT municipality FROM municipality GROUP BY municipality";
+        $query = "SELECT municipality FROM municipality WHERE is_deleted = 0 GROUP BY municipality ORDER BY uid ASC";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $data[] = $row['municipality'];

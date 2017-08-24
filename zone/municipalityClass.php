@@ -18,7 +18,7 @@ class Municipality
         require('../sql.php');
         $this->db = $link;
         //get all municipality data
-        $query = "SELECT * FROM municipality_zone";
+        $query = "SELECT * FROM municipality_zone WHERE is_deleted = 0";
         $result = $this->db->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -26,6 +26,17 @@ class Municipality
             $this->municipalities[] = $row['municipality'];
             $this->baranggays[] = $row['baranggay'];
         }
+    }
+
+    public function getDeleted() {
+        $query = "SELECT * FROM municipality_zone WHERE is_deleted = 1";
+        $result = $this->db->query($query);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
     }
 
     public function getAll() {
@@ -47,7 +58,23 @@ class Municipality
     }
 
     public function delete($id) {
-        if (!($stmt = $this->db->prepare("DELETE FROM municipality_zone WHERE uid = ?"))) {
+        if (!($stmt = $this->db->prepare("UPDATE municipality_zone SET is_deleted = 1 WHERE uid = ?"))) {
+            echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
+            return false;
+        }
+
+        $stmt->bind_param('i', $id);
+           
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            return false;
+        }
+
+        return $id;
+    }
+
+     public function restore($id) {
+        if (!($stmt = $this->db->prepare("UPDATE municipality_zone SET is_deleted = 0 WHERE uid = ?"))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
             return false;
         }

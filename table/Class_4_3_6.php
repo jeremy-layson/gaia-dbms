@@ -42,6 +42,7 @@ class Class_4_3_6
             $use = $row['use'];
             $type = $row['type'];
 
+            if ($use == 'Institutional') $use = 'CIBE';
             if ($use == 'Industrial') $use = 'CIBE';
             if ($use == 'Mixed Use') $use = 'CIBE';
             if ($use == 'Commercial') $use = 'CIBE';
@@ -81,6 +82,11 @@ class Class_4_3_6
                 $this->total['Total'][]   = $row['uid'];
             }
         }
+
+        if (isset($this->total['CIBE']) === FALSE) $this->total['CIBE'] = [];
+        if (isset($this->total['ISF']) === FALSE) $this->total['ISF'] = [];
+        if (isset($this->total['Commercial']) === FALSE) $this->total['Commercial'] = [];
+        
         return $data;
     }
 

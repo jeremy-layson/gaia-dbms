@@ -15,7 +15,7 @@ class Class_4_1_1
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey`";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -30,7 +30,7 @@ class Class_4_1_1
         $data = [];
 
         while ($row = $result->fetch_assoc()) {
-            $query = "SELECT uid FROM survey WHERE (" . $this->getWildcard($row['wildcard']) . ") AND address like '%" . $row['municipality'] . "%'";
+            $query = "SELECT uid FROM survey WHERE is_deleted = 0 AND (" . $this->getWildcard($row['wildcard']) . ") AND address like '%" . $row['municipality'] . "%'";
             $id_list = $this->db->query($query);
             $ids = [];
             while ($id = $id_list->fetch_assoc()) {
