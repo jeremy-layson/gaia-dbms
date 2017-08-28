@@ -8,7 +8,7 @@
     <!-- <script type="text/javascript" src="/js/table-manager.js"></script> -->
     <style type="text/css">
         .table, .deleted {
-            height: 80vh;
+            max-height: 80vh;
             overflow: scroll;
         }
 

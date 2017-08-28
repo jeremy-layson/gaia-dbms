@@ -16,7 +16,7 @@ class Class_4_3_6
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE hh_head LIKE '%[322]'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -27,7 +27,7 @@ class Class_4_3_6
     {
         $data = [];
         
-        $result = $this->db->query($query = "SELECT uid,type,`use`,address,baranggay,hdi_reason_econ,hdi_reason_social,hdi_reason_other FROM survey WHERE `hh_head` LIKE '%[322]'");
+        $result = $this->db->query($query = "SELECT uid,type,`use`,address,baranggay,hdi_reason_econ,hdi_reason_social,hdi_reason_other FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]'");
 
         $data['econ'] = [];
         $data['socio'] = [];
@@ -92,7 +92,7 @@ class Class_4_3_6
 
     private function getMunicipality()
     {
-        $query = "SELECT * FROM municipality";
+        $query = "SELECT * FROM municipality WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $data[$row['municipality']][] = array($row['baranggay'], $row['wildcard']);

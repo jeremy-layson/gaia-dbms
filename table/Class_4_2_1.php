@@ -45,9 +45,9 @@ class Class_4_2_1
             $data[$col]['Total'] = array('COUNT' => 0);
             
             if ($col == 'Valenzuela') {
-                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
+                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
             } else {
-                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE `address` LIKE '%" . $col . "%'");
+                $result = $this->db->query("SELECT uid,`use`,alo_affectedarea FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%'");
             }
             
             while ($row = $result->fetch_assoc()) {

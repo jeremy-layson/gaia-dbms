@@ -55,6 +55,9 @@ class Municipality
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Create', 'municipality', " .  $this->db->insert_id. ", NOW(), 0)");
+
         header("Location: /municipality/view.php");
     }
 
@@ -70,6 +73,9 @@ class Municipality
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             return false;
         }
+
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Delete', 'municipality', $id, NOW(), 0)");
 
         return $id;
     }
@@ -87,6 +93,9 @@ class Municipality
             return false;
         }
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Restore', 'municipality', $id, NOW(), 0)");
+
         return $id;
     }
 
@@ -102,6 +111,9 @@ class Municipality
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             return false;
         }
+
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Modify', 'municipality', " . $data['id'] . ", NOW(), 0)");
 
         return array($data['municipality'], $data['baranggay'], $data['wildcard']);
     }

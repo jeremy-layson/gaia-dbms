@@ -6,3 +6,16 @@
 .full-width {
     width: 100% !important;
 }
+
+.login, .database {
+    margin-top: 10px;
+    border: 1px solid #e3e3e3;
+}
+
+.login label {
+    text-align: right;
+}
+
+.login h2 {
+    text-align: center;
+}

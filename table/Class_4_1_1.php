@@ -24,7 +24,7 @@ class Class_4_1_1
 
     public function getData()
     {
-        $query = "SELECT * FROM municipality_zone";
+        $query = "SELECT * FROM municipality_zone WHERE is_deleted = 0";
         $result = $this->db->query($query);
 
         $data = [];

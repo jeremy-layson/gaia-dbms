@@ -62,7 +62,7 @@
                 foreach ($data as $muns => $brgys) {
                     if (count($brgys) > $i) {
                         $style = '';
-                        if (count($brgys[$i][1]) > 0) $style = 'gray';
+                        if (count($brgys[$i][1]) == 0) $style = 'gray';
                         echo "<td class='$style'><a target='_blank' href='/viewer.php?field=uid,asset_num,name,address,baranggay&id=" . implode(",", $brgys[$i][1]) . "'>" . $brgys[$i][0] . "</a></td>";
                     } else {
                         echo "<td></td>";

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,6 +133,44 @@
                 </div>
                 
             </div>
+
+            <?php if (isset($_SESSION['username']) === FALSE) { ?>
+            <div class="login row">
+                <form action="/login.php" method="POST" class="column large-12">
+                    <div class="row">
+                        <div class="column large-12">
+                            <h2>Login</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column large-1">
+                            <label>Username:</label>
+                        </div>
+                        <div class="column large-11">
+                            <input type="text" name="username">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column large-1">
+                            <label>Password:</label>
+                        </div>
+                        <div class="column large-11">
+                            <input type="password" name="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column large-1">
+                        </div>
+                        <div class="column large-11">
+                            <input class="button primary full-width" type="submit" value="Login">
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+
+            <?php } else { ?>
+
             <div class="database row">
                 <h3>Manage Database</h3>
                 <div class="large-12">
@@ -148,14 +187,24 @@
                         <a href="/table_manager/12_1_2.php" class="button primary full-width">Manage market value (12.1-2)</a>
                     </div>
                     <div class="large-3 column">
-                        <a href="/table_manager/12_1_4.php" class="button primary full-width">Manage Construction Cost by Materials (12.1-4)</a>
+                        <a href="/table_manager/12_1_4.php" class="button success full-width">Manage Construction Cost by Materials (12.1-4)</a>
                     </div>
                     <div class="large-3 column">
                         <a href="/table_manager/constant.php" class="button primary full-width">Manage other constants</a>
                     </div>
-                    
+                    <div class="large-3 column">
+                        <a href="/table_manager/users.php" class="button success full-width">Manage Users</a>
+                    </div>
+                    <div class="large-3 column">
+                        <a href="/table_managerlogs.php" class="button success full-width">View Logs</a>
+                    </div>
+                    <div class="large-3 column">
+                        <a href="/logout.php" class="button warning full-width">Logout</a>
+                    </div>
                 </div>
             </div>
+
+            <?php } ?>
         </div>
     </div>
 </body>

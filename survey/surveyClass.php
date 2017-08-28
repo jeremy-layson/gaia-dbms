@@ -40,6 +40,9 @@ class Survey
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Create', 'survey', " . $this->db->insert_id . ", NOW(), 0)");
+
         return array_merge(array('uid' => $this->db->insert_id), $data);
     }
 
@@ -55,6 +58,9 @@ class Survey
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             return false;
         }
+
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Delete', 'survey', $id, NOW(), 0)");
 
         return $id;
     }
@@ -87,6 +93,9 @@ class Survey
         $lastval = array_pop($data);
         $data = array_merge(array('uid' => $lastval), $data);
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Modify', 'survey', " . $data['uid'] . ", NOW(), 0)");
+
         return $data;
     }
 
@@ -102,6 +111,9 @@ class Survey
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             return false;
         }
+
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Restore', 'survey', $id, NOW(), 0)");
 
         return $id;
     }

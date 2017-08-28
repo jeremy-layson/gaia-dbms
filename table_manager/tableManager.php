@@ -27,7 +27,8 @@ class tableManager
             'survey'        => '12_1_2.php',
             'constant'      => 'constant.php',
             'material_cost' => '12_1_4.php',
-              
+            'user'          => 'users.php',
+            'logs'          => 'logs.php',
         );
 
         $this->page_names = array(
@@ -35,6 +36,8 @@ class tableManager
             'survey'        => 'Survey Table',
             'constant'      => 'Other Contants',
             'material_cost' => 'Construction Cost by Material',
+            'user'          => 'User Management',
+            'logs'          => 'Logs Viewer',
         );
 
         require('../sql.php');
@@ -115,7 +118,10 @@ class tableManager
             return false;
         }
 
-        // header("Location: " . $this->index);
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Modify', '" . $this->table_name . "', $tmpID, NOW(), 0)");
+
+        header("Location: " . $this->index);
     }
 
     public function create($data) {
@@ -142,6 +148,8 @@ class tableManager
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Create', '" . $this->table_name . "', " . $this->db->insert_id . ", NOW(), 0)");
         header("Location: " . $this->index);
     }
 
@@ -158,6 +166,9 @@ class tableManager
             return false;
         }
 
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Delete', '" . $this->table_name . "', $id, NOW(), 0)");
+
         header("Location: " . $this->index);
     }
 
@@ -173,6 +184,9 @@ class tableManager
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             return false;
         }
+
+        session_start();
+        $this->db->query("INSERT INTO `logs` VALUES(NULL, '" . $_SESSION['username'] . "', 'Restore', '" . $this->table_name . "', $id, NOW(), 0)");
 
         header("Location: " . $this->index);
     }
