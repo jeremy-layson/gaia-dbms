@@ -1,5 +1,5 @@
 <?php 
-    require_once('../survey/surveyClass.php');
+    require_once('surveyClass.php');
     $survey = new Survey();
     $post = $_POST;
 

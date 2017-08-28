@@ -196,7 +196,7 @@
                         <a href="/table_manager/users.php" class="button success full-width">Manage Users</a>
                     </div>
                     <div class="large-3 column">
-                        <a href="/table_managerlogs.php" class="button success full-width">View Logs</a>
+                        <a href="/table_manager/logs.php" class="button success full-width">View Logs</a>
                     </div>
                     <div class="large-3 column">
                         <a href="/logout.php" class="button warning full-width">Logout</a>

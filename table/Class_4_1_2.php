@@ -40,6 +40,7 @@ class Class_4_1_2
                                     'renter'       => [],
                                     'absentee'      => [],
                                     'worker'       => [],
+                                    'lessee'        => [],
                                     'subtotal'  => [],
                                     ));
 
@@ -51,6 +52,7 @@ class Class_4_1_2
             'absentee' => 'Absentee Structure Owners',
             'land_owner' => 'Land Owners',
             'worker' => 'Workers (Employees of CIBEs)',
+            'lessee'  => 'Land Lessee',
             'subtotal' => 'Subtotal',
             
         );
@@ -72,11 +74,11 @@ class Class_4_1_2
         while ($row = $result->fetch_assoc()) {
 
             //if < 20% then stay
-            $extent = $row['extent'];
-            $type = $row['type'];
-            $dp = $row['structure_dp'];
-            $use = $row['structure_use'];
-            $hh_num = $row['hh_members'];
+            $extent = trim($row['extent']);
+            $type = trim($row['type']);
+            $dp = trim($row['structure_dp']);
+            $use = trim($row['structure_use']);
+            $hh_num = trim($row['hh_members']);
             $category = '';
 
             if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
@@ -89,6 +91,11 @@ class Class_4_1_2
 
             } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary') {
                 $displacement = 'displace';
+            } elseif ($extent == 'Auxiliary') {
+                $displacement = 'stay';
+            } elseif ($extent == 'Land Lessee') {
+                $displacement = 'stay';
+                $category = 'lessee';
             }
 
             if ($displacement != 'none') {

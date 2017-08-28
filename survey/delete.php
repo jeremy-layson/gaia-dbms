@@ -1,5 +1,5 @@
 <?php 
-    require_once('tableManager.php');
+    require_once('surveyClass.php');
     $survey = new Survey();
     $post = $_POST['id'];
 
