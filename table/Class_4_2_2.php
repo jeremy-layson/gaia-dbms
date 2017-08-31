@@ -43,29 +43,25 @@ class Class_4_2_2
             $data[$col]['Total'] = array('COUNT' => 0);
             
             if ($col == 'Valenzuela') {
-                $result = $this->db->query("SELECT uid,`use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
+                $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
             } else {
-                $result = $this->db->query("SELECT uid,`use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%'");
+                $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%'");
             }
             while ($row = $result->fetch_assoc()) {
-
-                if ($row['extent'] != '< than 20%' && $row['extent'] != 'Auxiliary' && $row['extent'] != 'Land Owner' && $row['extent'] != 'Land Lessee') {
                     
-                    if ($row['use'] == 'Residential' || $row['use'] == 'Commercial' || $row['use'] == 'Industrial' || $row['use'] == 'Institutional' || $row['use'] == 'Mixed use') {
-                        unset($this->unclaimed[$row['uid']]);
-                        $data[$col][strtoupper($row['use'])]['COUNT']++;
-                        $data[$col]['Total']['COUNT']++;
-                        $col_total['Grand Total'][strtoupper($row['use'])]['COUNT']++;
-                        $col_total['Grand Total']['Total']['COUNT']++;
+                if ($row['use'] == 'Residential' || $row['use'] == 'Commercial' || $row['use'] == 'Industrial' || $row['use'] == 'Institutional' || $row['use'] == 'Mixed use' || $row['use'] == 'Mixed Use') {
+                    unset($this->unclaimed[$row['uid']]);
+                    $data[$col][strtoupper($row['use'])]['COUNT']++;
+                    $data[$col]['Total']['COUNT']++;
+                    $col_total['Grand Total'][strtoupper($row['use'])]['COUNT']++;
+                    $col_total['Grand Total']['Total']['COUNT']++;
 
-                        $data[$col][strtoupper($row['use'])][] = $row['uid'];
-                        $data[$col]['Total'][] = $row['uid'];
-                        $col_total['Grand Total'][strtoupper($row['use'])][] = $row['uid'];
-                        $col_total['Grand Total']['Total'][] = $row['uid'];
-                        
-                    }
+                    $data[$col][strtoupper($row['use'])][] = $row['uid'];
+                    $data[$col]['Total'][] = $row['uid'];
+                    $col_total['Grand Total'][strtoupper($row['use'])][] = $row['uid'];
+                    $col_total['Grand Total']['Total'][] = $row['uid'];
+                    
                 }
-                
             }
         }
 

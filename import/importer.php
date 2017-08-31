@@ -16,6 +16,7 @@ class Importer
 
     public function __construct($fileName)
     {
+
         require_once('../sql.php');
         $this->db = $link;
         $this->inputFileName = $fileName;
@@ -143,6 +144,8 @@ class Importer
                 'NK' => array('hh_members', 'Household Members'), // //Household members (Socio-economic Survey)
                 'NL' => array('hh_head', 'Household Head'), //Households Head (Track color) [322] tag
 
+                'OP' => array('hh_unemployed', 'Unemployed HH Members'),
+
                 //I2. Source of Households Income
                 'PR' => array('shi_source_employee', 'I2. Source of Income: Employee'), //Source of income
                 'PS' => array('shi_source_fbusiness', 'I2. Source of Income: Formal Business'),
@@ -215,6 +218,18 @@ class Importer
 
                 //If ever you would lose your job because of the NSCR Project what sort of livelihood assistance would suit for your needs?
                 'SK' => array('ialsa_livelihood_assistance', 'M. Livelihood Assistance'),
+
+                //O. Flooding
+
+                'VG' => array('flood_5years', 'Flooding in the last 5 years?'),
+                'VH' => array('flood_deepest', 'When deepest flooding'),
+                'VI' => array('flood_typhoon', 'Particular typhoon'),
+                'VJ' => array('flood_times', 'How many times'),
+                'VK' => array('flood_max_height', 'Maximum height'),
+                'VL' => array('flood_location', 'Where is the location of flooding'),
+                'VM' => array('flood_damage', 'How much damage caused by floood'),
+                'VN' => array('flood_subside', 'How long to subside'),
+                
             );
         }
     }
@@ -249,11 +264,24 @@ class Importer
         $this->db->query("ALTER TABLE `survey` MODIFY `uid` int(8) NOT NULL AUTO_INCREMENT COMMENT '0|ID|text', AUTO_INCREMENT=10000;COMMIT;");
     }
 
-    public function importData()
+    public function importData($maxRow = 831)
     {
-        $worksheet = $this->phpExcel->setActiveSheetIndex(15);
+        $sheetIndex = 0;
+
+        while (true) {
+            $worksheet = $this->phpExcel->setActiveSheetIndex($sheetIndex);
+            $worksheetTitle = $worksheet->getTitle();
+
+            if ($worksheetTitle == 'SurveyDATA') {
+                break;
+            }
+
+            $sheetIndex++;
+        }
+
+        $worksheet = $this->phpExcel->setActiveSheetIndex($sheetIndex);
         $worksheetTitle = $worksheet->getTitle();
-        $highestRow = 831;
+        $highestRow = $maxRow;
 
         $all = [];
         $showHidden = true;
@@ -276,7 +304,7 @@ class Importer
                             $data = 'LEGAL';
                         }
                     } else {
-                        $data = $cellValue;
+                        $data = trim($cellValue);
                     }
 
                     if (is_null($data)) $data = '';
@@ -368,9 +396,23 @@ class Importer
             }
 
         }
+
+        echo "FINISHED";
     }
 }
 
-$import = new Importer('../data.xlsx');
+
+$maxRow = 831;
+$filename = '../data.xlsx';
+
+if (isset($_GET['max_row']) === true) {
+    $maxRow = $_GET['max_row'];
+}
+
+if (isset($_GET['filename']) === TRUE && $_GET['filename'] != '') {
+    $filename = '../import/' . $_GET['filename'] . '.xlsx';
+}
+
+$import = new Importer($filename);
 $import->createTableSurvey();
-$import->importData();
+$import->importData($maxRow);

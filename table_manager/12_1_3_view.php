@@ -58,7 +58,6 @@
                         echo "<td>" . $val['Industrial']['area'] . "</td>";
                         echo "<td>" . $val['Industrial']['multiplier'] . "</td>";
 
-
                         echo "<td>" . $val['Agricultural']['area'] . "</td>";
                         echo "<td>" . $val['Agricultural']['multiplier'] . "</td>";
 

@@ -1,3 +1,4 @@
 <?php 
-    var_dump(explode(',', ''));
+    $var = explode("/", "2008");
+    var_dump($var[0]);
 ?>
