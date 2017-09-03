@@ -61,6 +61,7 @@ class Importer
                 'H' => array('baranggay', 'Baranggay'),
                 'T' => array('family_head', 'Family Head'),
                 'W' => array('family_head_gender', 'Family Head Gender'),
+                'Z' => array('civil_status', 'Civil Status'),
 
                 //B. Household demographic info
                 'AF' => array('hdi_length_stay', 'Length of Stay'), //length of stay
@@ -115,6 +116,7 @@ class Importer
                 //D4. Relocation Package Option
                 'KI' => array('rpo_relocation_option', 'D4. What option'),
                 'KJ' => array('rpo_relocation_preferred' ,'D4. Preferred Province'),
+                'KL' => array('rpo_reloc_1stprio', 'D4. 1st Priority'),
 
                 //In choosing relocation site, what are the most important factors you will consider?
                 'KQ' => array('rpo_reloc_factor_near_orig', 'Relocation Factor: Near to Original Residence'), 
@@ -202,7 +204,37 @@ class Importer
                 
                 //I3. Household Expenses
                 'RD' => array('he_total_expenses', 'I3. Total Monthly Expenses'), //monhtly expenses
-                
+
+                'RE' => array('he_source_light', 'I3. Source of lighting'),
+                'RF' => array('he_fuel_cooking', 'I3. Fuel for cooking'),
+                'RG' => array('he_water_supply', 'I3. Water Supply'),
+                'RH' => array('he_sanitation', 'I3. Sanitation Facility (Toilet)'),
+
+                //K. Household Assets
+                'RI' => array('ha_tricycle', 'K. Tricycle'),
+                'RJ' => array('ha_motorcycle', 'K. Motorcyle'),
+                'RK' => array('ha_computer', 'K. Computer'),
+                'RL' => array('ha_electricfan', 'K. Electric Fan'),
+                'RM' => array('ha_tv', 'K. Television'),
+                'RN' => array('ha_radio', 'K. Radio'),
+                'RO' => array('ha_music', 'K. Music Component'),
+                'RP' => array('ha_amplifier', 'K. Amplifier'),
+                'RQ' => array('ha_refrigerator', 'K. Refrigerator'),
+                'RR' => array('ha_stove', 'K. Stove'),
+                'RS' => array('ha_superkalan', 'K. Superkalan'),
+                'RT' => array('ha_dvd', 'K. Portable DVD'),
+                'RU' => array('ha_car', 'K. Car'),
+                'RV' => array('ha_gadget', 'K. Gadget'),
+                'RW' => array('ha_bike', 'K. Trike/Bike'),
+                'RX' => array('ha_ricecooker', 'K. Rice Cooker'),
+                'RY' => array('ha_jeep', 'K. Jeepney'),
+                'RZ' => array('ha_waterpurifier', 'K. Water Purifier'),
+                'SA' => array('ha_aircon', 'K. Aircon'),
+                'SB' => array('ha_washingmachine', 'K. Washing Machine'),
+                'SC' => array('ha_sewingmachine', 'K. Sewing Machine'),
+
+
+
                 //E. Crops and Trees
                 'LS' => array('trees_fb', 'E. Fruit Bearing'), //fruit bearing
                 'LT' => array('trees_nonfb', 'E. Non Fruit Bearing'), //timber / non-fb
@@ -213,7 +245,15 @@ class Importer
                 'MD' => array('sv_hh_woman', 'F. Female household head'),      // HH Head is woman
                 'ME' => array('sv_60above', 'F. Person > 60 yrs'),       // person > 60 yrs 
                 'MF' => array('sv_special_assist', 'F. Special Assistance'),// Special assistance
-
+                
+                //L. Female Participation in Decision Making
+                'SD' => array('fpdm_finance', 'L. Financial Matters'),
+                'SE' => array('fpdm_education', 'L. Education of child'),
+                'SF' => array('fpdm_health', 'L. Health care of child'),
+                'SG' => array('fpdm_purchase', 'L. Purchase of Assets'),
+                'SH' => array('fpdm_daytoday', 'L. Day to day activities'),
+                'SI' => array('fpdm_social', 'L. Social functions and marriages'),
+                'SJ' => array('fpdm_others', 'L. Others'),
                 //M. Income and Livelihood Support Assitance
 
                 //If ever you would lose your job because of the NSCR Project what sort of livelihood assistance would suit for your needs?

@@ -44,7 +44,12 @@ class Class_4_1_3
                 foreach ($tbl_cols as $field) $data[$mun][$col[0]][$field] = array('stay' => [], 'move' => []);
                 
                 $wildcard = $this->getWildcard($col[1]);
-                $result = $this->db->query($query = "SELECT * FROM survey WHERE type='LEGAL' AND is_deleted = 0 AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+
+                $query = "SELECT * FROM survey WHERE type='LEGAL' AND is_deleted = 0 AND `address` LIKE '%" . $mun . "%' AND ($wildcard)";
+                if ($mun == "Valenzuela") $query = $query . " AND NOT `address` LIKE '%(Depot)%'";
+                $result = $this->db->query($query);
+
+
                 while ($row = $result->fetch_assoc()) {
                     $extent = $row['extent'];
                     $type = $row['type'];

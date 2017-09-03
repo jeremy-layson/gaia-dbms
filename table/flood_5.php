@@ -69,7 +69,7 @@
             echo "<tr>";
                 echo "<td>$mun</td>";
                 foreach ($class->tbl_cols as $colm) {
-                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_times&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_max_height&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                 }
             echo "</tr>";
         }
@@ -124,7 +124,7 @@
                     if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
                     echo "<td>$brgy</td>";
                     foreach ($class->tbl_cols as $colm) {
-                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_times&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_max_height&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                     }
                 echo "</tr>";
             }
@@ -142,7 +142,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_times&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,flood_5years,flood_max_height&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

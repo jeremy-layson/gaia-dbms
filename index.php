@@ -45,8 +45,12 @@
                     <a href="/table/4_3_1.php" target="_blank" class="button primary full-width">Table 4.3-1 Affected Population by Gender</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_2.php" target="_blank" class="button primary full-width">Table 4.3-2 Size of Household</a>
+                    <a href="/table/4_3_2.php" target="_blank" class="button primary full-width">Table 4.3-2a Size of Household</a>
                 </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_2b.php" target="_blank" class="button primary full-width">Table 4.3-2b Structure of Household</a>
+                </div>
+                
                 <div class="large-12 column">
                     <a href="/table/4_3_3.php" target="_blank" class="button primary full-width">Table 4.3-3 Affected Population by Age</a>
                 </div>
@@ -78,6 +82,49 @@
                     <a href="/table/4_3_13.php" target="_blank" class="button primary full-width">Table 4.3-13 Average Daily Commutation Cost (PhP)</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_3_19.php" target="_blank" class="button primary full-width">Table 4.3-19 Source of Lighting</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_20.php" target="_blank" class="button primary full-width">Table 4.3-20 Source of Fuel for Cooking</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_21.php" target="_blank" class="button primary full-width">Table 4.3-21 Water Supply</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_22.php" target="_blank" class="button primary full-width">Table 4.3-22 Sanitation</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_23.php" target="_blank" class="button primary full-width">Table 4.3-23 Household Assets</a>
+                </div>
+                
+
+                <div class="large-12 column">
+                    <a href="/table/flood_1.php" target="_blank" class="button primary full-width">Table 4.3-24a Flooding Experience</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_2.php" target="_blank" class="button primary full-width">Table 4.3-24b Highest flooding experienced for the last 5 years</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_3.php" target="_blank" class="button primary full-width">Table 4.3-24c Name of typhoon</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_4.php" target="_blank" class="button primary full-width">Table 4.3-24d How many times a year</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_5.php" target="_blank" class="button primary full-width">Table 4.3-24e Maximum height of flooding</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_6.php" target="_blank" class="button primary full-width">Table 4.3-24f Location of flooding</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_7.php" target="_blank" class="button primary full-width">Table 4.3-24g Damage Cost</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/flood_8.php" target="_blank" class="button primary full-width">Table 4.3-24h Duration of Flood</a>
+                </div>
+                
+
+                <div class="large-12 column">
                     <a href="/table/4_4_1.php" target="_blank" class="button primary full-width">Table 4.4-1 Gender of Household Head</a>
                 </div>
                 <div class="large-12 column">
@@ -87,14 +134,22 @@
                     <a href="/table/4_4_3.php" target="_blank" class="button primary full-width">Table 4.4-3 Vulnerable Groups</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_4_4.php" target="_blank" class="button primary full-width">Table 4.4-4 Female Participation in Household Decision Making</a>
+                </div>
+                
+                <div class="large-12 column">
                     <a href="/table/4_5_3.php" target="_blank" class="button primary full-width">Table 4.5-3 Willingness of Relocation</a>
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_5_4.php" target="_blank" class="button primary full-width">Table 4.5-4 Preference for Relocation Package or Cash Compensation</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_5_5.php" target="_blank" class="button primary full-width">Table 4.5-5 Preference for Possible Relocation Site</a>
+                    <a href="/table/4_5_5.php" target="_blank" class="button primary full-width">Table 4.5-5a Preference for Possible Relocation Site</a>
                 </div>
+                <div class="large-12 column">
+                    <a href="/table/4_5_5b.php" target="_blank" class="button primary full-width">Table 4.5-5b Preference for Possible Relocation Site</a>
+                </div>
+                
                 <div class="large-12 column">
                     <a href="/table/4_5_6.php" target="_blank" class="button primary full-width">Table 4.5-6 Factors Considered in Choosing Relocation Sites</a>
                 </div>

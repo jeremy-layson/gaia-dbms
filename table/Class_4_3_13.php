@@ -71,6 +71,9 @@ class Class_4_3_13
             unset($data[$mun]['Sub Total']);
             $data[$mun]['Sub Total'] = $sub;
         }
+        //get averages
+
+        
 
         return array_merge($data, $col_total);
     }
