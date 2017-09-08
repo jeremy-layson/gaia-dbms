@@ -89,7 +89,7 @@
                             }
                             $tmpVal = $pop[$imp][$field]['COUNT'];unset($pop[$imp][$field]['COUNT']);
 
-                            echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hh_members&id=" . implode(",", $pop[$imp][$field]) . "' target='_blank'>" . round($tmpVal, 1) . "</a></td>";
+                            echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,structure_use,improve_gate,improve_fence,improve_well,improve_bcourt,improve_pigpen,improve_toilet&id=" . implode(",", $pop[$imp][$field]) . "' target='_blank'>" . round($tmpVal, 1) . "</a></td>";
                         }
                     echo "</tr>";
                 }
@@ -101,13 +101,13 @@
             echo "<td colspan='3'>Grand Total</td>";
             foreach ($class->total as $key => $val) {
                 $tmpVal = $val['COUNT'];unset($val['COUNT']);
-                echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hh_members&id=" . implode(",", $val) . "' target='_blank'>" . round($tmpVal, 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,structure_use,improve_gate,improve_fence,improve_well,improve_bcourt,improve_pigpen,improve_toilet&id=" . implode(",", $val) . "' target='_blank'>" . round($tmpVal, 1) . "</a></td>";
             }
         echo "</tr>";
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,hh_members&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,structure_use,improve_gate,improve_fence,improve_well,improve_bcourt,improve_pigpen,improve_toilet&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $('table td:first')
