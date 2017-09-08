@@ -25,12 +25,14 @@
     <h3>Import Excel Data</h3>
     <input style="width: 500px;" type="text" id="filename" placeholder="File name of excel file (without extension)"><br>
     <input style="width: 500px;" type="text" id="maxrow" placeholder="Last row with data" value="831"><br>
+    <input style="width: 500px;" type="text" id="function" placeholder="Leave blank for import" value=""><br>
+    
     <button id="import">Begin Import</button>
 
     <script type="text/javascript">
         $(document).ready(function(){
             $('#import').on('click', function(){
-                window.open('/import/importer.php?max_row=' + $('#maxrow').val() + '&filename=' + $('#filename').val(), '_blank');
+                window.open('/import/importer.php?max_row=' + $('#maxrow').val() + '&filename=' + $('#filename').val() + '&function=' + $('#function').val(), '_blank');
             });
         });
     </script>

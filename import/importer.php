@@ -11,6 +11,8 @@ class Importer
 {
     private $inputFileName; // 'data.xlsx';
     private $phpExcel;
+    private $inputFileType;
+    private $phpWriter;
     private $columns; 
     private $db;
 
@@ -24,9 +26,11 @@ class Importer
         $this->loadColumn('survey');
         //  Read Excel workbook
         try {
-            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+            $this->inputFileType = $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
             $objReader = PHPExcel_IOFactory::createReader($inputFileType);
             $this->phpExcel = $objReader->load($inputFileName);
+
+            
         } catch(Exception $e) {
             die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
         }
@@ -55,6 +59,7 @@ class Importer
         if ($col == 'survey') {
             $this->columns = array(
                 'A' => array('type', 'Type'), // filter ISF or Legal
+                'B' => array('unique_asset', 'Unique Asset Number'),
                 'C' => array('asset_num', 'Asset Number'), //Asset Number 
                 'D' => array('name', 'DMS Respondent'), //Name of DMS Respondent 
                 'E' => array('address', 'Address'), //ADDRESS 
@@ -359,7 +364,8 @@ class Importer
                     //Valenzuela Depot
                     if (($value[0] == 'address') && 
                         (strpos($data, 'Valenzuela') != FALSE) &&
-                        (strpos($data, 'Malanday') != FALSE)) {
+                        (strpos($data, 'Malanday') != FALSE) && 
+                        (strpos($data, '(Depot)') == FALSE)) {
                         $data = str_replace('Valenzuela', 'Valenzuela (Depot)', $data);
                     }
 
@@ -439,20 +445,76 @@ class Importer
 
         echo "FINISHED";
     }
+
+    public function addColumn()
+    {
+        $query = "ALTER TABLE `survey` ADD `unique_asset` VARCHAR(200) NOT NULL AFTER `type`";  
+        $this->db->query($query);
+    }
+
+    public function export()
+    {
+        
+        $sheetIndex = 0;
+
+        while (true) {
+            $worksheet = $this->phpExcel->setActiveSheetIndex($sheetIndex);
+            $worksheetTitle = $worksheet->getTitle();
+
+            if ($worksheetTitle == 'SurveyDATA') {
+                break;
+            }
+
+            $sheetIndex++;
+        }
+
+
+        $worksheet = $this->phpExcel->setActiveSheetIndex($sheetIndex);
+        $worksheetTitle = $worksheet->getTitle();
+
+        $objWriter = PHPExcel_IOFactory::createWriter($this->phpExcel, $this->inputFileType);
+
+        $query = "SELECT count(uid) as cnt FROM `survey`";
+        $result = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+
+        $query = "SELECT * FROM `survey` ORDER by uid";
+        $data = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+
+        $writer = $objWriter->getPHPExcel()->getActiveSheet();
+        for ($i=5; $i <= (intval($result[0]['cnt']) + 4); $i++) {
+            foreach ($this->columns as $key => $value) { //value[0]
+                $cellValue = $writer->setCellValue($key . $i, utf8_encode($data[$i - 5][$value[0]]), true);
+                echo "Cell $key$i | Value: " . $data[$i - 5][$value[0]] . " | Result: $cellValue" . "<br>";
+            }
+        }
+
+        $objWriter->save($this->inputFileName);
+
+    }
 }
 
+if (isset($_GET['function']) === true && $_GET['func'] != '') {
+    $filename = '../data.xlsx';
+    if (isset($_GET['filename']) === TRUE && $_GET['filename'] != '') {
+        $filename = '../import/' . $_GET['filename'] . '.xlsx';
+    }
 
-$maxRow = 831;
-$filename = '../data.xlsx';
+    $func = $_GET['function'];
+    $import = new Importer($filename);
+    $import->$func();
+} else {
+    $maxRow = 831;
+    $filename = '../data.xlsx';
 
-if (isset($_GET['max_row']) === true) {
-    $maxRow = $_GET['max_row'];
+    if (isset($_GET['max_row']) === true) {
+        $maxRow = $_GET['max_row'];
+    }
+
+    if (isset($_GET['filename']) === TRUE && $_GET['filename'] != '') {
+        $filename = '../import/' . $_GET['filename'] . '.xlsx';
+    }
+
+    $import = new Importer($filename);
+    $import->createTableSurvey();
+    $import->importData($maxRow);
 }
-
-if (isset($_GET['filename']) === TRUE && $_GET['filename'] != '') {
-    $filename = '../import/' . $_GET['filename'] . '.xlsx';
-}
-
-$import = new Importer($filename);
-$import->createTableSurvey();
-$import->importData($maxRow);
