@@ -18,7 +18,7 @@ class Class_4_1_2b
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND type='LEGAL'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -30,80 +30,65 @@ class Class_4_1_2b
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('PAF_LEGAL', 'PAF_ISF', 'PAF_Total', 'PAP_LEGAL', 'PAP_ISF', 'PAP_Total', 'Total');
+        $this->tbl_cols = $tbl_cols = array('PAF_LEGAL', 'PAF_ISF', 'PAF_Total', 'PAP_LEGAL', 'PAP_ISF', 'PAP_Total');
 
         $append = [];
 
 
-        foreach ($tbl_cols as $field) $this->total[$field] = array('stay' => [], 'move' => []);
+        foreach ($tbl_cols as $field) $this->total[$field] = array('COUNT' => 0);
 
         foreach ($columns as $mun => $brgys) {
-            foreach ($tbl_cols as $field) $data[$mun]['Sub Total'][$field] = array('stay' => [], 'move' => []);
+            foreach ($tbl_cols as $field) $data[$mun]['Sub Total'][$field] = array('COUNT' => 0);
 
             foreach ($brgys as $brgy => $col) {
-                foreach ($tbl_cols as $field) $data[$mun][$col[0]][$field] = array('stay' => [], 'move' => []);
+                foreach ($tbl_cols as $field) $data[$mun][$col[0]][$field] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
 
-                $query = "SELECT * FROM survey WHERE type='LEGAL' AND is_deleted = 0 AND `address` LIKE '%" . $mun . "%' AND ($wildcard)";
+                $query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%' AND ($wildcard)";
                 if ($mun == "Valenzuela") $query = $query . " AND NOT `address` LIKE '%(Depot)%'";
                 $result = $this->db->query($query);
 
 
                 while ($row = $result->fetch_assoc()) {
-                    $extent = $row['extent'];
-                    $type = $row['type'];
-                    $dp = $row['structure_dp'];
-                    $use = $row['structure_use'];
-
-                    $category = '';
-                    if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
-                        $category = 'absentee';
-                    }
-
-                    $displacement = 'none';
-                    if ($extent == '< than 20%') {
-                        $displacement = 'stay';
-
-                    } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
-                        $displacement = 'move';
-                    }
-
-                    if ($displacement != 'none') {
-                        //structure owners
-                        if ($category == '') {
-                            if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
-                                $category = 'owner_';
-                            } elseif ($dp == 'Structure Renter') {
-                                $category = 'renter';
-                            } elseif ($dp == 'Land Owner') {
-                                $category = 'land_owner';
-                            } elseif ($dp == 'Commercial Tenant') {
-                                $category = 'tenant';
-                            }
-                        }
-
-                        if ($category == 'owner_') {
-                            if ($use == 'Residential') {
-                                $category = $category . 'res';
-                            } elseif ($use == 'Institutional') {
-                                $category = $category . 'insti';
-                            } else {
-                                $category = $category . 'cibe';
-                            }
-                        }
-                    }
+                    $category = '_' . $row['type'];
 
                     if ($category != '') {
                         unset($this->unclaimed[$row['uid']]);
-                        $data[$mun][$col[0]][$category][$displacement][] = $row['uid'];
-                        $data[$mun][$col[0]]['total'][$displacement][] = $row['uid'];
+
+                        $data[$mun][$col[0]]['PAF' . $category][] = $row['uid'];
+                        $data[$mun][$col[0]]['PAF' . $category]['COUNT']++;
+                        $data[$mun][$col[0]]['PAF_Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['PAF_Total']['COUNT']++;
+
+
+                        $data[$mun][$col[0]]['PAP' . $category][] = $row['uid'];
+                        $data[$mun][$col[0]]['PAP' . $category]['COUNT'] += intval($row['hh_members']);
+                        $data[$mun][$col[0]]['PAP_Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['PAP_Total']['COUNT'] += intval($row['hh_members']);
                         
-                        $data[$mun]['Sub Total'][$category][$displacement][] = $row['uid'];
-                        $data[$mun]['Sub Total']['total'][$displacement][] = $row['uid'];
                         
-                        $this->total[$category][$displacement][] = $row['uid'];
-                        $this->total['total'][$displacement][] = $row['uid'];
+                        $data[$mun]['Sub Total']['PAF' . $category][] = $row['uid'];
+                        $data[$mun]['Sub Total']['PAF' . $category]['COUNT']++;
+                        $data[$mun]['Sub Total']['PAF_Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['PAF_Total']['COUNT']++;
+
+
+                        $data[$mun]['Sub Total']['PAP' . $category][] = $row['uid'];
+                        $data[$mun]['Sub Total']['PAP' . $category]['COUNT'] += intval($row['hh_members']);
+                        $data[$mun]['Sub Total']['PAP_Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['PAP_Total']['COUNT'] += intval($row['hh_members']);
+                        
+                        $this->total['PAF' . $category][] = $row['uid'];
+                        $this->total['PAF' . $category]['COUNT']++;
+                        $this->total['PAF_Total'][] = $row['uid'];
+                        $this->total['PAF_Total']['COUNT']++;
+
+
+                        $this->total['PAP' . $category][] = $row['uid'];
+                        $this->total['PAP' . $category]['COUNT'] += intval($row['hh_members']);
+                        $this->total['PAP_Total'][] = $row['uid'];
+                        $this->total['PAP_Total']['COUNT'] += intval($row['hh_members']);
                     }
                 }
             }

@@ -477,7 +477,7 @@ class Importer
         $query = "SELECT count(uid) as cnt FROM `survey`";
         $result = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
 
-        $query = "SELECT * FROM `survey` ORDER by uid";
+        $query = "SELECT * FROM `survey` ORDER by `asset_num`";
         $data = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
 
         $writer = $objWriter->getPHPExcel()->getActiveSheet();

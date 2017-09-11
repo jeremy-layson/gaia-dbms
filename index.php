@@ -24,6 +24,9 @@
                     <a href="/table/4_1_2.php" target="_blank" class="button primary full-width">Table 4.1-2 Number of Affected PAFs</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_1_2b.php" target="_blank" class="button primary full-width">Table 4.1-2b Number of Affected PAPs and PAFs by LGUs</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table/4_1_3.php" target="_blank" class="button primary full-width">Table 4.1-3 Legal PAFs by LGUs</a>
                 </div>
                 <div class="large-12 column">
