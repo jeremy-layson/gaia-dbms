@@ -47,13 +47,13 @@ class Class_4_3_19
                 $wildcard = $this->getWildcard($col[1]);
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,he_source_light FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
-                    $source = $row['he_source_light'];
+                    $source = strtolower($row['he_source_light']);
                     if ($source != '') {
                         $category = "";
 
                         if (strpos($source, "gaas") !== FALSE) $category = "gaas";
                         if (strpos($source, "gas") !== FALSE) $category = "gaas";
-                        if (strpos($source, "Owned") !== FALSE) $category = "owned";
+                        if (strpos($source, "owned") !== FALSE) $category = "owned";
                         if (strpos($source, "sharing") !== FALSE) $category = "share";
                         if (strpos($source, "Sharing") !== FALSE) $category = "share";
                         

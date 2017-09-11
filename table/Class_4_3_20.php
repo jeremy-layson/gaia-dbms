@@ -65,6 +65,7 @@ class Class_4_3_20
                         if ($source == "WOOD") $category = "wood";
                         if ($source == "WOOD AND CHARCOAL") $category = "wood";
                         if ($source == "WOOD, CHARCOAL") $category = "wood";
+                        if ($source == "WOOD AND LPG") $category = "wood";
                         if ($source == "WOOD, KEROSENE") $category = "wood";
                         if ($source == "WOOD, LPG") $category = "wood";
                         if ($source == "WOOD, LPG, CHARCOAL") $category = "wood";

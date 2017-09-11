@@ -30,7 +30,7 @@ class Survey
             $vals[] = $val;
             $fields = $fields . 's';
         }
-        if (!($stmt = $this->db->prepare("INSERT INTO survey VALUES(NULL, " . implode(", ", $rows) . ")"))) {
+        if (!($stmt = $this->db->prepare("INSERT INTO survey VALUES(NULL, " . implode(", ", $rows) . ", 0)"))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
         }
 

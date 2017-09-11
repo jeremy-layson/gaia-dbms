@@ -12,7 +12,7 @@
     <?php 
         //retrieve all data
         include_once('../sql.php');
-        $result = $link->query("SELECT * FROM survey WHERE is_deleted = 0");
+        $result = $link->query("SELECT * FROM survey WHERE is_deleted = 0 ORDER BY asset_num");
         $columns = $link->query("show full columns from survey");
         $data = [];
         while ($row = $result->fetch_assoc()) {

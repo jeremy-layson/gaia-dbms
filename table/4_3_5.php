@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Table 4.3-2</title>
+    <title>Table 4.3-5</title>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style type="text/css">
         table {

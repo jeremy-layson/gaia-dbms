@@ -103,6 +103,7 @@ $(document).ready(function(){
             $.post("/survey/create.php", 
                 {data: data},
                 function(data) {
+                    console.log(data)
                     if (data !== false) {
                         //add new row
                         var data = JSON.parse(data);

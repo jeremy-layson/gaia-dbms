@@ -493,7 +493,7 @@ class Importer
     }
 }
 
-if (isset($_GET['function']) === true && $_GET['func'] != '') {
+if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $filename = '../data.xlsx';
     if (isset($_GET['filename']) === TRUE && $_GET['filename'] != '') {
         $filename = '../import/' . $_GET['filename'] . '.xlsx';

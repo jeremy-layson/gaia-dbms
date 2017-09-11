@@ -89,9 +89,12 @@
         <tr>
             <td>Municipalities and Cities</td>
             <td>Baranggay</td>
-            <td>Owned Electric Meter</td>
-            <td>Sharing (Neighborhood)</td>
-            <td>Gaas/Kerosene</td>
+            <td>Electricity</td>
+            <td>Wood</td>
+            <td>Kerosene (gas)</td>
+            <td>LPG</td>
+            <td>Charcoal(uling)</td>
+            <td>Others</td>
             <td>Total</td>
         </tr>
     </thead>
