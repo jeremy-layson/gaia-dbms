@@ -1,4 +1,7 @@
 <?php 
-    $var = explode("/", "2008");
-    var_dump($var[0]);
+    echo boolval("No Answer") . "<br>";
+    echo boolval("") . "<br>";
+    echo boolval("Open") . "<br>";
+    echo boolval("Open Court") . "<br>";
+      
 ?>

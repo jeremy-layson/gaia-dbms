@@ -43,40 +43,23 @@
     <thead>
         <tr>
             <td>Municipalities and Cities</td>
-            <td>Residential</td>
-            <td>Commercial</td>
-            <td>Industrial</td>
-            <td>Institutional</td>
-            <td>Mixed Use</td>
+            <?php 
+                foreach ($class->tbl_cols as $col) {
+                    echo "<td>$col</td>";
+                }
+            ?>
             <td>Total</td>
         </tr>
     </thead>
     <tbody>
         <?php 
         foreach ($data as $key => $value) {
-            $vals = array(
-                $value['RESIDENTIAL']['COUNT'],
-                $value['COMMERCIAL']['COUNT'],
-                $value['INDUSTRIAL']['COUNT'],
-                $value['INSTITUTIONAL']['COUNT'],
-                $value['MIXED USE']['COUNT'],
-                $value['Total']['COUNT'],
-            );
-            unset($value['RESIDENTIAL']['COUNT']);
-            unset($value['COMMERCIAL']['COUNT']);
-            unset($value['INDUSTRIAL']['COUNT']);
-            unset($value['INSTITUTIONAL']['COUNT']);
-            unset($value['MIXED USE']['COUNT']);
-            unset($value['Total']['COUNT']);
 
             echo "<tr>";
                 echo "<td>$key</td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['RESIDENTIAL']) . "' target='_blank'>" . round($vals[0], 1) . "</a></td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['COMMERCIAL']) . "' target='_blank'>" . round($vals[1], 1) . "</a></td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['INDUSTRIAL']) . "' target='_blank'>" . round($vals[2], 1) . "</a></td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['INSTITUTIONAL']) . "' target='_blank'>" . round($vals[3], 1) . "</a></td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['MIXED USE']) . "' target='_blank'>" . round($vals[4], 1) . "</a></td>";
-                echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['Total']) . "' target='_blank'>" . round($vals[5], 1) . "</a></td>";
+                foreach ($value as $column) {
+                    echo "<td>" . $column . "</td>";
+                }
             echo "</tr>";
         }
         ?>

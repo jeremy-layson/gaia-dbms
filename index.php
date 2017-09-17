@@ -198,6 +198,12 @@
                 <div class="large-12 column">
                     <a href="/table/4_16.php" target="_blank" class="button success full-width">Table 4.16 Number of Affected Structures in Valenzuela Depot</a>
                 </div>
+
+                <div class="large-12 column">
+                    <a href="/table/4_19.php" target="_blank" class="button success full-width">Table 4.19 Number of Affected Improvements per LGU</a>
+                </div>
+
+                
             </div>
             <div class="tools row">
                 <h3>Chapter 12</h3>

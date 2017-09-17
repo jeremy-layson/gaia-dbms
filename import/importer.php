@@ -99,6 +99,7 @@ class Importer
                 'CU' => array('improve_post', 'D1C. Post'),
                 'DC' => array('improve_well', 'D1D. Well'),
                 'DL' => array('improve_pigpen', 'D1E. Pig Pen'),
+                'DQ' => array('improve_chicken', 'D1F. Chicken Cage'),
                 'ED' => array('improve_bcourt', 'D1G. Basketball Court'),
                 'EM' => array('improve_bridge', 'D1H. Pedestrian/Bridge Pathway/Overpass'),
                 'ES' => array('improve_terminal', 'D1I. Transport Terminal'),
