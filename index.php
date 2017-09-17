@@ -202,7 +202,9 @@
                 <div class="large-12 column">
                     <a href="/table/4_19.php" target="_blank" class="button success full-width">Table 4.19 Number of Affected Improvements per LGU</a>
                 </div>
-
+                <div class="large-12 column">
+                    <a href="/table/4_20.php" target="_blank" class="button success full-width">Table 4.20 - Number of Affected Improvements by Type of Use</a>
+                </div>
                 
             </div>
             <div class="tools row">
