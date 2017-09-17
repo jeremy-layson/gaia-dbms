@@ -85,14 +85,52 @@ OK  Table 4.5-3
 OK  Table 4.5-4
 OK  Table 4.5-5
 
+DONE Number of PAFs and PAPs by LGUs
+WAIT Area of Affected Private Land by Use
+WAIT List of Government Lands based on Parcellary Survey
+WAIT Proof of Ownership for Legal Landowners per LGU
+WAIT Proof of Ownership presented by Legal Landowners per LGU
+WAIT Payment of Real Property Tax for Legal landowners per LGU
+WAIT Structures per LGU
+WAIT Area of Affected Rice Crops per LGU
+DONE Reason for Establishing Residence in Present Place per LGU
+WAIT Ethnicity of Household Heads
+WAIT Religious Affiliation of Household Heads
+WAIT Employment Status of Household Heads
+DONE Monthly Household Income of Legal PAFs (Php)
+DONE Monthly Household Expenditure of Legal PAFs (Php)
+DONE Monthly Household Income of ISFs (Php)
+DONE Monthly Household Expenditure of ISFs (Php)
+WAIT Access to Solid Waste
 
 
+NEW FINAL ?
 
+4.3 Wage Earners, Tenant Farmers
+4.4 Workers (Employees of CIBEs)
+4.6 Vendors
+4.8 Acquired/To be acquired
+4.10 NSCR Row Area
+4.11-12 Proof of ownership
+4.15 Severely Affected/Marginally affected
+4.22 Rice crops and other crops
+4.32-33 ethnicity and religion
+4.35 primary occupation
 
-
-
-
-
+DONE 4.2
+SKIPPED 4.3 //Uncategorized: Land Lesse, Auxiliary, Land Owner
+PARTIAL 4.4 and 4.5 //Uncategorized (Land Owner, Workers, Institutional Occupant, Land Lesse, Sharer, Co-owner, Caretaker)
+PARTIAL 4.6 and 4.7 //Vendors
+SKIPPED 4.8
+SKIPPED 4.9
+SKIPPED 4.10
+SKIPPED 4.11
+SKIPPED 4.12
+SKIPPED 4.13
+SKIPPED 4.14
+DONE 4.15
+DONE 4.16
+SKIPPED 4.18
 
 
 CHANGE MEMORY LIMIT @ php.ini

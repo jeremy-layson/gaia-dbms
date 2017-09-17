@@ -57,6 +57,7 @@
     <table>
         <thead>
             <tr>
+                <td>#</td>
             <?php 
                 foreach ($columns as $column) {
                     echo "<td>" . $column[1] . "</td>";
@@ -66,8 +67,10 @@
         </thead>
         <tbody>
             <?php 
+                $i = 1;
                 foreach ($result as $data) {
                     echo "<tr>";
+                    echo "<td>$i</td>"; $i++;
                     foreach ($columns as $column) {
                         if ($column[0] == 'uid') {
                             echo "<td><a target='_blank' href='/survey/view.php?id=" . $data['uid'] . "'>" . $data[$column[0]] . "</a></td>";

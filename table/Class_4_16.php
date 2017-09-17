@@ -1,11 +1,11 @@
 <?php 
 
 /**
-* 4.2-2 Number of Affected Structures
+* 4.16 Number of Affected Structures in Valenzuela Depot
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 08. 23
+* @since 2017 . 09 . 17
 */
-class Class_4_2_2
+class Class_4_16
 {
     private $db;
     public $unclaimed;
@@ -25,12 +25,7 @@ class Class_4_2_2
     public function getData()
     {
         $data = [];
-        $columns = $this->getMunicipality();
-        for ($i=0; $i < count($columns) -1; $i++) { 
-            if ($columns[$i] == "Valenzuela (Depot)") {
-                unset($columns[$i]);
-            }
-        }
+        $columns = array('Valenzuela (Depot)');
 
         $col_total['Grand Total']['RESIDENTIAL'] = array('COUNT' => 0);
         $col_total['Grand Total']['COMMERCIAL'] = array('COUNT' => 0);
@@ -47,7 +42,7 @@ class Class_4_2_2
             $data[$col]['MIXED USE'] = array('COUNT' => 0);
             $data[$col]['Total'] = array('COUNT' => 0);
             
-            $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
+            $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%'");
             while ($row = $result->fetch_assoc()) {
                     
                 if ($row['use'] == 'Residential' || $row['use'] == 'Commercial' || $row['use'] == 'Industrial' || $row['use'] == 'Institutional' || $row['use'] == 'Mixed use' || $row['use'] == 'Mixed Use') {

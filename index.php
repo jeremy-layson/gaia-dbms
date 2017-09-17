@@ -36,6 +36,9 @@
                     <a href="/table/4_2_1.php" target="_blank" class="button primary full-width">Table 4.2-1 Affected Lands: Area (m<sup>2</sup>)</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_2.php" target="_blank" class="button success full-width">Table 4.2 Number of PAFs and PAPs by LGUs</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table/4_2_2.php" target="_blank" class="button primary full-width">Table 4.2-2 Number of Affected Structures</a>
                 </div>
                 <div class="large-12 column">
@@ -67,14 +70,32 @@
                     <a href="/table/4_3_6.php" target="_blank" class="button primary full-width">Table 4.3-6 Reason for Establishing Residence in Present Place</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_3_6b.php" target="_blank" class="button primary full-width">Table 4.3-6 Reason for Establishing Residence in Present Place per LGU</a>
+                </div>
+                
+                <div class="large-12 column">
                     <a href="/table/4_3_7.php" target="_blank" class="button primary full-width">Table 4.3-7 Employment Status and Source of Income</a>
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_3_9.php" target="_blank" class="button primary full-width">Table 4.3-9 Monthly Income of Household</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_3_9b.php" target="_blank" class="button primary full-width">Table 4.3-9b Monthly Income of Legal PAFs (Php)</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_9c.php" target="_blank" class="button primary full-width">Table 4.3-9c Monthly Income of ISFs (Php)</a>
+                </div>
+                
+                <div class="large-12 column">
                     <a href="/table/4_3_10.php" target="_blank" class="button primary full-width">Table 4.3-10 Monthly Expenditure of Household</a>
                 </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_10b.php" target="_blank" class="button primary full-width">Table 4.3-10b Monthly Expenditure of Legal PAFs (Php)</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_3_10c.php" target="_blank" class="button primary full-width">Table 4.3-10c Monthly Expenditure of ISFs (Php)</a>
+                </div>
+                
                 <div class="large-12 column">
                     <a href="/table/4_3_11.php" target="_blank" class="button primary full-width">Table 4.3-11 Place of Employment of Male Household Head</a>
                 </div>
@@ -126,7 +147,9 @@
                     <a href="/table/flood_8.php" target="_blank" class="button primary full-width">Table 4.3-24h Duration of Flood</a>
                 </div>
                 
-
+                <div class="large-12 column">
+                    <a href="/table/4_4.php" target="_blank" class="button success full-width">Table 4.4 Number of Legal PAFs per LGU by Type of Loss</a>
+                </div>
                 <div class="large-12 column">
                     <a href="/table/4_4_1.php" target="_blank" class="button primary full-width">Table 4.4-1 Gender of Household Head</a>
                 </div>
@@ -139,7 +162,9 @@
                 <div class="large-12 column">
                     <a href="/table/4_4_4.php" target="_blank" class="button primary full-width">Table 4.4-4 Female Participation in Household Decision Making</a>
                 </div>
-                
+                <div class="large-12 column">
+                    <a href="/table/4_5.php" target="_blank" class="button success full-width">Table 4.5 Number of Legal PAFs at Valenzuela Depot by Type of Loss </a>
+                </div>
                 <div class="large-12 column">
                     <a href="/table/4_5_3.php" target="_blank" class="button primary full-width">Table 4.5-3 Willingness of Relocation</a>
                 </div>
@@ -158,6 +183,20 @@
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_5_7.php" target="_blank" class="button primary full-width">Table 4.5-7 Most Desired Services and Facilities in Relocation Site</a>
+                </div>
+
+                <div class="large-12 column">
+                    <a href="/table/4_6.php" target="_blank" class="button success full-width">4.6 Number of ISFs per LGU by Type of Loss</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_7.php" target="_blank" class="button success full-width">4.7 Number of ISFs perat Valenzuela Depot by Type of Loss</a>
+                </div>
+                
+                <div class="large-12 column">
+                    <a href="/table/4_2_2.php" target="_blank" class="button success full-width">Table 4.15 Number of Affected Structures by Type of Use per LGU</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_16.php" target="_blank" class="button success full-width">Table 4.16 Number of Affected Structures in Valenzuela Depot</a>
                 </div>
             </div>
             <div class="tools row">

@@ -1,6 +1,6 @@
 <?php  
-    include('Class_4_2_2.php');
-    $class = new Class_4_2_2();
+    include('Class_4_19.php');
+    $class = new Class_4_19();
     $data = $class->getData();
    
 ?>
@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Table 4.2-2</title>
+    <title>Table 4.19</title>
     <style type="text/css">
         table {
             border-collapse: collapse;
@@ -38,7 +38,7 @@
 </head>
 <body>
 <a href="/">Back</a>
-<h3>Table 4.2-2 Number of Affected Structures</h3>
+<h3>Table 4.19 Number of Affected Improvements per LGU</h3>
 <table border="1">
     <thead>
         <tr>
@@ -49,7 +49,6 @@
             <td>Institutional</td>
             <td>Mixed Use</td>
             <td>Total</td>
-            <td>%</td>
         </tr>
     </thead>
     <tbody>
@@ -78,7 +77,6 @@
                 echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['INSTITUTIONAL']) . "' target='_blank'>" . round($vals[3], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['MIXED USE']) . "' target='_blank'>" . round($vals[4], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,name,address,baranggay,structure_use,extent&id=" . implode(",", $value['Total']) . "' target='_blank'>" . round($vals[5], 1) . "</a></td>";
-                echo "<td>" . round(($vals[5] / $data['Grand Total']['Total']['COUNT']) * 100 , 1) . "%</td>";
             echo "</tr>";
         }
         ?>

@@ -1,14 +1,15 @@
 <?php 
 
 /**
-* 4.2-2 Number of Affected Structures
+* 4.19 Number of Affected Improvements per LGU
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 08. 23
+* @since 2017 . 09 . 17
 */
-class Class_4_2_2
+class Class_4_19
 {
     private $db;
     public $unclaimed;
+    public $tbl_cols;
 
     public function __construct()
     {
@@ -26,18 +27,9 @@ class Class_4_2_2
     {
         $data = [];
         $columns = $this->getMunicipality();
-        for ($i=0; $i < count($columns) -1; $i++) { 
-            if ($columns[$i] == "Valenzuela (Depot)") {
-                unset($columns[$i]);
-            }
-        }
 
-        $col_total['Grand Total']['RESIDENTIAL'] = array('COUNT' => 0);
-        $col_total['Grand Total']['COMMERCIAL'] = array('COUNT' => 0);
-        $col_total['Grand Total']['INDUSTRIAL'] = array('COUNT' => 0);
-        $col_total['Grand Total']['INSTITUTIONAL'] = array('COUNT' => 0);
-        $col_total['Grand Total']['MIXED USE'] = array('COUNT' => 0);
-        $col_total['Grand Total']['Total'] = array('COUNT' => 0);
+        $this->tbl_cols = $tbl_cols = array('improve_fence','improve_gate','improve_post','improve_well','improve_pigpen','improve_bcourt','improve_terminal','improve_shed','improve_storage','improve_toilet','improve_extension','improve_fishpond','improve_garage','improve_sarisari','improve_playground','improve_parking');
+        $col_total['Grand Total'];
 
         foreach ($columns as $col) {
             $data[$col]['RESIDENTIAL'] = array('COUNT' => 0);
@@ -47,7 +39,7 @@ class Class_4_2_2
             $data[$col]['MIXED USE'] = array('COUNT' => 0);
             $data[$col]['Total'] = array('COUNT' => 0);
             
-            $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%' AND NOT `address` LIKE '%(Depot)%'");
+            $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $col . "%'");
             while ($row = $result->fetch_assoc()) {
                     
                 if ($row['use'] == 'Residential' || $row['use'] == 'Commercial' || $row['use'] == 'Industrial' || $row['use'] == 'Institutional' || $row['use'] == 'Mixed use' || $row['use'] == 'Mixed Use') {

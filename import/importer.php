@@ -86,7 +86,7 @@ class Importer
                 'AT' => array('alo_extent', 'C. Extent of Impact'),
 
                 //D. Main Structure Occupant
-                'BQ' => array('structure_type', 'D. Type'), //type (Main structure occupant)
+                'BQ' => array('structure_type', 'D. Type (Structure Ownership)'), //type (Main structure occupant)
                 'BR' => array('structure_owner', 'D. Structure Owner'), //Structure owner (Main structure occupant)
                 'BS' => array('structure_use', 'D. Use'), //Use (Main structure occupant)
                 'BT' => array('structure_dp', 'D. Type of DP'), //Type of DP (Main structure occupant)
@@ -111,7 +111,7 @@ class Importer
                 'GT' => array('improve_garage', 'D1P. Garage'),
                 'HB' => array('improve_sarisari', 'D1Q. Sari-sari Store'),
                 'HJ' => array('improve_playground', 'D1R. Playground'),
-                'HR' => array('improve_table', 'D1S. Playground'),
+                'HR' => array('improve_table', 'D1S. Concrete Table'),
                 'HZ' => array('improve_parking', 'D1T. Parking Lot'),
                 
 

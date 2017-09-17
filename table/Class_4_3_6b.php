@@ -1,15 +1,16 @@
 <?php 
 
 /**
-* 4.3-6 - Reason for Establishing Residence in Present Place
+* 4.3-6b - Reason for Establishing Residence in Present Place per LGU
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 08. 18
+* @since 2017 . 09. 13
 */
-class Class_4_3_6
+class Class_4_3_6b
 {
     private $db;
     public $unclaimed;
     public $total;
+    public $municipalities;
 
     public function __construct()
     {
@@ -26,6 +27,8 @@ class Class_4_3_6
     public function getData()
     {
         $data = [];
+
+        $this->municipalities = $municipalities = $this->getMunicipality();
         
         $result = $this->db->query($query = "SELECT uid,type,`use`,address,baranggay,hdi_reason_econ,hdi_reason_social,hdi_reason_other FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]'");
 
@@ -33,29 +36,30 @@ class Class_4_3_6
         $data['socio'] = [];
         $data['other'] = [];
 
+
         while ($row = $result->fetch_assoc()) {
             $added = false;
             $econ = explode(',', $row['hdi_reason_econ']);
             $socio = explode(',', $row['hdi_reason_social']);
             $other = explode(',', $row['hdi_reason_other']);
             
-            $use = $row['use'];
-            $type = $row['type'];
-
-            if ($use == 'Institutional') $use = 'CIBE';
-            if ($use == 'Industrial') $use = 'CIBE';
-            if ($use == 'Mixed Use') $use = 'CIBE';
-            if ($use == 'Commercial') $use = 'CIBE';
+            $use = 
             
-            if ($type == 'ISF') $use = 'ISF';
+            $mun = '';
+
+            foreach ($municipalities as $key => $value) {
+                if (strpos($row['address'], $key) != FALSE) {
+                    $mun = $key;
+                }
+            }
 
             if (trim($econ[0]) != '') {
                 foreach ($econ as $cat) {
                     $added = true;
                     $cat = strtoupper(trim($cat));
-                    $data['econ'][$cat][$use][] = $row['uid'];
+                    $data['econ'][$cat][$mun][] = $row['uid'];
                     $data['econ'][$cat]['Total'][] = $row['uid'];
-                    $this->total[$use][]    = $row['uid'];
+                    $this->total[$mun][]    = $row['uid'];
                     $this->total['Total'][]   = $row['uid'];
                 }
             }
@@ -64,9 +68,9 @@ class Class_4_3_6
                 foreach ($socio as $cat) {
                     $added = true;
                     $cat = strtoupper(trim($cat));
-                    $data['socio'][$cat][$use][] = $row['uid'];
+                    $data['socio'][$cat][$mun][] = $row['uid'];
                     $data['socio'][$cat]['Total'][] = $row['uid'];
-                    $this->total[$use][]    = $row['uid'];
+                    $this->total[$mun][]    = $row['uid'];
                     $this->total['Total'][]   = $row['uid'];
                 }
             }
@@ -75,16 +79,15 @@ class Class_4_3_6
                 foreach ($other as $cat) {
                     $added = true;
                     $cat = strtoupper(trim($cat));
-                    $data['other'][$cat][$use][] = $row['uid'];
+                    $data['other'][$cat][$mun][] = $row['uid'];
                     $data['other'][$cat]['Total'][] = $row['uid'];
-                    $this->total[$use][]    = $row['uid'];
+                    $this->total[$mun][]    = $row['uid'];
                     $this->total['Total'][]   = $row['uid'];
                 }
             }
 
             if ($added === true) {
                 unset($this->unclaimed[$row['uid']]);
-                
             }
         }
 
