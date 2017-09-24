@@ -42,7 +42,9 @@ class Class_4_12
                 $data[$mun][$col] = array('COUNT' => 0);
             }
             
-            $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%'");
+            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%'";
+            if ($mun == "Valenzuela") $query =  $query . " AND NOT `address` LIKE '%(Depot)%'";
+            $result = $this->db->query($query);
             while ($row = $result->fetch_assoc()) {
                 
                 $temps = [];

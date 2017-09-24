@@ -203,14 +203,22 @@
                 <div class="large-12 column">
                     <a href="/table/4_12.php" target="_blank" class="button success full-width">4.12 Proof of Ownership Presented by Legal Landowners per LGU</a>
                 </div>
-                
+                <div class="large-12 column">
+                    <a href="/table/4_13.php" target="_blank" class="button success full-width">4.13 Payment of Real Property Tax for Legal landowners per LGU</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_14.php" target="_blank" class="button success full-width">4.14 Affected Structures and Improvements</a>
+                </div>
+
                 <div class="large-12 column">
                     <a href="/table/4_2_2.php" target="_blank" class="button success full-width">Table 4.15 Number of Affected Structures by Type of Use per LGU</a>
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_16.php" target="_blank" class="button success full-width">Table 4.16 Number of Affected Structures in Valenzuela Depot</a>
                 </div>
-
+                <div class="large-12 column">
+                    <a href="/table/4_18.php" target="_blank" class="button success full-width">Table 4.18 Occupancy Arrangement</a>
+                </div>
                 <div class="large-12 column">
                     <a href="/table/4_19.php" target="_blank" class="button success full-width">Table 4.19 Number of Affected Improvements per LGU</a>
                 </div>

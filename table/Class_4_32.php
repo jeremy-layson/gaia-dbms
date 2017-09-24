@@ -1,11 +1,11 @@
 <?php 
 
 /**
-* 4.11 Proof of Ownership for Legal Land Owners per LGU
+* 4.32 Ethnicity of Household Heads
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
 * @since 2017 . 09. 24
 */
-class Class_4_11
+class Class_4_32
 {
     private $db;
     public $unclaimed;
@@ -17,7 +17,7 @@ class Class_4_11
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND `type` = 'LEGAL' AND  dp_type = 'Land Owner'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -28,7 +28,7 @@ class Class_4_11
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array("YES", "NO", "NOANS", 'Total');
+        $this->tbl_cols = $tbl_cols = array("tagalog", "waray", "ilonggo", "bicolano", "bisaya", "ilocano", "aklanon", "davaoeno", "panggalatok", "kapampangan", "batangeno", "bulakeno", "noans", 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total[$col] = array('COUNT' => 0);
@@ -41,32 +41,45 @@ class Class_4_11
             foreach ($tbl_cols as $col) {
                 $data[$mun][$col] = array('COUNT' => 0);
             }
-            
-            $query = "SELECT UPPER(dp_type) as dp_type, UPPER(kd_document) as kd_document,uid FROM survey WHERE is_deleted = 0 AND `type` = 'LEGAL' AND `address` LIKE '%" . $mun . "%'";
+            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%'";
             if ($mun == "Valenzuela") $query =  $query . " AND NOT `address` LIKE '%(Depot)%'";
             $result = $this->db->query($query);
             while ($row = $result->fetch_assoc()) {
-                $dp = strtoupper($row['dp_type']);
-                $ans = strtoupper($row['kd_document']);
+                $eth = trim(strtoupper(explode(",", $row['ethnicity'])[0]));
+                $col = "";
 
-                if ($ans == "Y") {
-                    $ans = "YES";
-                } elseif ($ans == "NO ANSWER") {
-                    $ans = "NOANS";
-                } else {
-                    $ans = "NO";
-                }
+                if ($eth == "AKLAN") $col = "aklanon";
+                if ($eth == "AKLANON") $col = "aklanon";
+                if ($eth == "BATANGGEÑO") $col = "batangeno";
+                if ($eth == "BICOLANO") $col = "bicolano";
+                if ($eth == "BISAYA") $col = "bisaya";
+                if ($eth == "BULAKEÑO") $col = "bulakeno";
+                if ($eth == "BULAKENYA") $col = "bulakeno";
+                if ($eth == "CEBUANO") $col = "bisaya";
+                if ($eth == "DAVAOENO") $col = "davaoeno";
+                if ($eth == "ILLONGO") $col = "ilonggo";
+                if ($eth == "ILOCANO") $col = "ilocano";
+                if ($eth == "CEBUANO") $col = "bisaya";
+                if ($eth == "ILONGGO") $col = "ilonggo";
+                if ($eth == "KAPAMPANGAN") $col = "kapampangan";
+                if ($eth == "PANGGALATOK") $col = "panggalatok";
+                if ($eth == "TAGALO") $col = "tagalog";
+                if ($eth == "TAGALOG") $col = "tagalog";
+                if ($eth == "TAGAOG") $col = "tagalog";
+                if ($eth == "WARAY") $col = "waray";
+                if ($eth == "") $col = "noans";
+                
 
-                if ($dp == 'LAND OWNER') {
+                if ($col != "") {
                     unset($this->unclaimed[$row['uid']]);
-                    $data[$mun][$ans][] = $row['uid'];
-                    $data[$mun][$ans]['COUNT']++;
+                    $data[$mun][$col][] = $row['uid'];
+                    $data[$mun][$col]['COUNT']++;
 
                     $data[$mun]['Total'][] = $row['uid'];
                     $data[$mun]['Total']['COUNT']++;
                     
-                    $col_total[$ans][] = $row['uid'];
-                    $col_total[$ans]['COUNT']++;
+                    $col_total[$col][] = $row['uid'];
+                    $col_total[$col]['COUNT']++;
                     $col_total['Total'][] = $row['uid'];
                     $col_total['Total']['COUNT']++;
                        

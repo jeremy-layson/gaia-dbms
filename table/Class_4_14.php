@@ -1,11 +1,11 @@
 <?php 
 
 /**
-* 4.11 Proof of Ownership for Legal Land Owners per LGU
+* 4.14 Affected Structures and Improvements 
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
 * @since 2017 . 09. 24
 */
-class Class_4_11
+class Class_4_14
 {
     private $db;
     public $unclaimed;
@@ -17,7 +17,7 @@ class Class_4_11
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND `type` = 'LEGAL' AND  dp_type = 'Land Owner'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -28,7 +28,7 @@ class Class_4_11
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array("YES", "NO", "NOANS", 'Total');
+        $this->tbl_cols = $tbl_cols = array("LEGAL_Severe", "LEGAL_Margin", "ISF_Severe", "ISF_Margin", "Total_Severe", "Total_Margin");
 
         foreach ($tbl_cols as $col) {
             $col_total[$col] = array('COUNT' => 0);
@@ -41,37 +41,31 @@ class Class_4_11
             foreach ($tbl_cols as $col) {
                 $data[$mun][$col] = array('COUNT' => 0);
             }
-            
-            $query = "SELECT UPPER(dp_type) as dp_type, UPPER(kd_document) as kd_document,uid FROM survey WHERE is_deleted = 0 AND `type` = 'LEGAL' AND `address` LIKE '%" . $mun . "%'";
+            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%'";
             if ($mun == "Valenzuela") $query =  $query . " AND NOT `address` LIKE '%(Depot)%'";
             $result = $this->db->query($query);
             while ($row = $result->fetch_assoc()) {
-                $dp = strtoupper($row['dp_type']);
-                $ans = strtoupper($row['kd_document']);
+                $type = $row['type'];
+                $extent = $row['extent'];
 
-                if ($ans == "Y") {
-                    $ans = "YES";
-                } elseif ($ans == "NO ANSWER") {
-                    $ans = "NOANS";
+                $affect = "";
+                if ($extent == "< than 20%") {
+                    $affect = "Margin";
                 } else {
-                    $ans = "NO";
+                    $affect = "Severe";
                 }
 
-                if ($dp == 'LAND OWNER') {
-                    unset($this->unclaimed[$row['uid']]);
-                    $data[$mun][$ans][] = $row['uid'];
-                    $data[$mun][$ans]['COUNT']++;
-
-                    $data[$mun]['Total'][] = $row['uid'];
-                    $data[$mun]['Total']['COUNT']++;
-                    
-                    $col_total[$ans][] = $row['uid'];
-                    $col_total[$ans]['COUNT']++;
-                    $col_total['Total'][] = $row['uid'];
-                    $col_total['Total']['COUNT']++;
-                       
-                }
-                   
+                unset($this->unclaimed[$row['uid']]);
+                
+                $data[$mun][$type . "_" . $affect][] = $row['uid'];
+                $data[$mun][$type . "_" . $affect]['COUNT']++;
+                $data[$mun]["Total_" . $affect][] = $row['uid'];
+                $data[$mun]["Total_" . $affect]['COUNT']++;
+                
+                $col_total[$type . "_" . $affect][] = $row['uid'];
+                $col_total[$type . "_" . $affect]['COUNT']++;
+                $col_total["Total_" . $affect][] = $row['uid'];
+                $col_total["Total_" . $affect]['COUNT']++;
             }
 
         }
