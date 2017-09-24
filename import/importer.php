@@ -68,6 +68,9 @@ class Importer
                 'W' => array('family_head_gender', 'Family Head Gender'),
                 'Z' => array('civil_status', 'Civil Status'),
 
+                'AD' => array('religion', 'Religion'),
+                'AE' => array('ethnicity', 'Ethnicity'),
+                
                 //B. Household demographic info
                 'AF' => array('hdi_length_stay', 'Length of Stay'), //length of stay
                 'AG' => array('hdi_reason_econ', 'Reason for moving: Economic'),
@@ -84,6 +87,18 @@ class Importer
                 'AQ' => array('alo_total_area', 'C. Total Area'), //Total area
                 'AR' => array('alo_affectedarea', 'C. Affected Area'), //area affected
                 'AT' => array('alo_extent', 'C. Extent of Impact'),
+
+                'AY' => array('kd_document', 'C. Document'),
+                'AZ' => array('kd_title', 'C. Title'),
+                'BA' => array('kd_real', 'C. Real Estate Tax'),
+                'BB' => array('kd_deed', 'C. Deed/Mortgage'),
+                'BC' => array('kd_landplan', 'C. Land Plan'),
+                'BD' => array('kd_brgycert', 'C. Baranggay Residency Certificate'),
+                'BE' => array('kd_landrights', 'C. Land Rights'),
+                'BF' => array('kd_lease', 'C. Lease Contract'),
+                'BG' => array('kd_certaward', 'C. Certificate of lot award'),
+
+                'BJ' => array('lr_realtax', 'C1. Real Estate Tax'),
 
                 //D. Main Structure Occupant
                 'BQ' => array('structure_type', 'D. Type (Structure Ownership)'), //type (Main structure occupant)
@@ -207,6 +222,7 @@ class Importer
                 'PL' => array('ses_ed_notage_female', 'Education Not in Age Female'),
                 'PM' => array('ses_ed_other_male', 'Education Other Male'),
                 'PN' => array('ses_ed_other_female', 'Education Other Female'),
+                'PX' => array('hh_employment', 'Employment Status of HH Head'),
                 
                 //I3. Household Expenses
                 'RD' => array('he_total_expenses', 'I3. Total Monthly Expenses'), //monhtly expenses

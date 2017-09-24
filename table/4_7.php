@@ -44,15 +44,13 @@
         <tr>
             <td rowspan="2">Municipalities and Cities</td>
             <td colspan="2">Structure Owners (Residential)</td>
-            <td colspan="2">Structure Owners (CIBEs)</td>
-            <td colspan="2">Renters (Residential)</td>
+            <!-- <td colspan="2">Structure Owners (CIBEs)</td> -->
+            <td colspan="2">Sharer</td>
             <td colspan="2">Commercial Stall Tenants</td>
             <td colspan="2">Vendors</td>
             <td colspan="2">Total PAFs</td>
         </tr>
         <tr>
-            <td>To be relocated</td>
-            <td>Not to be relocated</td>
             <td>To be relocated</td>
             <td>Not to be relocated</td>
             <td>To be relocated</td>

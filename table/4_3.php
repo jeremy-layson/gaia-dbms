@@ -1,13 +1,13 @@
 <?php  
-    include('Class_4_2.php');
-    $class = new Class_4_2();
+    include('Class_4_3.php');
+    $class = new Class_4_3();
     $data = $class->getData();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Table 4.2 Number of PAFs and PAPs by LGUs</title>
+    <title>Table 4.3 Number of PAFs and PAPs by Type of Loss</title>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style type="text/css">
         table {
@@ -39,7 +39,7 @@
 <a href="/">Back</a>
 
 <table border="1">
-    <h3>Table 4.2 Number of PAFs and PAPs by LGUs</h3>
+    <h3>Table 4.3 Number of PAFs and PAPs by Type of Loss</h3>
     <thead>
         <tr>
             <td rowspan="2" colspan="2">Municipalities and Cities</td>
@@ -78,10 +78,10 @@
 
             foreach (array('PAF', 'PAP') as $fam) {
                 echo "<tr data-id='$mun'>";
-                if ($fam == 'PAF') echo "<td rowspan='2'>$mun</td>";
+                if ($fam == 'PAF') echo "<td rowspan='2'>" . $class->definition[$mun] . "</td>";
                 echo "<td>{$fam}s</td>";
                 foreach ($class->tbl_cols as $field) {
-                    echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $value[$fam][$field]) . "'>" . $vals[$fam][$field] . "</a></td>";
+                    echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $value[$fam][$field]) . "'>" . $vals[$fam][$field] . "</a></td>";
                 }
                 echo "<td>" . round((intval($vals[$fam]['TOTAL_TOTAL']) / $total[$fam]) * 100, 1) . "%</td>";
                 echo "</tr>";
@@ -97,7 +97,7 @@
                 $tmpVal = $class->total[$fam][$field]['COUNT'];
                 unset($class->total[$fam][$field]['COUNT']);
                 
-                echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $class->total[$fam][$field]) . "'>" . $tmpVal . "</a></td>";
+                echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $class->total[$fam][$field]) . "'>" . $tmpVal . "</a></td>";
             }
             echo "<td>100%</td>";
             echo "</tr>";
@@ -105,7 +105,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

@@ -80,7 +80,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php 
+        <?php
         foreach ($data as $mun => $value) {
             $head = 0;
             $vals = [];
@@ -94,9 +94,9 @@
             echo "<tr data-id='$mun'>";
                 echo "<td>$mun</td>";
                 foreach ($class->tbl_cols as $field) {
-                    echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['move']) . "'>" . $vals[$field]['move'] . "</a></td>";
-                    echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['stay']) . "'>" . $vals[$field]['stay'] . "</a></td>";
-                    echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['total']) . "'>" . $vals[$field]['total'] . "</a></td>";
+                    echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['move']) . "'>" . $vals[$field]['move'] . "</a></td>";
+                    echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,id,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['stay']) . "'>" . $vals[$field]['stay'] . "</a></td>";
+                    echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $value[$field]['total']) . "'>" . $vals[$field]['total'] . "</a></td>";
                        
                 }
             echo "</tr>";
@@ -104,9 +104,9 @@
         echo "<tr data-id='grand'>";
             echo "<td rowspan='2'>Grand Total</td>";
             foreach ($class->tbl_cols as $field) {
-                echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['move']) . "'>" . count($class->total[$field]['move']) . "</a></td>";
-                echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['stay']) . "'>" . count($class->total[$field]['stay']) . "</a></td>";
-                echo "<td><a target='_blank' href='/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['total']) . "'>" . count($class->total[$field]['total']) . "</a></td>";
+                echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['move']) . "'>" . count($class->total[$field]['move']) . "</a></td>";
+                echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['stay']) . "'>" . count($class->total[$field]['stay']) . "</a></td>";
+                echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=" . implode(",", $class->total[$field]['total']) . "'>" . count($class->total[$field]['total']) . "</a></td>";
             }
         echo "</tr>";
 
@@ -122,7 +122,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 <!-- <a href="#" id="depot">Depot Only</a>
 <a href="#" id="all">Show All</a> -->
 

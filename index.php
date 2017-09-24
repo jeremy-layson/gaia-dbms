@@ -48,6 +48,9 @@
                     <a href="/table/4_2_5.php" target="_blank" class="button primary full-width">Table 4.2-5 Affected Trees</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_3.php" target="_blank" class="button success full-width">Table 4.3 Number of PAFs and PAPs by Type of Loss</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table/4_3_1.php" target="_blank" class="button primary full-width">Table 4.3-1 Affected Population by Gender</a>
                 </div>
                 <div class="large-12 column">
@@ -190,6 +193,15 @@
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_7.php" target="_blank" class="button success full-width">4.7 Number of ISFs perat Valenzuela Depot by Type of Loss</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_9.php" target="_blank" class="button success full-width">4.9 Area of Affected Private Land by Use</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_11.php" target="_blank" class="button success full-width">4.11 Proof of Ownership for Legal Land Owners per LGU</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_12.php" target="_blank" class="button success full-width">4.12 Proof of Ownership Presented by Legal Landowners per LGU</a>
                 </div>
                 
                 <div class="large-12 column">

@@ -31,7 +31,7 @@ class Class_4_7
         // $columns = $this->getMunicipality();
         $columns = array('Valenzuela (Depot)' => 0);
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'vendors', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'sharer', 'tenants', 'vendors', 'total');
 
         $append = [];
 
@@ -54,21 +54,25 @@ class Class_4_7
 
                 $category = '';
 
-                $displacement = 'none';
-                if ($extent == '< than 20%') {
-                    $displacement = 'stay';
+                $displacement = strtoupper(trim($row['displacement']));
 
-                } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                if (strpos($displacement, "STAY") != FALSE) {
+                    $displacement = 'stay';
+                }
+                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
                     $displacement = 'move';
                 }
 
-                if ($displacement != 'none') {
+                if ($displacement == 'move' || $displacement == 'stay') {
                     //structure owners
                     if ($category == '') {
                         if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
                             $category = 'owner_';
                         } elseif ($dp == 'Structure Renter') {
-                            $category = 'renter';
+                            // $category = 'renter';
+
+                        } elseif ($dp == 'Sharer') {
+                            $category = 'sharer';
                         } elseif ($dp == 'Commercial Tenant') {
                             $category = 'tenants';
                         }
@@ -83,7 +87,7 @@ class Class_4_7
                     }
                 }
 
-                if ($category != '') {
+                if ($category != '' && ($displacement == 'move' || $displacement == 'stay')) {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$category][$displacement][] = $row['uid'];
                     $data[$mun]['total'][$displacement][] = $row['uid'];

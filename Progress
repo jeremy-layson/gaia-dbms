@@ -118,21 +118,29 @@ NEW FINAL ?
 4.35 primary occupation
 
 DONE 4.2
-SKIPPED 4.3 //Uncategorized: Land Lesse, Auxiliary, Land Owner
-PARTIAL 4.4 and 4.5 //Uncategorized (Land Owner, Workers, Institutional Occupant, Land Lesse, Sharer, Co-owner, Caretaker)
-PARTIAL 4.6 and 4.7 //Vendors
+DONE 4.3 //Find Tenant, Wage Earners
+DONE 4.4 and 4.5 //Uncategorized (Land Owner, Workers, Institutional Occupant, Land Lesse, Sharer, Co-owner, Caretaker)
+ALO-DP / EXTENT for land owners
+
+DONE 4.6 and 4.7 //Vendors
+/DISPLACEMENT
+
 SKIPPED 4.8
-SKIPPED 4.9
+DONE 4.9 AK filter - AM - AR
 SKIPPED 4.10
-SKIPPED 4.11
-SKIPPED 4.12
-SKIPPED 4.13
-SKIPPED 4.14
+DONE 4.11 AP - AY
+DONE 4.12 AZ to BG
+*SKIPPED 4.13 BJ
+*SKIPPED 4.14 BY
 DONE 4.15
 DONE 4.16
-SKIPPED 4.18
+*SKIPPED 4.18 BT
 DONE 4.19 //Remove "No Answer"
 DONE 4.20
+*SKIPPED 4.32 AE ethnicity
+*SKIPPED 4.33 AD religion
+*SKIPPED 4.34 PX 
+*SKIPPED 4.35 
 
 
 CHANGE MEMORY LIMIT @ php.ini

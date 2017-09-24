@@ -50,23 +50,24 @@ class Class_4_4
             while ($row = $result->fetch_assoc()) {
                 $extent = $row['extent'];
                 $type = $row['type'];
-                $dp = $row['structure_dp'];
-                $use = $row['structure_use'];
+                $dp = trim($row['structure_dp']);
+                $use = trim($row['structure_use']);
 
                 $category = '';
                 if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
                     $category = 'absentee';
-                }
+                }           
 
-                $displacement = 'none';
-                if ($extent == '< than 20%') {
+                $displacement = strtoupper(trim($row['displacement']));
+
+                if (strpos($displacement, "STAY") != FALSE) {
                     $displacement = 'stay';
-
-                } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                }
+                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
                     $displacement = 'move';
                 }
 
-                if ($displacement != 'none') {
+                if ($displacement == 'move' || $displacement == 'stay') {
                     //structure owners
                     if ($category == '') {
                         if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
@@ -76,7 +77,7 @@ class Class_4_4
                         } elseif ($dp == 'Land Owner') {
                             $category = 'land_owner';
                         } elseif ($dp == 'Commercial Tenant') {
-                            $category = 'tenant';
+                            // $category = 'tenant';
                         }
                     }
 
@@ -91,7 +92,19 @@ class Class_4_4
                     }
                 }
 
-                if ($category != '') {
+                //FOR LAND OWNERS
+                if (trim(strtoupper($row['dp_type'])) == 'LAND OWNER') {
+                    $category = 'land_owner';
+
+                    if (trim(strtoupper($row['alo_extent'])) == '< THAN 20%') {
+                        $displacement = 'stay';
+                    } else {
+                        $displacement = 'move';
+                    }
+                }
+
+
+                if ($category != '' && ($displacement == 'move' || $displacement == 'stay')) {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$category][$displacement][] = $row['uid'];
                     $data[$mun][$category]['total'][] = $row['uid'];

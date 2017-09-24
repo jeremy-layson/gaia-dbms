@@ -54,15 +54,16 @@ class Class_4_6
 
                 $category = '';
 
-                $displacement = 'none';
-                if ($extent == '< than 20%') {
-                    $displacement = 'stay';
+                $displacement = strtoupper(trim($row['displacement']));
 
-                } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                if (strpos($displacement, "STAY") != FALSE) {
+                    $displacement = 'stay';
+                }
+                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
                     $displacement = 'move';
                 }
 
-                if ($displacement != 'none') {
+                if ($displacement == 'move' || $displacement == 'stay') {
                     //structure owners
                     if ($category == '') {
                         if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
@@ -83,7 +84,7 @@ class Class_4_6
                     }
                 }
 
-                if ($category != '') {
+                if ($category != '' && ($displacement == 'move' || $displacement == 'stay')) {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$category][$displacement][] = $row['uid'];
                     $data[$mun]['total'][$displacement][] = $row['uid'];

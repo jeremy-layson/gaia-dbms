@@ -45,7 +45,7 @@
             <td>Municipalities and Cities</td>
             <?php 
                 foreach ($class->tbl_cols as $col) {
-                    echo "<td>$col</td>";
+                    echo "<td>" . $class->definition[$col] . "</td>";
                 }
             ?>
             <td>Total</td>

@@ -10,6 +10,7 @@ class Class_4_19
     private $db;
     public $unclaimed;
     public $tbl_cols;
+    public $definition;
 
     public function __construct()
     {
@@ -30,6 +31,29 @@ class Class_4_19
         unset($columns['Valenzuela (Depot)']);
 
         $this->tbl_cols = $tbl_cols = array('improve_fence','improve_gate','improve_post','improve_well', 'improve_watertank','improve_pigpen', 'improve_chicken','improve_bcourt', 'improve_bridge','improve_terminal','improve_shed','improve_storage','improve_toilet','improve_extension','improve_garage','improve_fishpond','improve_playground','improve_parking','improve_sarisari');
+
+        $this->definition = array(
+            'improve_fence'     => 'Fences, Gates',
+            'improve_gate'      => '',
+            'improve_post'      => 'Posts',
+            'improve_well'      => 'Water well, water tank',
+            'improve_watertank' => '',
+            'improve_pigpen'    => 'Pig pen, chicken cage',
+            'improve_chicken'   => '',
+            'improve_bcourt'    => 'Basketball Court',
+            'improve_bridge'    => 'Pedestrian, transport terminal, waiting shed, storage area',
+            'improve_terminal'  => '',
+            'improve_shed'      => '',
+            'improve_storage'   => '',
+            'improve_toilet'    => 'Toilet and bath',
+            'improve_extension' => 'House extension, garage',
+            'improve_garage'    => '',
+            'improve_fishpond'  => 'Fish pond',
+            'improve_playground' => 'Playground',
+            'improve_parking'   => 'Parking lot',
+            'improve_sarisari'  => 'Sari-sari Store'
+
+        );
 
         $mix = array(
             array('improve_fence', 'improve_gate'),
