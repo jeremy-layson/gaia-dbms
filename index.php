@@ -225,7 +225,12 @@
                 <div class="large-12 column">
                     <a href="/table/4_20.php" target="_blank" class="button success full-width">Table 4.20 - Number of Affected Improvements by Type of Use</a>
                 </div>
-                
+                <div class="large-12 column">
+                    <a href="/table/4_32.php" target="_blank" class="button success full-width">Table 4.32 Ethnicity of Household Heads</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/4_33.php" target="_blank" class="button success full-width">Table 4.33 Religious Affiliation</a>
+                </div>
             </div>
             <div class="tools row">
                 <h3>Chapter 12</h3>

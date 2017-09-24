@@ -1,8 +1,5 @@
 <?php 
-    echo boolval("No Answer") . "<br>";
-    echo boolval("") . "<br>";
-    echo boolval("Open") . "<br>";
-    echo boolval("Open Court") . "<br>";
+    echo strtoupper("Batanggeño");
 
     //http://[fe80::5215:7bb6:3d47:f48d]%rmnet_data0:9090/sendsms?phone=09152102562&text=test
 ?>

@@ -1,13 +1,13 @@
 <?php  
-    include('Class_4_32.php');
-    $class = new Class_4_32();
+    include('Class_4_33.php');
+    $class = new Class_4_33();
     $data = $class->getData();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Table 4.32</title>
+    <title>Table 4.33</title>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style type="text/css">
         table {
@@ -39,22 +39,19 @@
 <a href="/">Back</a>
 
 <table border="1">
-    <h3>Table 4.32 Ethnicity of Household Heads</h3>
+    <h3>Table 4.33 Religious Affiliation</h3>
     <thead>
         <tr>
             <td>Municipalities and Cities</td>
-            <td>Tagalog</td>
-            <td>Waray</td>
-            <td>Ilonggo</td>
-            <td>Bicolano</td>
-            <td>Bisaya</td>
-            <td>Ilocano</td>
-            <td>Aklanon</td>
-            <td>Davaoeño</td>
-            <td>Panggalatok</td>
-            <td>Kapampangan</td>
-            <td>Batangeño</td>
-            <td>Bulakeño</td>
+            <td>Roman Catholic</td>
+            <td>INC</td>
+            <td>Born Again</td>
+            <td>CAMACOP</td>
+            <td>Miracle Crusade</td>
+            <td>Protestant</td>
+            <td>Christian</td>
+            <td>Dating Daan</td>
+            <td>Islam</td>
             <td>No Answer</td>
             <td>Total</td>
         </tr>
@@ -70,7 +67,7 @@
             echo "<tr>";
             echo "<td>$mun</td>";
             foreach ($class->tbl_cols as $col) {
-                echo "<td><a href='/viewer.php?field=uid,address,baranggay,ethnicity&id=" . implode(",", $value[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,address,baranggay,religion&id=" . implode(",", $value[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
             }
             echo "</tr>";
         }
@@ -82,7 +79,7 @@
                 $vals[$col] = $class->total[$col]['COUNT'];unset($class->total[$col]['COUNT']);
             }
             foreach ($class->tbl_cols as $col) {
-                echo "<td><a href='/viewer.php?field=uid,address,baranggay,ethnicity&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,address,baranggay,religion&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
             }
         echo "</tr>";
         echo "<tr>";
@@ -95,7 +92,7 @@
     </tbody>
 </table>
 
-<a target="_blank" href="/viewer.php?field=uid,address,baranggay,ethnicity&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,address,baranggay,religion&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');
