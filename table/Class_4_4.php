@@ -31,7 +31,7 @@ class Class_4_4
         $columns = $this->getMunicipality();
         unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'absentee', 'workers', 'total');
+        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'absentee', 'workers', 'insti', 'sharer', 'total');
 
         $append = [];
 
@@ -48,7 +48,7 @@ class Class_4_4
 
 
             while ($row = $result->fetch_assoc()) {
-                $extent = $row['extent'];
+                $extent = trim(strtoupper($row['extent']));
                 $type = $row['type'];
                 $dp = trim($row['structure_dp']);
                 $use = trim($row['structure_use']);
@@ -58,26 +58,28 @@ class Class_4_4
                     $category = 'absentee';
                 }           
 
-                $displacement = strtoupper(trim($row['displacement']));
 
-                if (strpos($displacement, "STAY") != FALSE) {
+                if ($extent == '< THAN 20%' || $extent == 'AUXILIARY') {
                     $displacement = 'stay';
-                }
-                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
+                } else {
                     $displacement = 'move';
                 }
 
                 if ($displacement == 'move' || $displacement == 'stay') {
                     //structure owners
                     if ($category == '') {
-                        if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
+                        if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner') {
                             $category = 'owner_';
                         } elseif ($dp == 'Structure Renter') {
                             $category = 'renter';
                         } elseif ($dp == 'Land Owner') {
                             $category = 'land_owner';
                         } elseif ($dp == 'Commercial Tenant') {
-                            // $category = 'tenant';
+                            $category = 'workers';
+                        } elseif ($dp == 'Institutional Occupant') {
+                            $category = 'insti';
+                        } elseif ($dp == 'Sharer' || $dp == 'Caretaker') {
+                            $category = 'sharer';
                         }
                     }
 

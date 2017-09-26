@@ -28,7 +28,7 @@ class Class_4_3_12
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('brgy', 'mun', 'prov', 'out', 'Total');
+        $this->tbl_cols = $tbl_cols = array('brgy', 'mun', 'prov', 'out', 'over', 'noans', 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total['Total']['Total'][$col] = array('COUNT' => 0);
@@ -55,6 +55,9 @@ class Class_4_3_12
                     if ($row['shi_place_employment'] == 'within the MUNICIPALITY') $col = 'mun';
                     if ($row['shi_place_employment'] == 'within the PROVINCE') $col = 'prov';
                     if ($row['shi_place_employment'] == 'OTHER Province') $col = 'out';
+                    if ($row['shi_place_employment'] == 'OVERSEAS Worker') $col = 'over';
+                    if ($row['shi_place_employment'] == '') $col = 'noans';
+                    if ($row['shi_place_employment'] == '0') $col = 'noans';
 
                     if ($col != '') {
                         unset($this->unclaimed[$row['uid']]);

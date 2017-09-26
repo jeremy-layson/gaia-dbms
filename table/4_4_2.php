@@ -48,6 +48,7 @@
             <td>Need Special Medicare</td>
             <td>Seriously Ill</td>
             <td>Difficulties in Communication</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -60,6 +61,7 @@
             for ($i=1; $i<=5; $i++) {
                 $vals[$i] = $value[$key][$i]['COUNT'];unset($value[$key][$i]['COUNT']);
             }
+            $vals['noans'] = $value[$key]['noans']['COUNT'];unset($value[$key]['noans']['COUNT']);
             $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
             echo "<tr>";
@@ -67,6 +69,7 @@
                 for ($i=1; $i<=5; $i++) {
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $value[$key][$i]) . "' target='_blank'>" . round($vals[$i], 1) . "</a></td>";
                 }
+                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $value[$key]['noans']) . "' target='_blank'>" . round($vals['noans'], 1) . "</a></td>";
                 
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
             echo "</tr>";
@@ -96,6 +99,7 @@
             <td>Need Special Medicare</td>
             <td>Seriously Ill</td>
             <td>Difficulties in Communication</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -111,6 +115,7 @@
                 for ($i=1; $i<=5; $i++) {
                     $vals[$i] = $pop[$i]['COUNT'];unset($pop[$i]['COUNT']);
                 }
+                $vals['noans'] = $pop['noans']['COUNT'];unset($pop[$i]['COUNT']);
                 $vals['Total'] = $pop['Total']['COUNT'];unset($pop['Total']['COUNT']);
 
                 echo "<tr data-id='$brgy'>";
@@ -119,6 +124,7 @@
                     for ($i=1; $i<=5; $i++) {
                         echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $value[$key][$i]) . "' target='_blank'>" . round($vals[$i], 1) . "</a></td>";
                     }
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $value[$key]['noans']) . "' target='_blank'>" . round($vals['noans'], 1) . "</a></td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,sv_special_assist&id=" . implode(",", $pop['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
                 echo "</tr>";
             }

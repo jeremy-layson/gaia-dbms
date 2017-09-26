@@ -83,5 +83,10 @@
             ?>
         </tbody>
     </table>
+    <br><br>
+    <textarea rows="5"><?php echo $ids . ","; ?></textarea>
+    <?php 
+        file_put_contents("uncategorized.txt", $ids . ",", FILE_APPEND);
+    ?>
 </body>
 </html>

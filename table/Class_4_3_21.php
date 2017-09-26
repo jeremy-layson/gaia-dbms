@@ -27,7 +27,7 @@ class Class_4_3_21
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('maynilad', 'sharing', 'deepwell', 'shallow', 'refill', 'Total');
+        $this->tbl_cols = $tbl_cols = array('maynilad', 'sharing', 'deepwell', 'shallow', 'refill', 'local', 'nawasa', 'noans', 'Total');
         
         foreach ($tbl_cols as $colm) {
             $col_total['Total']['Total'][$colm] = array('COUNT' => 0);
@@ -48,45 +48,45 @@ class Class_4_3_21
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,he_water_supply FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $source = strtoupper($row['he_water_supply']);
-                    if ($source != '') {
-                        $category = "";
+                    $category = "";
 
-                        if ($source == "(NAKIKIIGIB)") $category = "sharing";
-                        if ($source == "BOUGHT NAWASA, DEEP WELL") $category = "maynilad";
-                        if ($source == "BULACAN WATER DISTRCIT") $category = "maynilad";
-                        if ($source == "DEEP WELL") $category = "deepwell";
-                        if ($source == "DEEP WELL/NAWASA/WATER REFILL") $category = "deepwell";
-                        if ($source == "LOCAL WATER DISTRICT") $category = "maynilad";
-                        if ($source == "MAYNIAD/MANILA WATER") $category = "maynilad";
-                        if ($source == "MAYNILAD/ MANILA WATER") $category = "maynilad";
-                        if ($source == "MAYNILAD/ MANILA WATER, SHARING (NEIGHBOR)") $category = "maynilad";
-                        if ($source == "MAYNILAD/MANILA WATER") $category = "maynilad";
-                        if ($source == "NAWASA") $category = "maynilad";
-                        if ($source == "SHALLOW WELL") $category = "shallow";
-                        if ($source == "SHALLOW WELL/ WATER REFILL") $category = "shallow";
-                        if ($source == "SHARING") $category = "sharing";
-                        if ($source == "SHARING (NEGHBOR)") $category = "sharing";
-                        if ($source == "SHARING (NEIGHBOR)") $category = "sharing";
-                        if ($source == "WATER REFILL") $category = "refill";
+                    if ($source == "(NAKIKIIGIB)") $category = "sharing";
+                    if ($source == "BOUGHT NAWASA, DEEP WELL") $category = "nawasa";
+                    if ($source == "BULACAN WATER DISTRCIT") $category = "maynilad";
+                    if ($source == "DEEP WELL") $category = "deepwell";
+                    if ($source == "DEEP WELL/NAWASA/WATER REFILL") $category = "deepwell";
+                    if ($source == "LOCAL WATER DISTRICT") $category = "local";
+                    if ($source == "MAYNIAD/MANILA WATER") $category = "maynilad";
+                    if ($source == "MAYNILAD/ MANILA WATER") $category = "maynilad";
+                    if ($source == "MAYNILAD/ MANILA WATER, SHARING (NEIGHBOR)") $category = "maynilad";
+                    if ($source == "MAYNILAD/MANILA WATER") $category = "maynilad";
+                    if ($source == "NAWASA") $category = "nawasa";
+                    if ($source == "SHALLOW WELL") $category = "shallow";
+                    if ($source == "SHALLOW WELL/ WATER REFILL") $category = "shallow";
+                    if ($source == "SHARING") $category = "sharing";
+                    if ($source == "SHARING (NEGHBOR)") $category = "sharing";
+                    if ($source == "SHARING (NEIGHBOR)") $category = "sharing";
+                    if ($source == "WATER REFILL") $category = "refill";
+                    if ($source == "NO ANSWER") $category = "noans";
+                    if ($source == "") $category = "noans";
+                    
 
+                    if ($category != "") {
+                        unset($this->unclaimed[$row['uid']]);
+                        $data[$mun][$col[0]][$category][] = $row['uid'];
+                        $data[$mun][$col[0]][$category]['COUNT']++;
+                        $data[$mun][$col[0]]['Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['Total']['COUNT']++;
 
-                        if ($category != "") {
-                            unset($this->unclaimed[$row['uid']]);
-                            $data[$mun][$col[0]][$category][] = $row['uid'];
-                            $data[$mun][$col[0]][$category]['COUNT']++;
-                            $data[$mun][$col[0]]['Total'][] = $row['uid'];
-                            $data[$mun][$col[0]]['Total']['COUNT']++;
-
-                            $data[$mun]['Sub Total'][$category][] = $row['uid'];
-                            $data[$mun]['Sub Total'][$category]['COUNT']++;
-                            $data[$mun]['Sub Total']['Total'][] = $row['uid'];
-                            $data[$mun]['Sub Total']['Total']['COUNT']++;
-                            
-                            $col_total['Total']['Total'][$category][] = $row['uid'];
-                            $col_total['Total']['Total'][$category]['COUNT']++;
-                            $col_total['Total']['Total']['Total'][] = $row['uid'];
-                            $col_total['Total']['Total']['Total']['COUNT']++;
-                        }
+                        $data[$mun]['Sub Total'][$category][] = $row['uid'];
+                        $data[$mun]['Sub Total'][$category]['COUNT']++;
+                        $data[$mun]['Sub Total']['Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['Total']['COUNT']++;
+                        
+                        $col_total['Total']['Total'][$category][] = $row['uid'];
+                        $col_total['Total']['Total'][$category]['COUNT']++;
+                        $col_total['Total']['Total']['Total'][] = $row['uid'];
+                        $col_total['Total']['Total']['Total']['COUNT']++;
                     }
                 }
             }

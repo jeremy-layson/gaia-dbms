@@ -31,7 +31,7 @@ class Class_4_3
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
 
-        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter', 'wage_earner', 'absentee');
+        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter', 'wage_earner', 'absentee', 'sharer');
         
         $this->definition = array(
             'owner_res' => 'Structure Owners (Residential)', 
@@ -41,7 +41,8 @@ class Class_4_3
             'tenant' => 'Tenant Farmers', 
             'renter' => 'Renters of Residential Structure', 
             'wage_earner' => 'Wage Earners (Employees of CIBEs)', 
-            'absentee' => 'Absentee Structure Owners'
+            'absentee' => 'Absentee Structure Owners',
+            'sharer' => 'Sharer',
         );
         $append = [];
 
@@ -64,7 +65,7 @@ class Class_4_3
 
             $type = $row['type'];
             $reloc = 'RELOC';
-            if (trim($row['extent']) == '< than 20%') $reloc = 'STAY';
+            if (trim($row['extent']) == '< than 20%' || trim($row['extent']) == "Auxiliary") $reloc = 'STAY';
 
             $extent = $row['extent'];
             $type = $row['type'];
@@ -76,27 +77,33 @@ class Class_4_3
                 $category = 'absentee';
             }           
 
-            $reloc = strtoupper(trim($row['displacement']));
+            // $reloc = strtoupper(trim($row['displacement']));
 
-            if (strpos($reloc, "STAY") != FALSE) {
-                $reloc = 'STAY';
-            }
-            if (strpos($reloc, "DISPLACEMENT") != FALSE) {
-                $reloc = 'RELOC';
-            }
+            // if (strpos($reloc, "STAY") != FALSE || $reloc == "AUXILLIARY" || $reloc == "AUXILIARY") {
+            //     $reloc = 'STAY';
+            // }
+            // if (strpos($reloc, "DISPLACEMENT") != FALSE) {
+            //     $reloc = 'RELOC';
+            // }
 
             if ($reloc == 'RELOC' || $reloc == 'STAY') {
                 //structure owners
                 if ($category == '') {
-                    if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
+                    if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner') {
                         $category = 'owner_';
                     } elseif ($dp == 'Structure Renter') {
                         $category = 'renter';
                     } elseif ($dp == 'Land Owner') {
                         $category = 'land_owner';
                     } elseif ($dp == 'Commercial Tenant') {
-                        // $category = 'tenant';
-                    }
+                        $category = 'wage_earner';
+                    } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
+                        $category = 'wage_earner';
+                    } elseif ($dp == 'Sharer') {
+                        $category = 'sharer';
+                    } elseif ($dp == 'Caretaker') {
+                        $category = 'sharer';
+                    } 
                 }
 
                 if ($category == 'owner_') {
@@ -154,6 +161,12 @@ class Class_4_3
                 
                 $this->total['PAF'][$type . "_" . $reloc]['COUNT']++;
                 $this->total['PAP'][$type . "_" . $reloc]['COUNT'] += intval($row['hh_members']);
+
+                $this->total['PAP'][$type . "_TOTAL"][] = $row['uid'];
+                $this->total['PAF'][$type . "_TOTAL"][] = $row['uid'];
+                
+                $this->total['PAF'][$type . "_TOTAL"]['COUNT']++;
+                $this->total['PAP'][$type . "_TOTAL"]['COUNT'] += intval($row['hh_members']);
                 
                 $this->total['PAF']["TOTAL_" . $reloc][] = $row['uid'];
                 $this->total['PAP']["TOTAL_" . $reloc][] = $row['uid'];

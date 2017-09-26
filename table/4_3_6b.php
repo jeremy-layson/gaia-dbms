@@ -71,7 +71,8 @@
         $definition = array(
             'econ'  => 'Economic Reason',
             'socio' => 'Social Reason',
-            'other' => 'Other Reason'
+            'other' => 'Other Reason',
+            'noans' => 'No Answer',
         );
         foreach ($data as $group => $values) {
             $colspan = 1 + ((count($class->municipalities) + 1) * 2);

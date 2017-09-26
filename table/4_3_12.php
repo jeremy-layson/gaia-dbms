@@ -47,9 +47,15 @@
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>
             <td colspan="2">Other provinces</td>
+            <td colspan="2">Overseas Worker</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>
@@ -73,7 +79,11 @@
             echo "<td>$mun</td>";
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,shi_place_employment,family_head_gender&id=" . implode(",", $value['Sub Total'][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
-                echo "<td>" . round(($vals[$col] / $class->total[$col]['COUNT']) * 100, 1) . "%</td>";
+                if ($class->total[$col]['COUNT'] == "0") {
+                    echo "<td>0%</td>";
+                } else {
+                    echo "<td>" . round(($vals[$col] / $class->total[$col]['COUNT']) * 100, 1) . "%</td>";
+                }
             }
             echo "</tr>";
         }
@@ -86,7 +96,11 @@
             }
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,shi_place_employment,family_head_gender&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($totals[$col], 1) . "</a></td>";
-                echo "<td>" . round(($totals[$col] / $totals['Total']) * 100, 1) . "%</td>";
+                if ($totals[$col] == "0") {
+                    echo "<td>0%</td>";
+                } else {
+                    echo "<td>" . round(($totals[$col] / $totals['Total']) * 100, 1) . "%</td>";
+                }
             }
         echo "</tr>";
         ?>
@@ -103,9 +117,15 @@
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>
             <td colspan="2">Other provinces</td>
+            <td colspan="2">Overseas Worker</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>
@@ -132,7 +152,11 @@
                     echo "<td>$key</td>";
                     foreach ($class->tbl_cols as $col) {
                         echo "<td><a href='/viewer.php?field=uid,address,baranggay,shi_place_employment,family_head_gender&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
-                        echo "<td>" . round(($vals[$col] / $totals[$col]) * 100, 1) . "%</td>";
+                        if ($totals[$col] == "0") {
+                            echo "<td>0%</td>";
+                        } else {
+                            echo "<td>" . round(($vals[$col] / $totals[$col]) * 100, 1) . "%</td>";
+                        }
                     }
                 echo "</tr>";
             }

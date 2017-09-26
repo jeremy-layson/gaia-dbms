@@ -260,6 +260,72 @@ class tableManager
         return $data;
     }
 
+    public function getMake()
+    {
+        $query = "SELECT `make`, `address`, dms_affected FROM survey";
+        $result = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function table_12_1_8()
+    {
+        
+
+        $data = [];
+
+        foreach ($this->municipality as $key => $value) {
+            $data[$key]['light'] = 0;
+            $data[$key]['semi'] = 0;
+            $data[$key]['concrete'] = 0;
+        }
+
+        foreach ($this->getMake() as $key => $value) {
+            $mun = $this->whatMunicipality($value['address']);
+            $make = "";
+
+            if (trim(strtoupper($value['make'])) == "CONCRETE") $make = "concrete";
+            if (trim(strtoupper($value['make'])) == "LIGHT MATERIALS") $make = "light";
+            if (trim(strtoupper($value['make'])) == "PERMANENT") $make = "concrete";
+            if (trim(strtoupper($value['make'])) == "PEMANENT") $make = "concrete";
+            if (trim(strtoupper($value['make'])) == "SEMI-CONCRETE") $make = "semi";
+            if (trim(strtoupper($value['make'])) == "SEMI-PERMANENT") $make = "semi";
+            if (trim(strtoupper($value['make'])) == "WAREHOUSSE TYPE") $make = "semi";
+            if (trim(strtoupper($value['make'])) == "WOOD") $make = "light";
+            if (trim(strtoupper($value['make'])) == "WOOD W/LIGHT MATERIALS") $make = "light";
+            
+            if ($make != "" && $mun != "") {
+                $data[$mun][$make] += floatval($value['dms_affected']);
+            }
+        }
+
+        return $data;
+    }
+
+    public function getPreparedMaterialCost($data)
+    {
+        $return = [];
+        foreach ($data as $key => $value) {
+            $return[$value['structure_type']]['bulacan'] = $value['bulacan'];
+            $return[$value['structure_type']]['manila'] = $value['manila'];
+            $return[$value['structure_type']]['valenzuela'] = $value['valenzuela'];
+            
+        }
+        return $return;
+    }
+
+    public function whatMunicipality($address)
+    {
+        foreach ($this->municipality as $key => $value) {
+            if (strpos($address, $key) != FALSE) {
+                if ($key == 'Valenuzuela' && strpos($address, '(Depot)') == FALSE) {
+                    return $key;
+                } else {
+                    return $key;
+                }
+            }
+        }
+    }
+
     public function table_12_1_9()
     {
         $this->improvements = $improvements = array('fence', 'gate', 'others');

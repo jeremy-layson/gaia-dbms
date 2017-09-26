@@ -46,6 +46,10 @@
             <td>Owned Electric Meter</td>
             <td>Sharing (Neighborhood)</td>
             <td>Gaas/Kerosene</td>
+            <td>Solar</td>
+            <td>Rechargeable Battery</td>
+            <td>None</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -89,6 +93,10 @@
             <td>Owned Electric Meter</td>
             <td>Sharing (Neighborhood)</td>
             <td>Gaas/Kerosene</td>
+            <td>Solar</td>
+            <td>Rechargeable Battery</td>
+            <td>None</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>

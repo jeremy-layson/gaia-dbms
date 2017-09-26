@@ -81,7 +81,7 @@
                 if ($fam == 'PAF') echo "<td rowspan='2'>" . $class->definition[$mun] . "</td>";
                 echo "<td>{$fam}s</td>";
                 foreach ($class->tbl_cols as $field) {
-                    echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $value[$fam][$field]) . "'>" . $vals[$fam][$field] . "</a></td>";
+                    echo "<td><a target='_blank' href='/viewer.php?field=extent,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $value[$fam][$field]) . "'>" . $vals[$fam][$field] . "</a></td>";
                 }
                 echo "<td>" . round((intval($vals[$fam]['TOTAL_TOTAL']) / $total[$fam]) * 100, 1) . "%</td>";
                 echo "</tr>";
@@ -97,7 +97,7 @@
                 $tmpVal = $class->total[$fam][$field]['COUNT'];
                 unset($class->total[$fam][$field]['COUNT']);
                 
-                echo "<td><a target='_blank' href='/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $class->total[$fam][$field]) . "'>" . $tmpVal . "</a></td>";
+                echo "<td><a target='_blank' href='/viewer.php?field=extent,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent,hh_members&id=" . implode(",", $class->total[$fam][$field]) . "'>" . $tmpVal . "</a></td>";
             }
             echo "<td>100%</td>";
             echo "</tr>";
@@ -105,7 +105,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=displacement,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=extent,alo_extent,dp_type,uid,type,asset_num,address,baranggay,structure_owner,structure_use,structure_dp,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

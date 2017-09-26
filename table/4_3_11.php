@@ -47,9 +47,15 @@
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>
             <td colspan="2">Other provinces</td>
+            <td colspan="2">Overseas Worker</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>
@@ -102,9 +108,15 @@
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>
             <td colspan="2">Other provinces</td>
+            <td colspan="2">Overseas Worker</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>

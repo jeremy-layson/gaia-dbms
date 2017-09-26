@@ -51,18 +51,21 @@ class Class_4_2_1
             }
             
             while ($row = $result->fetch_assoc()) {
-                unset($this->unclaimed[$row['uid']]);
-                $data[$col][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
-                $col_total['Grand Total'][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
-                $col_total['Grand Total']['Total']['COUNT'] += floatval($row['alo_affectedarea']);
-                
-                $data[$col]['Total']['COUNT'] += floatval($row['alo_affectedarea']);
+                if (isset($data[$col][strtoupper($row['use'])]) === TRUE) {
+                    unset($this->unclaimed[$row['uid']]);
+                    $data[$col][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
+                    $col_total['Grand Total'][strtoupper($row['use'])]['COUNT'] += floatval($row['alo_affectedarea']);
+                    $col_total['Grand Total']['Total']['COUNT'] += floatval($row['alo_affectedarea']);
+                    
+                    $data[$col]['Total']['COUNT'] += floatval($row['alo_affectedarea']);
 
-                $data[$col][strtoupper($row['use'])][] = $row['uid'];
-                $col_total['Grand Total'][strtoupper($row['use'])][] = $row['uid'];
-                $col_total['Grand Total']['Total'][] = $row['uid'];
-                
-                $data[$col]['Total'][] = $row['uid'];
+                    $data[$col][strtoupper($row['use'])][] = $row['uid'];
+                    $col_total['Grand Total'][strtoupper($row['use'])][] = $row['uid'];
+                    $col_total['Grand Total']['Total'][] = $row['uid'];
+                    
+                    $data[$col]['Total'][] = $row['uid'];
+                    
+                }
                 
             }
         }

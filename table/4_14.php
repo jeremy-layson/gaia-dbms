@@ -43,8 +43,8 @@
     <thead>
         <tr>
             <td rowspan="2">Municipalities and Cities</td>
-            <td colspan="2">Yes</td>
-            <td colspan="2">No</td>
+            <td colspan="2">Legal</td>
+            <td colspan="2">ISF</td>
             <td colspan="2">Total</td>
         </tr>
         <tr>

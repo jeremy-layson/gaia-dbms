@@ -27,7 +27,7 @@ class Class_4_3_22
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('personal_inside', 'personal_outside', 'common_flush', 'open', 'covered', 'others', 'Total');
+        $this->tbl_cols = $tbl_cols = array('personal_inside', 'personal_outside', 'common_flush', 'open', 'covered', 'others', 'noans', 'Total');
         
         foreach ($tbl_cols as $colm) {
             $col_total['Total']['Total'][$colm] = array('COUNT' => 0);
@@ -48,42 +48,42 @@ class Class_4_3_22
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,he_sanitation FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $source = strtoupper($row['he_sanitation']);
-                    if ($source != '') {
-                        $category = "";
+                    $category = "";
 
-                        if ($source == "COMMON WATER SEALED FLUSH") $category = "common_flush";
-                        if ($source == "COVERED PIT (ANTIPOLO)") $category = "covered";
-                        if ($source == "NONE") $category = "others";
-                        if ($source == "OPEN PIT") $category = "open";
-                        if ($source == "PERSONAL WATER SEALED (INSIDE THE HOUSE)") $category = "personal_inside";
-                        if ($source == "PERSONAL WATER SEALED (OUTSIDE THE HOUSE)") $category = "personal_outside";
-                        if ($source == "PERSONAL WATER SEALED FLUSH (INSIDE THE HOUSE)") $category = "personal_inside";
-                        if ($source == "PERSONAL WATER SEALED FLUSH (INSIDE)") $category = "personal_inside";
-                        if ($source == "PERSONAL WATER SEALED FLUSH (OUTSIDE)") $category = "personal_outside";
-                        if ($source == "PERSONAL WATER SEALED FLUSH(INSIDE)") $category = "personal_inside";
-                        if ($source == "PUBLIC TOILET") $category = "others";
-                        if ($source == "PUBLIC TOILET (MARKET)") $category = "others";
-                        if ($source == "SHARING") $category = "others";
+                    if ($source == "COMMON WATER SEALED FLUSH") $category = "common_flush";
+                    if ($source == "COVERED PIT (ANTIPOLO)") $category = "covered";
+                    if ($source == "NONE") $category = "others";
+                    if ($source == "OPEN PIT") $category = "open";
+                    if ($source == "PERSONAL WATER SEALED (INSIDE THE HOUSE)") $category = "personal_inside";
+                    if ($source == "PERSONAL WATER SEALED (OUTSIDE THE HOUSE)") $category = "personal_outside";
+                    if ($source == "PERSONAL WATER SEALED FLUSH (INSIDE THE HOUSE)") $category = "personal_inside";
+                    if ($source == "PERSONAL WATER SEALED FLUSH (INSIDE)") $category = "personal_inside";
+                    if ($source == "PERSONAL WATER SEALED FLUSH (OUTSIDE)") $category = "personal_outside";
+                    if ($source == "PERSONAL WATER SEALED FLUSH(INSIDE)") $category = "personal_inside";
+                    if ($source == "PUBLIC TOILET") $category = "others";
+                    if ($source == "PUBLIC TOILET (MARKET)") $category = "others";
+                    if ($source == "SHARING") $category = "others";
+                    if ($source == "NO ANSWER") $category = "noans";
+                    if ($source == "") $category = "noans";
+                    
+
+
+                    if ($category != "") {
+                        unset($this->unclaimed[$row['uid']]);
+                        $data[$mun][$col[0]][$category][] = $row['uid'];
+                        $data[$mun][$col[0]][$category]['COUNT']++;
+                        $data[$mun][$col[0]]['Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['Total']['COUNT']++;
+
+                        $data[$mun]['Sub Total'][$category][] = $row['uid'];
+                        $data[$mun]['Sub Total'][$category]['COUNT']++;
+                        $data[$mun]['Sub Total']['Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['Total']['COUNT']++;
                         
-
-
-                        if ($category != "") {
-                            unset($this->unclaimed[$row['uid']]);
-                            $data[$mun][$col[0]][$category][] = $row['uid'];
-                            $data[$mun][$col[0]][$category]['COUNT']++;
-                            $data[$mun][$col[0]]['Total'][] = $row['uid'];
-                            $data[$mun][$col[0]]['Total']['COUNT']++;
-
-                            $data[$mun]['Sub Total'][$category][] = $row['uid'];
-                            $data[$mun]['Sub Total'][$category]['COUNT']++;
-                            $data[$mun]['Sub Total']['Total'][] = $row['uid'];
-                            $data[$mun]['Sub Total']['Total']['COUNT']++;
-                            
-                            $col_total['Total']['Total'][$category][] = $row['uid'];
-                            $col_total['Total']['Total'][$category]['COUNT']++;
-                            $col_total['Total']['Total']['Total'][] = $row['uid'];
-                            $col_total['Total']['Total']['Total']['COUNT']++;
-                        }
+                        $col_total['Total']['Total'][$category][] = $row['uid'];
+                        $col_total['Total']['Total'][$category]['COUNT']++;
+                        $col_total['Total']['Total']['Total'][] = $row['uid'];
+                        $col_total['Total']['Total']['Total']['COUNT']++;
                     }
                 }
             }

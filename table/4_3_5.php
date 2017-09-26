@@ -46,6 +46,7 @@
             <td>< 1 Year</td>
             <td>>1 year, < 10 Years</td>
             <td>> 10 Years</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -58,6 +59,7 @@
             $vals['less'] = $value[$key]['less']['COUNT'];unset($value[$key]['less']['COUNT']);
             $vals['110yrs'] = $value[$key]['110yrs']['COUNT'];unset($value[$key]['110yrs']['COUNT']);
             $vals['else'] = $value[$key]['else']['COUNT'];unset($value[$key]['else']['COUNT']);
+            $vals['noans'] = $value[$key]['noans']['COUNT'];unset($value[$key]['noans']['COUNT']);
             $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
             echo "<tr>";
@@ -65,12 +67,14 @@
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['less']) . "' target='_blank'>" . round($vals['less'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['110yrs']) . "' target='_blank'>" . round($vals['110yrs'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['else']) . "' target='_blank'>" . round($vals['else'], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['noans']) . "' target='_blank'>" . round($vals['noans'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
             echo "</tr>";
         }
         $range_6 = floatval($data['Total']['Total']['less']['COUNT']);
         $range_9 = floatval($data['Total']['Total']['110yrs']['COUNT']);
         $range_else = floatval($data['Total']['Total']['else']['COUNT']);
+        $range_noans = floatval($data['Total']['Total']['noans']['COUNT']);
         $total_all = floatval($data['Total']['Total']['Total']['COUNT']);
         
         echo "<tr>";
@@ -78,6 +82,7 @@
             echo "<td>" . round(($range_6 / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($range_9 / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($range_else / $total_all) * 100, 1) . "%</td>";
+            echo "<td>" . round(($range_noans / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($total_all / $total_all) * 100, 1) . "%</td>";
         echo "</tr>";
         ?>
@@ -93,6 +98,7 @@
             <td>< 1 Year</td>
             <td>>1 year, < 10 Years</td>
             <td>> 10 Years</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -106,6 +112,7 @@
                 $vals['less'] = $value[$key]['less']['COUNT'];unset($value[$key]['less']['COUNT']);
                 $vals['110yrs'] = $value[$key]['110yrs']['COUNT'];unset($value[$key]['110yrs']['COUNT']);
                 $vals['else'] = $value[$key]['else']['COUNT'];unset($value[$key]['else']['COUNT']);
+                $vals['noans'] = $value[$key]['noans']['COUNT'];unset($value[$key]['noans']['COUNT']);
                 $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
                 echo "<tr data-id='$brgy'>";
@@ -114,6 +121,7 @@
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['less']) . "' target='_blank'>" . round($vals['less'], 1) . "</a></td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['110yrs']) . "' target='_blank'>" . round($vals['110yrs'], 1) . "</a></td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['else']) . "' target='_blank'>" . round($vals['else'], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['noans']) . "' target='_blank'>" . round($vals['noans'], 1) . "</a></td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
                 echo "</tr>";
             }
@@ -123,6 +131,7 @@
             echo "<td>" . round(($range_6 / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($range_9 / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($range_else / $total_all) * 100, 1) . "%</td>";
+            echo "<td>" . round(($range_noans / $total_all) * 100, 1) . "%</td>";
             echo "<td>" . round(($total_all / $total_all) * 100, 1) . "%</td>";
         echo "</tr>";
         ?>

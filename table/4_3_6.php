@@ -66,7 +66,8 @@
         $definition = array(
             'econ'  => 'Economic Reason',
             'socio' => 'Social Reason',
-            'other' => 'Other Reason'
+            'other' => 'Other Reason',
+            'noans' => 'No Answer',
         );
         foreach ($data as $group => $values) {
             echo "<tr><td colspan='9' style='font-weight:bold;'>" . $definition[$group] ."</td></td>";

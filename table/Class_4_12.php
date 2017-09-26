@@ -28,7 +28,7 @@ class Class_4_12
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('title', 'ret', 'dm', 'lp', 'brc', 'lr', 'lc', 'cola', 'Total');
+        $this->tbl_cols = $tbl_cols = array('title', 'ret', 'dm', 'lp', 'brc', 'lr', 'lc', 'cola', 'noans', 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total[$col] = array('COUNT' => 0);
@@ -61,7 +61,9 @@ class Class_4_12
                 $temps['cola'] = strtoupper($row['kd_certaward']) == "X" ? 1:0;
                 
                 $added = FALSE;
+                $sum = 0;
                 foreach ($tbl_cols as $col) {
+                    $sum += $temps[$col];
                     if ($temps[$col] == 1) {
                         $added = TRUE;
                         unset($this->unclaimed[$row['uid']]);
@@ -78,7 +80,23 @@ class Class_4_12
                         }
                         $added = FALSE;
                     }   
-                }  
+                }
+
+                if ($sum == 0) {
+                    $added = TRUE;
+                    unset($this->unclaimed[$row['uid']]);
+                    $data[$mun]['noans'][] = $row['uid'];
+                    $data[$mun]['noans']['COUNT']++;
+                    $data[$mun]['Total'][] = $row['uid'];
+                    $data[$mun]['Total']['COUNT']++;
+                    
+                    if ($added == TRUE) {
+                        $col_total['noans'][] = $row['uid'];
+                        $col_total['noans']['COUNT']++;
+                        $col_total['Total'][] = $row['uid'];
+                        $col_total['Total']['COUNT']++;
+                    }
+                }
                 
             }
         }

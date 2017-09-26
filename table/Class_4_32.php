@@ -61,10 +61,12 @@ class Class_4_32
                 if ($eth == "DAVAOENO") $col = "davaoeno";
                 if ($eth == "ILLONGO") $col = "ilonggo";
                 if ($eth == "ILOCANO") $col = "ilocano";
+                if ($eth == "ILOKANO") $col = "ilocano";
                 if ($eth == "CEBUANO") $col = "bisaya";
                 if ($eth == "ILONGGO") $col = "ilonggo";
                 if ($eth == "KAPAMPANGAN") $col = "kapampangan";
                 if ($eth == "PANGGALATOK") $col = "panggalatok";
+                if ($eth == "PANGALATOK") $col = "panggalatok";
                 if ($eth == "TAGALO") $col = "tagalog";
                 if ($eth == "TAGALOG") $col = "tagalog";
                 if ($eth == "TAGAOG") $col = "tagalog";

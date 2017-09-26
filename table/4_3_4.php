@@ -79,7 +79,7 @@
             echo "<tr>";
                 echo "<td>$mun</td>";
                 foreach ($class->tbl_cols as $col) {
-                    echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_05_male,ses_05_female,ses_614_male,ses_614_female,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female,ses_60_male,ses_60_female,ses_other_male,ses_other_female,ses_total_male,ses_total_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
                 }
             echo "</tr>";
         }
@@ -141,7 +141,7 @@
                     if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
                     echo "<td>$key</td>";
                     foreach ($class->tbl_cols as $col) {
-                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_05_male,ses_05_female,ses_614_male,ses_614_female,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female,ses_60_male,ses_60_female,ses_other_male,ses_other_female,ses_total_male,ses_total_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
                     }
                 echo "</tr>";
             }
@@ -156,7 +156,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,ses_05_male,ses_05_female,ses_614_male,ses_614_female,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female,ses_60_male,ses_60_female,ses_other_male,ses_other_female,ses_total_male,ses_total_female&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

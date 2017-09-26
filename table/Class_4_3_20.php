@@ -27,7 +27,7 @@ class Class_4_3_20
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('elec', 'wood', 'kerosene', 'lpg', 'coal', 'others', 'Total');
+        $this->tbl_cols = $tbl_cols = array('elec', 'wood', 'kerosene', 'lpg', 'coal', 'others', 'noans', 'Total');
         
         foreach ($tbl_cols as $colm) {
             $col_total['Total']['Total'][$colm] = array('COUNT' => 0);
@@ -48,50 +48,48 @@ class Class_4_3_20
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,he_fuel_cooking FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $source = strtoupper($row['he_fuel_cooking']);
-                    if ($source != '') {
-                        $category = "";
+                    $category = "";
 
-                        if ($source == "CHARCOAL") $category = "coal";
-                        if ($source == "ELECTRICITY") $category = "elec";
-                        if ($source == "KEROSENE") $category = "kerosene";
-                        if ($source == "KEROSENE (GAAS)") $category = "kerosene";
-                        if ($source == "KEROSENE, CHARCOAL") $category = "kerosene";
-                        if ($source == "KEROSENE, LPG") $category = "kerosene";
-                        if ($source == "LPG") $category = "lpg";
-                        if ($source == "LPG AND CHARCOAL") $category = "lpg";
-                        if ($source == "LPG, CHARCOAL") $category = "lpg";
-                        if ($source == "LPG, KEROSENE") $category = "lpg";
-                        if ($source == "MGAS") $category = "kerosene";
-                        if ($source == "WOOD") $category = "wood";
-                        if ($source == "WOOD AND CHARCOAL") $category = "wood";
-                        if ($source == "WOOD, CHARCOAL") $category = "wood";
-                        if ($source == "WOOD AND LPG") $category = "wood";
-                        if ($source == "WOOD, KEROSENE") $category = "wood";
-                        if ($source == "WOOD, LPG") $category = "wood";
-                        if ($source == "WOOD, LPG, CHARCOAL") $category = "wood";
-                        if ($source == "NONE") $category = "others";
+                    if ($source == "CHARCOAL") $category = "coal";
+                    if ($source == "ELECTRICITY") $category = "elec";
+                    if ($source == "KEROSENE") $category = "kerosene";
+                    if ($source == "KEROSENE (GAAS)") $category = "kerosene";
+                    if ($source == "KEROSENE, CHARCOAL") $category = "kerosene";
+                    if ($source == "KEROSENE, LPG") $category = "kerosene";
+                    if ($source == "LPG") $category = "lpg";
+                    if ($source == "LPG AND CHARCOAL") $category = "lpg";
+                    if ($source == "LPG, CHARCOAL") $category = "lpg";
+                    if ($source == "LPG, KEROSENE") $category = "lpg";
+                    if ($source == "MGAS") $category = "kerosene";
+                    if ($source == "WOOD") $category = "wood";
+                    if ($source == "WOOD AND CHARCOAL") $category = "wood";
+                    if ($source == "WOOD, CHARCOAL") $category = "wood";
+                    if ($source == "WOOD AND LPG") $category = "wood";
+                    if ($source == "WOOD, KEROSENE") $category = "wood";
+                    if ($source == "WOOD, LPG") $category = "wood";
+                    if ($source == "WOOD, LPG, CHARCOAL") $category = "wood";
+                    if ($source == "NONE") $category = "others";
+                    if ($source == "") $category = "noans";
+                    if ($source == "NO ANSWER") $category = "noans";
 
+                    if ($category != "") {
+                        unset($this->unclaimed[$row['uid']]);
+                        $data[$mun][$col[0]][$category][] = $row['uid'];
+                        $data[$mun][$col[0]][$category]['COUNT']++;
+                        $data[$mun][$col[0]]['Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['Total']['COUNT']++;
 
-
-
-                        if ($category != "") {
-                            unset($this->unclaimed[$row['uid']]);
-                            $data[$mun][$col[0]][$category][] = $row['uid'];
-                            $data[$mun][$col[0]][$category]['COUNT']++;
-                            $data[$mun][$col[0]]['Total'][] = $row['uid'];
-                            $data[$mun][$col[0]]['Total']['COUNT']++;
-
-                            $data[$mun]['Sub Total'][$category][] = $row['uid'];
-                            $data[$mun]['Sub Total'][$category]['COUNT']++;
-                            $data[$mun]['Sub Total']['Total'][] = $row['uid'];
-                            $data[$mun]['Sub Total']['Total']['COUNT']++;
-                            
-                            $col_total['Total']['Total'][$category][] = $row['uid'];
-                            $col_total['Total']['Total'][$category]['COUNT']++;
-                            $col_total['Total']['Total']['Total'][] = $row['uid'];
-                            $col_total['Total']['Total']['Total']['COUNT']++;
-                        }
+                        $data[$mun]['Sub Total'][$category][] = $row['uid'];
+                        $data[$mun]['Sub Total'][$category]['COUNT']++;
+                        $data[$mun]['Sub Total']['Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['Total']['COUNT']++;
+                        
+                        $col_total['Total']['Total'][$category][] = $row['uid'];
+                        $col_total['Total']['Total'][$category]['COUNT']++;
+                        $col_total['Total']['Total']['Total'][] = $row['uid'];
+                        $col_total['Total']['Total']['Total']['COUNT']++;
                     }
+                    
                 }
             }
             $sub = $data[$mun]['Sub Total'];

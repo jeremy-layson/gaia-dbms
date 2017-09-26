@@ -30,6 +30,7 @@ class Class_4_3_5
         $col_total['Total']['Total']['less'] = array('COUNT' => 0);
         $col_total['Total']['Total']['110yrs'] = array('COUNT' => 0);
         $col_total['Total']['Total']['else'] = array('COUNT' => 0);
+        $col_total['Total']['Total']['noans'] = array('COUNT' => 0);
         $col_total['Total']['Total']['Total'] = array('COUNT' => 0);
 
 
@@ -37,12 +38,14 @@ class Class_4_3_5
             $data[$mun]['Sub Total']['less'] = array('COUNT' => 0); //4-6
             $data[$mun]['Sub Total']['110yrs'] = array('COUNT' => 0); //7-9
             $data[$mun]['Sub Total']['else'] = array('COUNT' => 0); // >9
+            $data[$mun]['Sub Total']['noans'] = array('COUNT' => 0); // >9
             $data[$mun]['Sub Total']['Total'] = array('COUNT' => 0);
 
             foreach ($brgys as $brgy => $col) {
                 $data[$mun][$col[0]]['less'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['110yrs'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['else'] = array('COUNT' => 0);
+                $data[$mun][$col[0]]['noans'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['Total'] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
@@ -63,7 +66,11 @@ class Class_4_3_5
                         $hh = 'less';
                     }
 
-                    if ($hh == '110yrs' || $hh == 'else' || $hh =='less') {
+                    if ($hh == '') {
+                        $hh = 'noans';
+                    }
+
+                    if ($hh == '110yrs' || $hh == 'else' || $hh =='less' || $hh == 'noans') {
                         unset($this->unclaimed[$row['uid']]);
                         $data[$mun][$col[0]][$hh][] = $row['uid'];
                         $data[$mun][$col[0]][$hh]['COUNT']++;

@@ -15,7 +15,7 @@ class Class_4_16
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND `address` LIKE '%(Depot)%'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];

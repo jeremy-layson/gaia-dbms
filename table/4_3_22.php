@@ -49,6 +49,7 @@
             <td>Open pit</td>
             <td>Covered pit (antipolo)</td>
             <td>Others</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -95,6 +96,7 @@
             <td>Open pit</td>
             <td>Covered pit (antipolo)</td>
             <td>Others</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>

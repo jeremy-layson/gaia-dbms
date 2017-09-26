@@ -48,6 +48,9 @@
             <td>Deepwell</td>
             <td>Shallow Well</td>
             <td>Water-refill</td>
+            <td>Local Water District</td>
+            <td>NAWASA</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -93,6 +96,9 @@
             <td>Deepwell</td>
             <td>Shallow Well</td>
             <td>Water-refill</td>
+            <td>Local Water District</td>
+            <td>NAWASA</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>

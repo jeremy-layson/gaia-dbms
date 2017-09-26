@@ -32,6 +32,7 @@ class Class_4_4_2
         $col_total['Total']['Total']['3'] = array('COUNT' => 0);
         $col_total['Total']['Total']['4'] = array('COUNT' => 0);
         $col_total['Total']['Total']['5'] = array('COUNT' => 0);
+        $col_total['Total']['Total']['noans'] = array('COUNT' => 0);
         $col_total['Total']['Total']['Total'] = array('COUNT' => 0);
 
         foreach ($columns as $mun => $brgys) {
@@ -40,6 +41,7 @@ class Class_4_4_2
             $data[$mun]['Sub Total']['3'] = array('COUNT' => 0);
             $data[$mun]['Sub Total']['4'] = array('COUNT' => 0);
             $data[$mun]['Sub Total']['5'] = array('COUNT' => 0);
+            $data[$mun]['Sub Total']['noans'] = array('COUNT' => 0);
             $data[$mun]['Sub Total']['Total'] = array('COUNT' => 0);
 
             foreach ($brgys as $brgy => $col) {
@@ -48,6 +50,7 @@ class Class_4_4_2
                 $data[$mun][$col[0]]['3'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['4'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['5'] = array('COUNT' => 0);
+                $data[$mun][$col[0]]['noans'] = array('COUNT' => 0);
                 $data[$mun][$col[0]]['Total'] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
@@ -70,6 +73,22 @@ class Class_4_4_2
                         
                         $col_total['Total']['Total'][$assist][] = $row['uid'];
                         $col_total['Total']['Total'][$assist]['COUNT']++;
+                        $col_total['Total']['Total']['Total'][] = $row['uid'];
+                        $col_total['Total']['Total']['Total']['COUNT']++;
+                    } else {
+                        unset($this->unclaimed[$row['uid']]);
+                        $data[$mun][$col[0]]['noans'][] = $row['uid'];
+                        $data[$mun][$col[0]]['noans']['COUNT']++;
+                        $data[$mun][$col[0]]['Total'][] = $row['uid'];
+                        $data[$mun][$col[0]]['Total']['COUNT']++;
+
+                        $data[$mun]['Sub Total']['noans'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['noans']['COUNT']++;
+                        $data[$mun]['Sub Total']['Total'][] = $row['uid'];
+                        $data[$mun]['Sub Total']['Total']['COUNT']++;
+                        
+                        $col_total['Total']['Total']['noans'][] = $row['uid'];
+                        $col_total['Total']['Total']['noans']['COUNT']++;
                         $col_total['Total']['Total']['Total'][] = $row['uid'];
                         $col_total['Total']['Total']['Total']['COUNT']++;
                     }

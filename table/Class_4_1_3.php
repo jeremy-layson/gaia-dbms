@@ -30,7 +30,7 @@ class Class_4_1_3
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'absentee', 'land_owner', 'tenant', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'absentee', 'land_owner', 'tenant', 'insti_occ', 'total');
 
         $append = [];
 
@@ -62,17 +62,17 @@ class Class_4_1_3
                     }
 
                     $displacement = 'none';
-                    if ($extent == '< than 20%') {
+                    if ($extent == '< than 20%' || $extent == 'Auxiliary') {
                         $displacement = 'stay';
 
-                    } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                    } elseif ($extent != 'Land Lessee' && $extent != 'Land owner' && $extent != 'Land Owner') {
                         $displacement = 'move';
                     }
 
                     if ($displacement != 'none') {
                         //structure owners
                         if ($category == '') {
-                            if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
+                            if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner') {
                                 $category = 'owner_';
                             } elseif ($dp == 'Structure Renter') {
                                 $category = 'renter';
@@ -80,6 +80,8 @@ class Class_4_1_3
                                 $category = 'land_owner';
                             } elseif ($dp == 'Commercial Tenant') {
                                 $category = 'tenant';
+                            } elseif ($dp == 'Institutional Occupant') {
+                                $category = 'insti_occ';
                             }
                         }
 

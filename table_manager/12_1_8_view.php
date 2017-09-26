@@ -2,7 +2,8 @@
     require('tableManager.php');
     $class = new tableManager('material_cost');
 
-    $data = $class->table_structure();
+    $mult = $class->getPreparedMaterialCost($class->data);
+    $data = $class->table_12_1_8();
 ?>
 
 <!DOCTYPE html>
@@ -41,14 +42,34 @@
         </thead>
         <tbody>
             <?php
-                foreach ($data as $key => $val) {
+                foreach ($data as $key => $make) {
+                    $mun = "";
+
+                    if ($key == "Manila") {
+                        $mun = "manila";
+                    } elseif ($key == "Valenzuela") {
+                        $mun = "valenzuela";
+                    } elseif ($key == "Valenzuela (Depot)") {
+                        $mun = "valenzuela";
+                    } else {
+                        $mun = "bulacan";
+                    }
+
                     echo "<tr>";
                     echo "<td>$key</td>";
-                    foreach ($class->materials as $material) {
-                        echo "<td>" . number_format($val[$material]['Legal']['area'], 0) . "</td>";
-                        echo "<td>" . number_format($val[$material]['Legal']['cost'], 0) . "</td>";
-                    }
-                    echo "<td>Total Placeholder</td>";
+                    echo "<td>" . $make['light'] . "</td>";
+                    echo "<td>" . ($make['light'] * $mult['Light Material'][$mun]) . "</td>";
+                    
+                    echo "<td>" . $make['semi'] . "</td>";
+                    echo "<td>" . ($make['semi'] * $mult['Semi-concrete'][$mun]) . "</td>";
+                    
+                    echo "<td>" . $make['concrete'] . "</td>";
+                    echo "<td>" . ($make['concrete'] * $mult['Concrete'][$mun]) . "</td>";
+                    
+                    $total = ($make['light'] * $mult['Light Material'][$mun]) + ($make['semi'] * $mult['Semi-concrete'][$mun]) + ($make['concrete'] * $mult['Concrete'][$mun]);
+
+                    
+                    echo "<td>$total</td>";
                     echo "</tr>";
                 }
             ?>

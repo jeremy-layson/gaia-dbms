@@ -187,12 +187,14 @@
                 <div class="large-12 column">
                     <a href="/table/4_5_7.php" target="_blank" class="button primary full-width">Table 4.5-7 Most Desired Services and Facilities in Relocation Site</a>
                 </div>
-
+                <div class="large-12 column">
+                    <a href="/table/4_5_8.php" target="_blank" class="button primary full-width">Table 4.5-8 Livelihood Rehabilitation Measures</a>
+                </div>
                 <div class="large-12 column">
                     <a href="/table/4_6.php" target="_blank" class="button success full-width">4.6 Number of ISFs per LGU by Type of Loss</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_7.php" target="_blank" class="button success full-width">4.7 Number of ISFs perat Valenzuela Depot by Type of Loss</a>
+                    <a href="/table/4_7.php" target="_blank" class="button success full-width">4.7 Number of ISFs per LGU at Valenzuela Depot by Type of Loss</a>
                 </div>
                 <div class="large-12 column">
                     <a href="/table/4_9.php" target="_blank" class="button success full-width">4.9 Area of Affected Private Land by Use</a>
@@ -250,6 +252,12 @@
                     <a href="/table_manager/12_1_6_view.php" target="_blank" class="button primary full-width">Table 12.1-6 Estimate Costs for Structures of Semi-concrete</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/12_1_6.php" target="_blank" class="button success full-width">Table 12.1-6 Estimated Cost of ISF Structures based on RCS (Raw)</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/12_1_6_old.php" target="_blank" class="button success full-width">Table 12.1-6 Estimated Cost of ISF Structures based on RCS</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table_manager/12_1_7_view.php" target="_blank" class="button primary full-width">Table 12.1-7 Estimate Costs for Structures of Concrete</a>
                 </div>
                 <div class="large-12 column">
@@ -261,7 +269,6 @@
                 <div class="large-12 column">
                     <a href="/table_manager/12_1_10_view.php" target="_blank" class="button primary full-width">Table 12.1-10 Summary of Affected Trees and Plants</a>
                 </div>
-                
             </div>
 
             <?php if (isset($_SESSION['username']) === FALSE) { ?>

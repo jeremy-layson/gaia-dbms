@@ -51,6 +51,7 @@
             <td rowspan="2">Land Rights</td>
             <td rowspan="2">Lease Contact</td>
             <td rowspan="2">Certificate of Lot Award</td>
+            <td rowspan="2">No Answer</td>
             <td colspan="2">Total</td>
         </tr>
         <tr>

@@ -84,6 +84,12 @@ class Class_4_2
                 
                 $this->total['PAF'][$type . "_" . $reloc]['COUNT']++;
                 $this->total['PAP'][$type . "_" . $reloc]['COUNT'] += intval($row['hh_members']);
+
+                $this->total['PAF'][$type . "_TOTAL"][] = $row['uid'];
+                $this->total['PAP'][$type . "_TOTAL"][] = $row['uid'];
+                
+                $this->total['PAF'][$type . "_TOTAL"]['COUNT']++;
+                $this->total['PAP'][$type . "_TOTAL"]['COUNT'] += intval($row['hh_members']);
                 
                 $this->total['PAF']["TOTAL_" . $reloc][] = $row['uid'];
                 $this->total['PAP']["TOTAL_" . $reloc][] = $row['uid'];

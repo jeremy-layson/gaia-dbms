@@ -49,6 +49,7 @@
             <td>LPG</td>
             <td>Charcoal(uling)</td>
             <td>Others</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>
@@ -95,6 +96,7 @@
             <td>LPG</td>
             <td>Charcoal(uling)</td>
             <td>Others</td>
+            <td>No Answer</td>
             <td>Total</td>
         </tr>
     </thead>

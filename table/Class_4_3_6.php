@@ -32,6 +32,7 @@ class Class_4_3_6
         $data['econ'] = [];
         $data['socio'] = [];
         $data['other'] = [];
+        $data['noans'] = [];
 
         while ($row = $result->fetch_assoc()) {
             $added = false;
@@ -80,6 +81,14 @@ class Class_4_3_6
                     $this->total[$use][]    = $row['uid'];
                     $this->total['Total'][]   = $row['uid'];
                 }
+            }
+
+            if (trim($econ[0]) == '' && trim($socio[0]) == '' && trim($other[0]) == '') {
+                $added = true;
+                $data['noans']['No Answer'][$use][] = $row['uid'];
+                $data['noans']['No Answer']['Total'][] = $row['uid'];
+                $this->total[$use][]    = $row['uid'];
+                $this->total['Total'][]   = $row['uid'];
             }
 
             if ($added === true) {
