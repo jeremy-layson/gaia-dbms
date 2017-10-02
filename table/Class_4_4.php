@@ -31,7 +31,7 @@ class Class_4_4
         $columns = $this->getMunicipality();
         unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'absentee', 'workers', 'insti', 'sharer', 'total');
+        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'absentee', 'workers', 'insti', 'sharer', 'micro', 'sml', 'employed', 'total');
 
         $append = [];
 

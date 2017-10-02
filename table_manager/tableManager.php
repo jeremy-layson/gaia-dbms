@@ -29,6 +29,8 @@ class tableManager
             'material_cost' => '12_1_4.php',
             'user'          => 'users.php',
             'logs'          => 'logs.php',
+            'hh_names'      => 'hh_names.php',
+            'test'          => 'test.php'
         );
 
         $this->page_names = array(
@@ -38,6 +40,8 @@ class tableManager
             'material_cost' => 'Construction Cost by Material',
             'user'          => 'User Management',
             'logs'          => 'Logs Viewer',
+            'hh_names'      => 'Household Names',
+            'test'          => 'Test'
         );
 
         require('../sql.php');

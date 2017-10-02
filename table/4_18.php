@@ -48,6 +48,9 @@
             <td rowspan="2">Rent Free Occupant</td>
             <td rowspan="2">Caretaker</td>
             <td rowspan="2">Sharer</td>
+            <td rowspan="2">Land Dwellers</td>
+            <td rowspan="2">Land Owners</td>
+            <td rowspan="2">ISFs</td>
             <td rowspan="2">No Answer</td>
             <td colspan="2">Total</td>
         </tr>
@@ -67,7 +70,7 @@
             echo "<tr>";
             echo "<td>$mun</td>";
             foreach ($class->tbl_cols as $col) {
-                echo "<td><a href='/viewer.php?field=uid,address,baranggay,dp_type,kd_document&id=" . implode(",", $value[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=type,uid,address,baranggay,dp_type,structure_dp&id=" . implode(",", $value[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
             }
             $percent = round( ($vals['Total'] / $class->total['Total']['COUNT']) * 100,1);
             echo "<td>$percent%</td>";
@@ -81,7 +84,7 @@
                 $vals[$col] = $class->total[$col]['COUNT'];unset($class->total[$col]['COUNT']);
             }
             foreach ($class->tbl_cols as $col) {
-                echo "<td><a href='/viewer.php?field=uid,address,baranggay,dp_type,kd_document&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=type,uid,address,baranggay,dp_type,structure_dp&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
             }
             echo "<td>100%</td>";
         echo "</tr>";
@@ -89,7 +92,7 @@
     </tbody>
 </table>
 
-<a target="_blank" href="/viewer.php?field=uid,address,baranggay,dp_type,kd_document&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=type,uid,address,baranggay,dp_type,structure_dp&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

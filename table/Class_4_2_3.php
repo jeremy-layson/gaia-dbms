@@ -70,6 +70,19 @@ class Class_4_2_3
                     $imp['Others'] += $row['improve_pigpen'] != '' ? 1:0;
                     $imp['Others'] += $row['improve_bcourt'] != '' ? 1:0;
                     $imp['Others'] += $row['improve_toilet'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_bridge'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_terminal'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_shed'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_storage'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_watertank'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_extension'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_fishpond'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_garage'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_sarisari'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_playground'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_table'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_extension'] != '' ? 1:0;
+                    $imp['Others'] += $row['improve_parking'] != '' ? 1:0;
 
                     if (in_array($use, $tbl_cols) === TRUE) {
                         unset($this->unclaimed[$row['uid']]);

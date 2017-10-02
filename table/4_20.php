@@ -69,10 +69,15 @@
         }
         //grand total
         echo "<tr>";
-            echo "<td colspan='2'>Grand Total</td>";
+            echo "<td rowspan='2' colspan='2'>Grand Total</td>";
             foreach ($class->total as $key => $val) {
                 $tmpVal = $val['COUNT'];unset($val['COUNT']);
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,structure_use,improve_gate,improve_fence,improve_well,improve_bcourt,improve_pigpen,improve_toilet&id=" . implode(",", $val) . "' target='_blank'>" . round($tmpVal, 1) . "</a></td>";
+            }
+        echo "</tr>";
+        echo "<tr>";
+            foreach ($class->total as $key => $val) {
+                echo "<td>" . round(($val['COUNT'] / $class->total['Total']['COUNT']) * 100,1) . "%</td>";
             }
         echo "</tr>";
         ?>

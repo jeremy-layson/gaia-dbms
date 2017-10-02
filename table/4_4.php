@@ -52,9 +52,21 @@
             <td colspan="3">Workers (Employees of CIBEs)</td>
             <td colspan="3">Institutional Occupant</td>
             <td colspan="3">Sharer</td>
+            <td colspan="3">PAPs who own microbusinesses</td>
+            <td colspan="3">PAPs who own small medium and large establishments</td>
+            <td colspan="3">PAPs employed in displaced commercial/industrial establishment losing job due to closure of business</td>
             <td colspan="3">Total</td>
         </tr>
         <tr>
+            <td>To be relocated</td>
+            <td>Not to be relocated</td>
+            <td>Total</td>
+            <td>To be relocated</td>
+            <td>Not to be relocated</td>
+            <td>Total</td>
+            <td>To be relocated</td>
+            <td>Not to be relocated</td>
+            <td>Total</td>
             <td>To be relocated</td>
             <td>Not to be relocated</td>
             <td>Total</td>

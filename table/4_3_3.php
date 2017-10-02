@@ -64,9 +64,14 @@
             }
 
             echo "<tr>";
-                echo "<td>$mun</td>";
+                echo "<td rowspan='2'>$mun</td>";
                 foreach ($class->tbl_cols as $col) {
                     echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_05_male,ses_05_female,ses_614_male,ses_614_female,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female,ses_60_male,ses_60_female,ses_other_male,ses_other_female,ses_total_male,ses_total_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                }
+            echo "</tr>";
+            echo "<tr>";
+                foreach ($class->tbl_cols as $col) {
+                    echo "<td>" . round( ($vals[$col] / $vals['ses_total']) * 100 ,1) . "%</td>";
                 }
             echo "</tr>";
         }

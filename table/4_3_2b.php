@@ -11,7 +11,7 @@
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style type="text/css">
         table {
-            border-collapse: collapse;
+            border-collapse: collapse;  
             width: 100%;
         }
         td {
@@ -42,25 +42,12 @@
     <h3>Table 4.3-2B Structure of Household (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td colspan="2">Single-headed Household</td>
-            <td colspan="2">Widowed-head</td>
-            <td colspan="2">Separated-head</td>
-            <td colspan="2">Others</td>
-            <td colspan="2">Total</td>
-        </tr>
-        <tr>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            
+            <td>Municipalities and Cities</td>
+            <td>Single-headed Household</td>
+            <td>Widowed-head</td>
+            <td>Separated-head</td>
+            <td>Others</td>
+            <td>Total</td>
         </tr>
     </thead>
     <tbody>
@@ -72,25 +59,41 @@
             }
 
             echo "<tr>";
-            echo "<td>$mun</td>";
+            echo "<td rowspan='2'>$mun</td>";
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,civil_status&id=" . implode(",", $value['Sub Total'][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
-                echo "<td>" . round(($vals[$col] / $class->total[$col]['COUNT']) * 100, 1) . "%</td>";
             }
+            echo "</tr>";
+            echo "<tr>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($vals['Total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] /  $vals['Total']) * 100,1) . "%</td>";
+                    }
+                }
             echo "</tr>";
         }
 
         echo "<tr>";
-            echo "<td>Total</td>";
+            echo "<td rowspan='2'>Total</td>";
             $vals = [];
             foreach ($class->tbl_cols as $col) {
                 $vals[$col] = $class->total[$col]['COUNT'];unset($class->total[$col]['COUNT']);
             }
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,civil_status&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
-                echo "<td>" . round(($vals[$col] / $vals['Total']) * 100, 1) . "%</td>";
             }
         echo "</tr>";
+        echo "<tr>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($vals['Total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] /  $vals['Total']) * 100,1) . "%</td>";
+                    }
+                }
+            echo "</tr>";
         ?>
     </tbody>
 </table>
@@ -99,25 +102,13 @@
     <h3>Table 4.3-2B Structure of Household (Baranggay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
-            <td colspan="2">Single-headed Household</td>
-            <td colspan="2">Widowed-head</td>
-            <td colspan="2">Separated-head</td>
-            <td colspan="2">Others</td>
-            <td colspan="2">Total</td>
-        </tr>
-        <tr>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
-            <td>Number</td>
-            <td>%</td>
+            <td>Municipalities and Cities</td>
+            <td>Baranggay</td>
+            <td>Single-headed Household</td>
+            <td>Widowed-head</td>
+            <td>Separated-head</td>
+            <td>Others</td>
+            <td>Total</td>
         </tr>
     </thead>
     <tbody>
@@ -128,27 +119,44 @@
                 $key = $brgy;
                 $nVals = [];
                 foreach ($class->tbl_cols as $col) {
-                    $nVals[$col] = $value[$key][$col]['COUNT'];unset($value[$key][$col]['COUNT']);
+                    $nVals[$col] = $pop[$col]['COUNT'];unset($pop[$col]['COUNT']);
                 }
 
                 echo "<tr data-id='$brgy'>";
-                    if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
+                    if ($head == 0) echo "<td rowspan='" . (count($value) + 1) . "'>$mun</td>";$head = 1;
                     echo "<td>$key</td>";
                     foreach ($class->tbl_cols as $col) {
-                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,civil_status&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($nVals[$col], 1) . "</a></td>";
-                        echo "<td>" . round(($nVals[$col] / $vals[$col]) * 100, 1) . "%</td>";
+                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,civil_status&id=" . implode(",", $pop[$col]) . "' target='_blank'>" . round($nVals[$col], 1) . "</a></td>";
                     }
                 echo "</tr>";
             }
+            echo "<tr>";
+                echo "<td>Percentage</td>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($value['Sub Total']['Total']['COUNT'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($value['Sub Total'][$col]['COUNT'] /  $value['Sub Total']['Total']['COUNT']) * 100,1) . "%</td>";
+                    }
+                }
+            echo "</tr>";
         }
 
         echo "<tr>";
-            echo "<td colspan='2'>Total</td>";
+            echo "<td rowspan='2' colspan='2'>Total</td>";
             foreach ($class->tbl_cols as $col) {
                 echo "<td><a href='/viewer.php?field=uid,address,baranggay,civil_status&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
-                echo "<td>" . round(($vals[$col] / $vals['Total']) * 100, 1) . "%</td>";
             }
         echo "</tr>";
+        echo "<tr>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($vals['Total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] /  $vals['Total']) * 100,1) . "%</td>";
+                    }
+                }
+            echo "</tr>";
         ?>
     </tbody>
 </table>

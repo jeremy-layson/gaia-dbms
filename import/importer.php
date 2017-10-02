@@ -1,4 +1,4 @@
-<?php 
+<?php
 ini_set('memory_limit', '1024M');
 ini_set('max_execution_time', 0);
 set_time_limit(0);
@@ -244,6 +244,7 @@ class Importer
 
                 
                 //I2. Source of Households Income
+                'PS' => array('shi_earning_member', 'I2. Earning Household Members'), //Source of income
                 'PT' => array('shi_source_employee', 'I2. Source of Income: Employee'), //Source of income
                 'PU' => array('shi_source_fbusiness', 'I2. Source of Income: Formal Business'),
                 'PV' => array('shi_source_informal', 'I2. Source of Income: Informal Income'),
@@ -564,8 +565,8 @@ class Importer
         $writer = $objWriter->getPHPExcel()->getActiveSheet();
         for ($i=5; $i <= (intval($result[0]['cnt']) + 4); $i++) {
             foreach ($this->columns as $key => $value) { //value[0]
-                $cellValue = $writer->setCellValue($key . $i, utf8_encode($data[$i - 5][$value[0]]), true);
-                echo "Cell $key$i | Value: " . $data[$i - 5][$value[0]] . " | Result: $cellValue" . "<br>";
+                $cellValue = $writer->setCellValue($key . $i, ($data[$i - 5][$value[0]]), true);
+                echo "Cell $key$i | Value: " . $data[$i - 5][$value[0]] . " | Result: $cellValue" . "\n\r";
             }
         }
 
@@ -581,7 +582,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     }
 
     $func = $_GET['function'];
-    $import = new Importer($filename);
+    $import = new Importer($filename, 'survey');
     $import->$func();
 } else {
     $maxRow = 729;

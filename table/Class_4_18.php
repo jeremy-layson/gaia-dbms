@@ -28,7 +28,7 @@ class Class_4_18
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array("owner", "tenant", "rentfree", "caretaker", "sharer", "noans", 'Total');
+        $this->tbl_cols = $tbl_cols = array("owner", "tenant", "rentfree", "caretaker", "sharer", "dwellers", "land_owner", "isf", "noans", 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total[$col] = array('COUNT' => 0);
@@ -46,15 +46,18 @@ class Class_4_18
             $result = $this->db->query($query);
             while ($row = $result->fetch_assoc()) {
                 $dp = strtoupper($row['structure_dp']);
+                $dp2 = strtoupper($row['dp_type']);
                 $col = "";
 
                 if ($dp == "CARETAKER") $col = "caretaker";
+                if ($dp == "LAND OWNER" || $dp2 == "LAND OWNER") $col = "land_owner";
                 if ($dp == "COMMERCIAL TENANT") $col = "tenant";
                 if ($dp == "INSTITUTIONAL OCCUPANT") $col = "rentfree";
                 if ($dp == "SHARER") $col = "sharer";
                 if ($dp == "STRUCTURE OWNER") $col = "owner";
                 if ($dp == "STRUCTURE RENTER") $col = "tenant";
-
+                if ($row['type'] == "ISF") $col = "isf";
+                if ($dp2 == "LAND DWELLER") $col = "dwellers";
 
                 if ($col != "") {
                     unset($this->unclaimed[$row['uid']]);

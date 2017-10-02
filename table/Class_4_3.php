@@ -31,7 +31,7 @@ class Class_4_3
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
 
-        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter', 'wage_earner', 'absentee', 'sharer');
+        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter', 'wage_earner',  'sharer', 'micro', 'sml', 'employed');
         
         $this->definition = array(
             'owner_res' => 'Structure Owners (Residential)', 
@@ -43,6 +43,9 @@ class Class_4_3
             'wage_earner' => 'Wage Earners (Employees of CIBEs)', 
             'absentee' => 'Absentee Structure Owners',
             'sharer' => 'Sharer',
+            'micro' => 'PAPs who own microbusinesses',
+            'sml' => 'PAPs who own small medium and large establishments',
+            'employed' => 'PAPs employed',
         );
         $append = [];
 
@@ -74,7 +77,7 @@ class Class_4_3
 
             $category = '';
             if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
-                $category = 'absentee';
+                // $category = 'absentee';
             }           
 
             // $reloc = strtoupper(trim($row['displacement']));
