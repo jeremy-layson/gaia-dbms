@@ -63,25 +63,24 @@
             $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
             echo "<tr>";
-                echo "<td>$mun</td>";
+                echo "<td rowspan='2'>$mun</td>";
                 foreach ($class->tbl_cols as $colm) {
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                 }
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
             echo "</tr>";
+
+            echo "<tr>";
+                foreach ($class->tbl_cols as $colm) {
+                    if ($vals['Total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$colm] / $vals['Total']) * 100 , 1) . "%</td>";
+                    }
+                }
+                echo ($vals['Total'] == "0") ? "<td>0%</td>":"<td>100%</td>";
+            echo "</tr>";
         }
-        foreach ($class->tbl_cols as $colm) {
-            $range[$colm] = floatval($data['Total']['Total'][$colm]['COUNT']);
-        }
-        $total_all = floatval($data['Total']['Total']['Total']['COUNT']);
-        
-        echo "<tr>";
-            echo "<td>Percentage</td>";
-            foreach ($class->tbl_cols as $colm) {
-                echo "<td>" . round(($range[$colm] / $total_all) * 100, 1) . "%</td>";
-            }
-            echo "<td>" . round(($total_all / $total_all) * 100, 1) . "%</td>";
-        echo "</tr>";
         ?>
     </tbody>
 </table>
@@ -115,7 +114,7 @@
                 $vals['Total'] = $value[$brgy]['Total']['COUNT'];unset($value[$brgy]['Total']['COUNT']);
 
                 echo "<tr data-id='$brgy'>";
-                    if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
+                    if ($head == 0) echo "<td rowspan='" . (count($value) + 1) . "'>$mun</td>";$head = 1;
                     echo "<td>$brgy</td>";
                     foreach ($class->tbl_cols as $colm) {
                         echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
@@ -123,19 +122,18 @@
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,he_total_expenses&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
                 echo "</tr>";
             }
+            echo "<tr>";
+                echo "<td data-id='percentage'>Percentage</td>";
+                foreach ($class->tbl_cols as $colm) {
+                    if ($vals['Total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$colm] / $vals['Total']) * 100 , 1) . "%</td>";
+                    }
+                }
+                echo ($vals['Total'] == "0") ? "<td>0%</td>":"<td>100%</td>";
+            echo "</tr>";
         }
-        foreach ($class->tbl_cols as $colm) {
-            $range[$colm] = floatval($data['Total']['Total'][$colm]['COUNT']);
-        }
-        $total_all = floatval($data['Total']['Total']['Total']['COUNT']);
-        
-        echo "<tr>";
-            echo "<td colspan='2'>Percentage</td>";
-            foreach ($class->tbl_cols as $colm) {
-                echo "<td>" . round(($range[$colm] / $total_all) * 100, 1) . "%</td>";
-            }
-            echo "<td>" . round(($total_all / $total_all) * 100, 1) . "%</td>";
-        echo "</tr>";
         ?>
     </tbody>
 </table>
@@ -148,6 +146,8 @@
     $(grand[0]).prop('colspan', '2');
     $(grand[1]).remove();
     $(grand).parent().css('font-weight', 'bold');
+
+    $("[data-id='percentage']").last().remove();
 </script>
 </body>
 </html>

@@ -63,12 +63,28 @@
             $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
             echo "<tr>";
-                echo "<td>$mun</td>";
+                echo "<td rowspan='2'>$mun</td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['less']) . "' target='_blank'>" . round($vals['less'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['110yrs']) . "' target='_blank'>" . round($vals['110yrs'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['else']) . "' target='_blank'>" . round($vals['else'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['noans']) . "' target='_blank'>" . round($vals['noans'], 1) . "</a></td>";
                 echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
+            echo "</tr>";
+
+            echo "<tr>";
+                if ($vals['Total'] == "0") {
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                } else {
+                    echo "<td>" . round( ($vals['less'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['110yrs'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['else'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['noans'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['Total'] / $vals['Total']) * 100 , 1) . "%</td>";
+                }
             echo "</tr>";
         }
         $range_6 = floatval($data['Total']['Total']['less']['COUNT']);
@@ -116,7 +132,7 @@
                 $vals['Total'] = $value[$key]['Total']['COUNT'];unset($value[$key]['Total']['COUNT']);
 
                 echo "<tr data-id='$brgy'>";
-                    if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
+                    if ($head == 0) echo "<td rowspan='" . (count($value) + 1) . "'>$mun</td>";$head = 1;
                     echo "<td>$key</td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['less']) . "' target='_blank'>" . round($vals['less'], 1) . "</a></td>";
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['110yrs']) . "' target='_blank'>" . round($vals['110yrs'], 1) . "</a></td>";
@@ -125,15 +141,24 @@
                     echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,hdi_length_stay&id=" . implode(",", $value[$key]['Total']) . "' target='_blank'>" . round($vals['Total'], 1) . "</a></td>";
                 echo "</tr>";
             }
+            echo "<tr>";
+                if ($vals['Total'] == "0") {
+                    echo "<td data-id='percentage'>Percentage</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                    echo "<td>0%</td>";
+                } else {
+                    echo "<td data-id='percentage'>Percentage</td>";
+                    echo "<td>" . round( ($vals['less'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['110yrs'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['else'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['noans'] / $vals['Total']) * 100 , 1) . "%</td>";
+                    echo "<td>" . round( ($vals['Total'] / $vals['Total']) * 100 , 1) . "%</td>";
+                }
+            echo "</tr>";
         }
-        echo "<tr>";
-            echo "<td colspan='2'>Percentage</td>";
-            echo "<td>" . round(($range_6 / $total_all) * 100, 1) . "%</td>";
-            echo "<td>" . round(($range_9 / $total_all) * 100, 1) . "%</td>";
-            echo "<td>" . round(($range_else / $total_all) * 100, 1) . "%</td>";
-            echo "<td>" . round(($range_noans / $total_all) * 100, 1) . "%</td>";
-            echo "<td>" . round(($total_all / $total_all) * 100, 1) . "%</td>";
-        echo "</tr>";
         ?>
     </tbody>
 </table>
@@ -145,7 +170,10 @@
     var grand = $("[data-id='Total'] td");
     $(grand[0]).prop('colspan', '2');
     $(grand[1]).remove();
+    
     $(grand).parent().css('font-weight', 'bold');
+
+    $("[data-id='percentage']").last().remove();
 </script>
 </body>
 </html>

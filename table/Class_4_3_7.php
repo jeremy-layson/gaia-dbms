@@ -48,7 +48,7 @@ class Class_4_3_7
                 $data[$mun][$col[0]]['Total'] = array('COUNT' => 0);
                 
                 $wildcard = $this->getWildcard($col[1]);
-                $result = $this->db->query($query = "SELECT uid,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     unset($this->unclaimed[$row['uid']]);
                     
@@ -60,6 +60,8 @@ class Class_4_3_7
                     $vals['formal'] = intval($row['shi_source_fbusiness']);
                     $vals['informal'] = intval($row['shi_source_informal']);
 
+                    $ses = intval($row['ses_1530_male']) + intval($row['ses_1530_female']) + intval($row['ses_3159_male']) + intval($row['ses_3159_female']);
+                    $vals['unemployed'] = $ses - intval($row['shi_earning_member']);
                     foreach ($vals as $vKey => $vValue) {
                         if ($vValue != 0) {
                             $data[$mun][$col[0]][$vKey][] = $row['uid'];

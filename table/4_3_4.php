@@ -77,9 +77,18 @@
             }
 
             echo "<tr>";
-                echo "<td>$mun</td>";
+                echo "<td rowspan='2'>$mun</td>";
                 foreach ($class->tbl_cols as $col) {
                     echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                }
+            echo "</tr>";
+            echo "<tr>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($vals['ses_ed_total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] / $vals['ses_ed_total']) * 100,1) . "</td>";
+                    }
                 }
             echo "</tr>";
         }
@@ -134,25 +143,30 @@
                 $key = $brgy;
                 $vals = [];
                 foreach ($class->tbl_cols as $col) {
-                    $vals[$col] = $value[$key][$col]['COUNT'];unset($value[$key][$col]['COUNT']);
+                    $vals[$col] = $pop[$col]['COUNT'];unset($pop[$col]['COUNT']);
                 }
 
                 echo "<tr data-id='$brgy'>";
-                    if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
+                    if ($head == 0) echo "<td rowspan='" . (count($value) +1) . "'>$mun</td>";$head = 1;
                     echo "<td>$key</td>";
                     foreach ($class->tbl_cols as $col) {
-                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ses_ed_none_male,ses_ed_none_female,ses_ed_pre_male,ses_ed_pre_female,ses_ed_elem_male,ses_ed_elem_female,ses_ed_elemgrad_male,ses_ed_elemgrad_female,ses_ed_hs_male,ses_ed_hs_female,ses_ed_hsgrad_male,ses_ed_hsgrad_female,ses_ed_college_male,ses_ed_college_female,ses_ed_collegegrad_male,ses_ed_collegegrad_female,ses_ed_voc_male,ses_ed_voc_female,ses_ed_vocgrad_male,ses_ed_vocgrad_female,ses_ed_notage_male,ses_ed_notage_female,ses_ed_other_male,ses_ed_other_female&id=" . implode(",", $pop[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
                     }
                 echo "</tr>";
+                
             }
+            echo "<tr>";
+            echo "<td data-id='percentage'>Percentage</td>";
+                foreach ($class->tbl_cols as $col) {
+                    if ($vals['ses_ed_total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] / $vals['ses_ed_total']) * 100,1) . "%</td>";
+                    }
+                }
+            echo "</tr>";
         }
 
-        echo "<tr>";
-            echo "<td colspan='2'>Percentage</td>";
-            foreach ($class->tbl_cols as $col) {
-                echo "<td>" . round(($range[$col] == 0 ? '0': $range[$col] / $range['ses_ed_total']) * 100, 1) . "%</td>";
-            }
-        echo "</tr>";
         ?>
     </tbody>
 </table>
@@ -165,6 +179,8 @@
     $(grand[0]).prop('colspan', '2');
     $(grand[1]).remove();
     $(grand).parent().css('font-weight', 'bold');
+
+    $("[data-id='percentage']").last().remove();
 </script>
 </body>
 </html>

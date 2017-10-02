@@ -71,7 +71,12 @@
             echo "</tr>";
             echo "<tr>";
                 foreach ($class->tbl_cols as $col) {
-                    echo "<td>" . round( ($vals[$col] / $vals['ses_total']) * 100 ,1) . "%</td>";
+                    if ($vals['ses_total'] == "0") {
+                        echo "<td>0%</td>";
+                    } else {
+                        echo "<td>" . round( ($vals[$col] / $vals['ses_total']) * 100 ,1) . "%</td>";
+                    }
+                    
                 }
             echo "</tr>";
         }
@@ -83,7 +88,11 @@
         echo "<tr>";
             echo "<td>Percentage</td>";
             foreach ($class->tbl_cols as $col) {
-                echo "<td>" . round(($range[$col] / $range['ses_total']) * 100, 1) . "%</td>";
+                if ($range['ses_total'] == "0") {
+                    echo "<td>0%</td>";
+                } else {
+                    echo "<td>" . round(($range[$col] / $range['ses_total']) * 100, 1) . "%</td>";
+                }
             }
         echo "</tr>";
         ?>

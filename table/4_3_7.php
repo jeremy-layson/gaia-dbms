@@ -69,7 +69,7 @@
             echo "<tr>";
                 echo "<td>$mun</td>";
                 foreach ($class->tbl_cols as $colm) {
-                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                    echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra,shi_earning_member,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female&id=" . implode(",", $value[$key][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                 }
             echo "</tr>";
         }
@@ -124,7 +124,7 @@
                     if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
                     echo "<td>$brgy</td>";
                     foreach ($class->tbl_cols as $colm) {
-                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra,shi_earning_member,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female&id=" . implode(",", $value[$brgy][$colm]) . "' target='_blank'>" . round($vals[$colm], 1) . "</a></td>";
                     }
                 echo "</tr>";
             }
@@ -142,7 +142,7 @@
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,asset_num,address,baranggay,shi_source_employee,shi_source_fbusiness,shi_source_informal,shi_employ_permanent,shi_employ_contract,shi_employ_extra,shi_earning_member,ses_1530_male,ses_1530_female,ses_3159_male,ses_3159_female&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

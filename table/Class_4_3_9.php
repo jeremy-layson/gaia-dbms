@@ -72,19 +72,19 @@ class Class_4_3_9
                         }
 
                         $data[$mun][$col[0]][$key][] = $row['uid'];
-                        $data[$mun][$col[0]][$key]['COUNT']++;
+                        $data[$mun][$col[0]][$key]['COUNT'] += $hh;
                         $data[$mun][$col[0]]['Total'][] = $row['uid'];
-                        $data[$mun][$col[0]]['Total']['COUNT']++;
+                        $data[$mun][$col[0]]['Total']['COUNT'] += $hh;
 
                         $data[$mun]['Sub Total'][$key][] = $row['uid'];
-                        $data[$mun]['Sub Total'][$key]['COUNT']++;
+                        $data[$mun]['Sub Total'][$key]['COUNT'] += $hh;
                         $data[$mun]['Sub Total']['Total'][] = $row['uid'];
-                        $data[$mun]['Sub Total']['Total']['COUNT']++;
+                        $data[$mun]['Sub Total']['Total']['COUNT'] += $hh;
                         
                         $col_total['Total']['Total'][$key][] = $row['uid'];
-                        $col_total['Total']['Total'][$key]['COUNT']++;
+                        $col_total['Total']['Total'][$key]['COUNT'] += $hh;
                         $col_total['Total']['Total']['Total'][] = $row['uid'];
-                        $col_total['Total']['Total']['Total']['COUNT']++;
+                        $col_total['Total']['Total']['Total']['COUNT'] += $hh;
                     }
                 }
             }
