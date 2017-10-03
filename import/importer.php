@@ -153,6 +153,7 @@ class Importer
                 //D2. Residential Structure Arrangements
                 'JT' => array('displacement', 'D2. Displacement'), //Displacement (Residential Structure Arrangements)
                 'JS' => array('viable', 'D2. Structural Viability'), //Displacement (Residential Structure Arrangements)
+                'JP' => array('dsa_rent_cost', 'D2. Rental'),
 
                 //D4. Relocation Package Option
                 'KK' => array('rpo_relocation_option', 'D4. What option'),
@@ -181,6 +182,10 @@ class Importer
                 'LJ' => array('rpo_desired_service_transport', 'Desired Service: Transporation'),
                 'LK' => array('rpo_desired_service_others', 'Desired Service: Others'),
 
+                'LL' => array('reloc_exp', 'D5. Previous Relocation Experience'),
+                'LM' => array('reloc_site', 'D5. Relocation Site'),
+                
+
                 //E. Crops and Trees
                 'LU' => array('trees_fb', 'E. Fruit Bearing'), //fruit bearing
                 'LV' => array('trees_nonfb', 'E. Non Fruit Bearing'), //timber / non-fb
@@ -192,7 +197,7 @@ class Importer
                 'MG' => array('sv_60above', 'F. Person > 60 yrs'),       // person > 60 yrs 
                 'MH' => array('sv_special_assist', 'F. Special Assistance'),// Special assistance
                 
-
+                'ND' => array('cibe_structure', 'H. Classification'),
                 //I. Socio-Economic Survey
                 'NM' => array('hh_members', 'Household Members'), // //Household members (Socio-economic Survey)
                 'NN' => array('hh_head', 'Household Head'), //Households Head (Track color) [322] tag
@@ -257,7 +262,7 @@ class Importer
                 
                 'QJ' => array('shi_total_transpo', 'I2. Total Transporation Expenses'), //total transportation expenses
                 'QN' => array('shi_total_hh_income', 'I2. Total Household Income'), //Total HH Income  
-
+                'QU' => array('he_rental_amort', 'I2. Rental/Amortization'),
                 //I3. Household Expenses
                 'RF' => array('he_total_expenses', 'I3. Total Monthly Expenses'), //monhtly expenses
 

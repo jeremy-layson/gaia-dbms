@@ -31,7 +31,7 @@ class Class_4_3
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
 
-        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter', 'wage_earner',  'sharer', 'micro', 'sml', 'employed');
+        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter',  'sharer', 'micro', 'sml', 'wage_earner');
         
         $this->definition = array(
             'owner_res' => 'Structure Owners (Residential)', 
@@ -40,12 +40,12 @@ class Class_4_3
             'land_owner' => 'Land Owners', 
             'tenant' => 'Tenant Farmers', 
             'renter' => 'Renters of Residential Structure', 
-            'wage_earner' => 'Wage Earners (Employees of CIBEs)', 
+            'wage_earner' => 'PAPs employed in displaced commercial/industrial establishments losing job due to closure of business', 
             'absentee' => 'Absentee Structure Owners',
             'sharer' => 'Sharer',
             'micro' => 'PAPs who own microbusinesses',
             'sml' => 'PAPs who own small medium and large establishments',
-            'employed' => 'PAPs employed',
+            // 'employed' => 'PAPs employed',
         );
         $append = [];
 
@@ -129,6 +129,14 @@ class Class_4_3
                 } else {
                     $reloc = 'RELOC';
                 }
+            }
+
+            //for CIBEs
+            if ($row['cibe_structure'] == 'Micro') {
+                $category = "micro";
+            }
+            if ($row['cibe_structure'] == 'Large' || $row['cibe_structure'] == 'Small') {
+                $category = "sml";
             }
 
             $row_category = $category;

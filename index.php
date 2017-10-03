@@ -76,9 +76,11 @@
                     <a href="/table/4_3_6.php" target="_blank" class="button primary full-width">Table 4.3-6 Reason for Establishing Residence in Present Place</a>
                 </div>
                 <div class="large-12 column">
-                    <a href="/table/4_3_6b.php" target="_blank" class="button primary full-width">Table 4.3-6 Reason for Establishing Residence in Present Place per LGU</a>
+                    <a href="/table/4_3_6b.php" target="_blank" class="button primary full-width">Table 4.3-6b Reason for Establishing Residence in Present Place per LGU</a>
                 </div>
-                
+                <div class="large-12 column">
+                    <a href="/table/4_3_6c.php" target="_blank" class="button primary full-width">Table 4.3-6c Reason for Establishing Residence in Present Place per LGU</a>
+                </div>
                 <div class="large-12 column">
                     <a href="/table/4_3_7.php" target="_blank" class="button primary full-width">Table 4.3-7 Employment Status and Source of Income</a>
                 </div>
@@ -271,6 +273,16 @@
                 </div>
                 <div class="large-12 column">
                     <a href="/table_manager/12_1_10_view.php" target="_blank" class="button primary full-width">Table 12.1-10 Summary of Affected Trees and Plants</a>
+                </div>
+
+                <div class="large-12 column">
+                    <a href="/table/new_1.php" target="_blank" class="button success full-width">Table ##. Access Block</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/new_2.php" target="_blank" class="button success full-width">Table ##. Relocation Experience</a>
+                </div>
+                <div class="large-12 column">
+                    <a href="/table/new_3.php" target="_blank" class="button success full-width">Table ##. ISF Rental Fees</a>
                 </div>
             </div>
 

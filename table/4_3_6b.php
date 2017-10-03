@@ -57,13 +57,10 @@
             <td rowspan="2" style="width:400px;">Reasons</td>
             
             <?php foreach ($class->municipalities as $key => $value) {
-                echo '<td colspan="2">' . $key . '</td>';
+                echo '<td>' . $key . '</td>';
             } ?>
             
             <td rowspan="2" colspan="2">Total</td>
-        </tr>
-        <tr>
-            <?php foreach ($class->municipalities as $key => $value) echo "<td>Number</td><td>%</td>"?>
         </tr>
     </thead>
     <tbody>
@@ -75,7 +72,7 @@
             'noans' => 'No Answer',
         );
         foreach ($data as $group => $values) {
-            $colspan = 1 + ((count($class->municipalities) + 1) * 2);
+            $colspan = 1 + ((count($class->municipalities) + 2));
             echo "<tr><td class='gray' colspan='$colspan' style='font-weight:bold;'>" . $definition[$group] ."</td></td>";
             foreach ($values as $cat => $val) {
             echo "<tr>";
@@ -91,7 +88,7 @@
                     }
                     
                     echo "<td><a target='_blank' href='/viewer.php?field=uid,type,use,hdi_reason_econ,hdi_reason_social,hdi_reason_other&id=$ids'>$count</a></td>";
-                    echo "<td>" . round((($count / $total) * 100), 1) . "%</td>";
+                    // echo "<td>" . round((($count / $total) * 100), 1) . "%</td>";
                 }
 
                 if (isset($val['Total'])) {
@@ -108,7 +105,7 @@
             }
         }
         echo "<tr style='font-weight:bold;'>";
-            echo "<td>Total</td>";
+            echo "<td rowspan='2'>Total</td>";
 
             $total = count($class->total['Total']);
             foreach ($class->municipalities as $key => $value) {
@@ -120,13 +117,25 @@
                     $count = count($class->total[$key]);
                 }
                 echo "<td><a target='_blank' href='/viewer.php?field=uid,type,use,hdi_reason_econ,hdi_reason_social,hdi_reason_other&id=$ids'>$count</a></td>";
-                echo "<td>" . round((($count / $total) * 100), 1) . "%</td>";
+                
             }
             $ids = implode(",", $class->total['Total']);
-            echo "<td><a target='_blank' href='/viewer.php?field=uid,type,use,hdi_reason_econ,hdi_reason_social,hdi_reason_other&id=$ids'>$total</a></td>";
-                echo "<td>" . round((($total / $total) * 100), 1) . "%</td>";
+            echo "<td><a target='_blank' href='/viewer.php?field=uid,type,use,hdi_reason_econ,hdi_reason_social,hdi_reason_other&id=$ids'>$total</a></td><td></td>";
+            
         echo "</tr>";
-
+        echo "<tr>";
+            foreach ($class->municipalities as $key => $value) {
+                if (isset($class->total[$key]) === FALSE) {
+                    $ids = "";
+                    $count = 0;
+                } else {
+                    $ids = implode(',', $class->total[$key]);
+                    $count = count($class->total[$key]);
+                }
+                echo "<td>" . round((($count / $total) * 100), 1) . "%</td>";
+            }
+            echo "<td>" . round((($total / $total) * 100), 1) . "%</td><td></td>";
+        echo "</tr>";
         ?>
     </tbody>
 </table>

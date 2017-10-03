@@ -177,3 +177,15 @@ DONE 4.3-10b Percentage per LGU
 DONE 4.3-10c Percentage per LGU
 
 DONE 4.2-3   Add all to others
+
+DONE Access Blocks - new_1.php
+    Rows = LGU
+    Columns = W/ Access | No Access | Total | JT
+
+DONE Relocation Experience - new_2.php
+    Rows = LGU
+    Columns = Reloc Site | LL, LM
+
+DONE ISF Rental Fees - new_3.php
+    QU > JP (he_rental_amort > dsa_rent_cost)
+    Rows = LGU
