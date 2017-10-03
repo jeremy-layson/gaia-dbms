@@ -284,6 +284,11 @@
                 <div class="large-12 column">
                     <a href="/table/new_3.php" target="_blank" class="button success full-width">Table ##. ISF Rental Fees</a>
                 </div>
+                <br>
+                <br>
+                <div class="large-3 column">
+                    <a href="/table_manager/transmittal.php" class="button success full-width">View Transmittal Record</a>
+                </div>
             </div>
 
             <?php if (isset($_SESSION['username']) === FALSE) { ?>
@@ -349,9 +354,6 @@
                     </div>
                     <div class="large-3 column">
                         <a href="/table_manager/logs.php" class="button success full-width">View Logs</a>
-                    </div>
-                    <div class="large-3 column">
-                        <a href="/table_manager/transmittal.php" class="button success full-width">View Transmittal Record</a>
                     </div>
                     <div class="large-3 column">
                         <a href="/pull.php" class="button success full-width">Pull</a>
