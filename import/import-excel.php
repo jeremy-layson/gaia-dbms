@@ -26,13 +26,15 @@
     <input style="width: 500px;" type="text" id="filename" placeholder="File name of excel file (without extension)"><br>
     <input style="width: 500px;" type="text" id="maxrow" placeholder="Last row with data" value="831"><br>
     <input style="width: 500px;" type="text" id="function" placeholder="Leave blank for import" value=""><br>
+    <input style="width: 500px;" type="text" id="table" placeholder="Table Name" value="survey"><br>
+    
     
     <button id="import">Begin Import</button>
 
     <script type="text/javascript">
         $(document).ready(function(){
             $('#import').on('click', function(){
-                window.open('/import/importer.php?max_row=' + $('#maxrow').val() + '&filename=' + $('#filename').val() + '&function=' + $('#function').val(), '_blank');
+                window.open('/import/importer.php?max_row=' + $('#maxrow').val() + '&filename=' + $('#filename').val() + '&function=' + $('#function').val() + "&table=" + $("#table").val(), '_blank');
             });
         });
     </script>

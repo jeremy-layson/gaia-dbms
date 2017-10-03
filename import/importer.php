@@ -74,6 +74,23 @@ class Importer
             );
         }
 
+        if ($col == 'transmittal') {
+            $this->columns = array(
+                'A' => array('id', 'ID'),
+                'B' => array('date', 'Date'),
+                'C' => array('delivered', 'Delivered To'),
+                'D' => array('careof', 'C/O'),
+                'E' => array('contents', 'Contents'),
+                'F' => array('project', 'Project Name'),
+                'G' => array('consultant', 'Consultant Name'),
+                'H' => array('msgr', 'Messenger Name'),
+                'I' => array('address', 'Address'),
+                'J' => array('contact', 'Contact Person(s)'),
+                'K' => array('casehandler', 'Case Handler'),
+                
+            );
+        }
+
         if ($col == 'survey') {
             $this->columns = array(
                 'A' => array('type', 'Type'), // filter ISF or Legal
@@ -326,8 +343,8 @@ class Importer
     public function createTableSurvey()
     {
         $columns = $this->columns;
-
-        $query = "CREATE TABLE `survey` (`uid` int(8) NOT NULL COMMENT '0|ID|text' PRIMARY KEY AUTO_INCREMENT";
+        $tbl = $this->tbl;
+        $query = "CREATE TABLE `$tbl` (`uid` int(8) NOT NULL COMMENT '0|ID|text' PRIMARY KEY AUTO_INCREMENT";
 
         foreach ($columns as $key => $value) {
             $query = $query . "," . "`" . $value[0] . "` text COMMENT '1|" . $value[1] . "|text'";
@@ -335,7 +352,7 @@ class Importer
 
         $query = $query . ", `is_deleted` int(11) NOT NULL DEFAULT '0' COMMENT '0|Deleted|text');";
 
-        $this->db->query("DROP TABLE survey");       
+        $this->db->query("DROP TABLE $tbl");       
 
         if (!($stmt = $this->db->prepare($query))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
@@ -349,8 +366,8 @@ class Importer
         }
 
 
-        $this->db->query("ALTER TABLE `survey` ADD PRIMARY KEY (`uid`);");
-        $this->db->query("ALTER TABLE `survey` MODIFY `uid` int(8) NOT NULL AUTO_INCREMENT COMMENT '0|ID|text', AUTO_INCREMENT=10000;COMMIT;");
+        $this->db->query("ALTER TABLE `$tbl` ADD PRIMARY KEY (`uid`);");
+        $this->db->query("ALTER TABLE `$tbl` MODIFY `uid` int(8) NOT NULL AUTO_INCREMENT COMMENT '0|ID|text', AUTO_INCREMENT=10000;COMMIT;");
     }
 
     public function createTableHHNames()
@@ -395,8 +412,12 @@ class Importer
                 if ($worksheetTitle == 'SurveyDATA') {
                     break;
                 }
-            } else {
+            } elseif ($this->tbl == 'hh_names') {
                 if ($worksheetTitle == 'HH.names') {
+                    break;
+                }
+            } elseif ($this->tbl == 'transmittal') {
+                if ($worksheetTitle == 'Transmittal_Record') {
                     break;
                 }
             }
@@ -414,9 +435,9 @@ class Importer
         $verification = [];
 
         $start = 5;
-        if ($this->db == "hh_names") $start = 2;
+        if ($this->tbl == "hh_names" || $this->tbl == "transmittal") $start = 2;
 
-        for ($i=5; $i <= $highestRow; $i++) {
+        for ($i=$start; $i <= $highestRow; $i++) {
             if ($worksheet->getRowDimension($i)->getVisible() || $showHidden ) {
                 //get data
                 $row = [];
@@ -427,7 +448,7 @@ class Importer
                     $color = $worksheet->getStyle($key . $i)->getFill()->getStartColor()->getRGB();
 
                     //get only isf or legal
-                    if ($key == 'A') {
+                    if ($key == 'A' && $this->db == "survey") {
                         if (strpos(strtoupper($cellValue), 'ISF') !== false) {
                             $data = 'ISF';
                         } else {
@@ -501,7 +522,6 @@ class Importer
                 }
                 $all[] = $row;
 
-                $verification[] = $row['asset_num'];
 
                 $fields = '';
                 $values = '';
@@ -518,13 +538,16 @@ class Importer
                     if (!($stmt = $this->db->prepare("INSERT INTO survey (`uid` $fields) VALUES(NULL $values)"))) {
                         echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
                     }
-                } else {
+                } elseif ($this->tbl == 'hh_names') {
                     if (!($stmt = $this->db->prepare("INSERT INTO hh_names (`uid` $fields) VALUES(NULL $values)"))) {
+                        echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
+                    }
+                } elseif ($this->tbl == 'transmittal') {
+                    if (!($stmt = $this->db->prepare("INSERT INTO transmittal (`uid` $fields) VALUES(NULL $values)"))) {
                         echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
                     }
                 }
                 
-
                 $stmt->bind_param($stringdef, ...$vals);
 
                 if (!$stmt->execute()) {
@@ -592,6 +615,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
 } else {
     $maxRow = 729;
     $filename = '../data.xlsx';
+    $table = "survey";
 
     if (isset($_GET['max_row']) === true) {
         $maxRow = $_GET['max_row'];
@@ -601,7 +625,11 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
         $filename = '../import/' . $_GET['filename'] . '.xlsx';
     }
 
-    $import = new Importer($filename, 'survey');
+    if (isset($_GET['table']) === true) {
+        $table = $_GET['table'];
+    }
+
+    $import = new Importer($filename, $table);
     $import->createTableSurvey();
     $import->importData($maxRow);
 

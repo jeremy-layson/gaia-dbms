@@ -1,26 +1,6 @@
-<?php 
-    $input = $_POST['text'];
-    $input = explode(",", $input);
-
-	$final = [];
-	foreach ($input as $value) {
-		$final[$value] = $value;
-	}
-
-	echo "Total: " . count($final) . "<br><br><br>";
-	echo implode(",", $final);
-?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<form action="" method="POST">
-    <textarea name="text"></textarea>
-    <input type="submit" name="">
-</form>
-</body>
-</html>
+<?php
+$dbName = $_SERVER["DOCUMENT_ROOT"] . "\data.accdb";
+if (!file_exists($dbName)) {
+    die("Could not find database file.");
+}
+$db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");

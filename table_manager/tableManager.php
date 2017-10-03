@@ -30,7 +30,8 @@ class tableManager
             'user'          => 'users.php',
             'logs'          => 'logs.php',
             'hh_names'      => 'hh_names.php',
-            'test'          => 'test.php'
+            'test'          => 'test.php',
+            'transmittal'   => 'transmittal.php',
         );
 
         $this->page_names = array(
@@ -41,7 +42,8 @@ class tableManager
             'user'          => 'User Management',
             'logs'          => 'Logs Viewer',
             'hh_names'      => 'Household Names',
-            'test'          => 'Test'
+            'test'          => 'Test',
+            'transmittal'   => 'Transmittal Record',
         );
 
         require('../sql.php');
