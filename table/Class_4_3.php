@@ -31,7 +31,7 @@ class Class_4_3
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
 
-        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'tenant', 'renter',  'sharer', 'micro', 'sml', 'wage_earner');
+        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'renter',  'sharer', 'micro', 'sml', 'wage_earner');
         
         $this->definition = array(
             'owner_res' => 'Structure Owners (Residential)', 

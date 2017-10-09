@@ -31,7 +31,7 @@ class Class_4_4
         $columns = $this->getMunicipality();
         unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'absentee', 'workers', 'insti', 'sharer', 'micro', 'sml', 'employed', 'total');
+        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'workers', 'insti', 'sharer', 'micro', 'sml', 'employed', 'total');
 
         $append = [];
 
@@ -55,7 +55,7 @@ class Class_4_4
 
                 $category = '';
                 if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
-                    $category = 'absentee';
+                    // $category = 'absentee';
                 }           
 
 
@@ -103,6 +103,14 @@ class Class_4_4
                     } else {
                         $displacement = 'move';
                     }
+                }
+
+                //for CIBEs
+                if ($row['cibe_structure'] == 'Micro') {
+                    $category = "micro";
+                }
+                if ($row['cibe_structure'] == 'Large' || $row['cibe_structure'] == 'Small') {
+                    $category = "sml";
                 }
 
 

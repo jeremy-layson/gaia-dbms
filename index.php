@@ -42,6 +42,9 @@
                     <a href="/table/4_2b.php" target="_blank" class="button success full-width">Table 4.2b Number of PAFs and PAPs by LGUs</a>
                 </div>
                 <div class="large-12 column">
+                    <a href="/table/4_2c.php" target="_blank" class="button success full-width">Table 4.2c Number of PAFs and PAPs by LGUs (Valenzuela Depot)</a>
+                </div>
+                <div class="large-12 column">
                     <a href="/table/4_2_2.php" target="_blank" class="button primary full-width">Table 4.2-2 Number of Affected Structures</a>
                 </div>
                 <div class="large-12 column">

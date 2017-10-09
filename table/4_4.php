@@ -48,7 +48,6 @@
             <td colspan="3">Structure Owners (Mixed Use)</td>
             <td colspan="3">Structure Owners (CIBEs)</td>
             <td colspan="3">Renters (Residential)</td>
-            <td colspan="3">Absentee Structure Owner</td>
             <td colspan="3">Workers (Employees of CIBEs)</td>
             <td colspan="3">Institutional Occupant</td>
             <td colspan="3">Sharer</td>
@@ -58,9 +57,6 @@
             <td colspan="3">Total</td>
         </tr>
         <tr>
-            <td>To be relocated</td>
-            <td>Not to be relocated</td>
-            <td>Total</td>
             <td>To be relocated</td>
             <td>Not to be relocated</td>
             <td>Total</td>

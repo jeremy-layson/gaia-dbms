@@ -30,7 +30,7 @@ class Class_4_1_3
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'absentee', 'land_owner', 'tenant', 'insti_occ', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'land_owner', 'tenant', 'insti_occ', 'total');
 
         $append = [];
 
@@ -58,7 +58,7 @@ class Class_4_1_3
 
                     $category = '';
                     if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
-                        $category = 'absentee';
+                        // $category = 'absentee';
                     }
 
                     $displacement = 'none';

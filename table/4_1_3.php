@@ -48,15 +48,12 @@
             <td colspan="2">Structure Owners (CIBEs)</td>
             <td colspan="2">Structure Owners (Institutional)</td>
             <td colspan="2">Renters (Residential)</td>
-            <td colspan="2">Absentee Structure Owner</td>
             <td colspan="2">Land Owners</td>
-            <td colspan="2">Commercial Stall Tenants</td>
+            <td colspan="2">Commercial Tenants</td>
             <td colspan="2">Institutional Occupant</td>
             <td colspan="2">Total</td>
         </tr>
         <tr>
-            <td>Stay</td>
-            <td>Move</td>
             <td>Stay</td>
             <td>Move</td>
             <td>Stay</td>

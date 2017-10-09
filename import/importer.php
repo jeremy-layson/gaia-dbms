@@ -448,7 +448,7 @@ class Importer
                     $color = $worksheet->getStyle($key . $i)->getFill()->getStartColor()->getRGB();
 
                     //get only isf or legal
-                    if ($key == 'A' && $this->db == "survey") {
+                    if ($key == 'A' && $this->tbl == "survey") {
                         if (strpos(strtoupper($cellValue), 'ISF') !== false) {
                             $data = 'ISF';
                         } else {
