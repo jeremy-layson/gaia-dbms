@@ -70,7 +70,7 @@ class Importer
                 'M' => array('education', 'Educational Attainment'),
                 
                 'O' => array('hh_job', 'Specific Jobs'),
-                  
+                'R' => array('hh_position', 'Position in Household'),
             );
         }
 
@@ -213,7 +213,9 @@ class Importer
                 'MF' => array('sv_hh_woman', 'F. Female household head'),      // HH Head is woman
                 'MG' => array('sv_60above', 'F. Person > 60 yrs'),       // person > 60 yrs 
                 'MH' => array('sv_special_assist', 'F. Special Assistance'),// Special assistance
-                
+
+                'MT' => array('specific_business', 'H. Specific Business'),
+
                 'ND' => array('cibe_structure', 'H. Classification'),
                 //I. Socio-Economic Survey
                 'NM' => array('hh_members', 'Household Members'), // //Household members (Socio-economic Survey)
@@ -468,15 +470,15 @@ class Importer
                     if ($value[0] == 'baranggay') $data = str_replace('Barangay', 'Baranggay', $data);
 					
 					
-					if ($value[0] == 'structure_use' && ($data == '')) $value[0] = str_replace("-", " ", $value[0]);
+					if ($value[0] == 'structure_use') $data = str_replace("-", " ", $data);
 					
                     //Valenzuela Depot
-                    if (($value[0] == 'address') && 
-                        (strpos($data, 'Valenzuela') != FALSE) &&
-                        (strpos($data, 'Malanday') != FALSE) && 
-                        (strpos($data, '(Depot)') == FALSE)) {
-                        $data = str_replace('Valenzuela', 'Valenzuela (Depot)', $data);
-                    }
+                    // if (($value[0] == 'address') && 
+                    //     (strpos($data, 'Valenzuela') != FALSE) &&
+                    //     (strpos($data, 'Malanday') != FALSE) && 
+                    //     (strpos($data, '(Depot)') == FALSE)) {
+                    //     $data = str_replace('Valenzuela', 'Valenzuela (Depot)', $data);
+                    // }
 
                     if ($value[0] == 'hdi_length_stay') {
                         $data = str_replace('rys', 'years', $data);
@@ -519,7 +521,10 @@ class Importer
 
                     //HH Head color conditional
                     if ($value[0] == 'hh_head' && $color == 'FFC1E0') $data = $data . ' [322]';
+                    if ($value[0] == 'extent') $data = str_replace("Less", "<", $data);
 
+                    //specific_business
+                    if ($value[0] == 'specific_business' && $color == 'FFFF00') $data = $data . ' WITHLOSS';
 
                     $row[$value[0]] = $data;
                 }
@@ -616,7 +621,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $import = new Importer($filename, 'survey');
     $import->$func();
 } else {
-    $maxRow = 775;
+    $maxRow = 792;
     $filename = '../data.xlsx';
     $table = "survey";
 
@@ -636,7 +641,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $import->createTableSurvey();
     $import->importData($maxRow);
 
-    // $maxRow = 2299;
+    // $maxRow = 2628;
     // $import = new Importer($filename, 'hh_names');
     // $import->createTableHHNames();
     // $import->importData($maxRow);
