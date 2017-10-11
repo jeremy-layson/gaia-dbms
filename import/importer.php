@@ -613,7 +613,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $import = new Importer($filename, 'survey');
     $import->$func();
 } else {
-    $maxRow = 729;
+    $maxRow = 775;
     $filename = '../data.xlsx';
     $table = "survey";
 
