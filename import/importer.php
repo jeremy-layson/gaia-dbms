@@ -466,7 +466,10 @@ class Importer
                     if ($value[0] == 'trees_nonfb' && ($data == '')) $data = '0';
                     if ($value[0] == 'trees_cash' && ($data == '')) $data = '0';
                     if ($value[0] == 'baranggay') $data = str_replace('Barangay', 'Baranggay', $data);
-
+					
+					
+					if ($value[0] == 'structure_use' && ($data == '')) $value[0] = str_replace("-", " ", $value[0]);
+					
                     //Valenzuela Depot
                     if (($value[0] == 'address') && 
                         (strpos($data, 'Valenzuela') != FALSE) &&

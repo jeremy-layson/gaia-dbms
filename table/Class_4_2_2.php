@@ -53,7 +53,7 @@ class Class_4_2_2
                 $wildcard = $this->getWildcard($col[1]);
                 $result = $this->db->query("SELECT uid,`structure_use` as `use`,extent FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%' AND NOT `address` LIKE '%(Depot)%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
-                        
+                    $row['use'] = str_replace("-", " ", $row['use']);
                     if ($row['use'] == 'Residential' || $row['use'] == 'Commercial' || $row['use'] == 'Industrial' || $row['use'] == 'Institutional' || $row['use'] == 'Mixed use' || $row['use'] == 'Mixed Use') {
                         unset($this->unclaimed[$row['uid']]);
                         $data[$mun][$col[0]][strtoupper($row['use'])]['COUNT']++;
