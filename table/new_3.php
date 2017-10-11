@@ -42,7 +42,7 @@
     <h3>Table ##. ISF Rental Fees (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
+            <td>City/Municipality</td>
             <td>< 1000</td>
             <td>1,000 - 1,999</td>
             <td>2,000 - 2,999</td>
@@ -95,11 +95,11 @@
 </table>
 
 <table border="1">
-    <h3>Table ##. ISF Rental Fees (Baranggay Level)</h3>
+    <h3>Table ##. ISF Rental Fees (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>< 1000</td>
             <td>1,000 - 1,999</td>
             <td>2,000 - 2,999</td>

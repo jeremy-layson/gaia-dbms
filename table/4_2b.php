@@ -42,7 +42,7 @@
     <h3>Table 4.2b Number of PAFs and PAPs by LGUs</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="3">Legal PAFs/PAPs</td>
             <td colspan="3">ISFs</td>
             <td colspan="4">Total</td>

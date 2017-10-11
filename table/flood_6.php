@@ -83,11 +83,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 6. Location of flooding (Baranggay Level)</h3>
+    <h3>Table 6. Location of flooding (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>Along the street/road</td>
             <td>Front of the house</td>
             <td>Inside the house</td>

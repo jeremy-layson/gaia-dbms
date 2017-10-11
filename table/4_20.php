@@ -42,7 +42,7 @@
     <h3>Table 4.20 - Number of Affected Improvements by Type of Use</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Type of Improvement</td>
             <td>Residential</td>
             <td>Commercial</td>

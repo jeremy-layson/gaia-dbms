@@ -42,7 +42,7 @@
     <h3>Table 4.4-3 Vulnerable Groups (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Poor</td>
             <td>Elderly</td>
             <td>Women-headed Household</td>
@@ -85,11 +85,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.4-3 Vulnerable Groups (Baranggay Level)</h3>
+    <h3>Table 4.4-3 Vulnerable Groups (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Poor</td>
             <td>Elderly</td>
             <td>Women-headed Household</td>

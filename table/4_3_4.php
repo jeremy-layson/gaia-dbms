@@ -42,7 +42,7 @@
     <h3>Table 4.3-4 Education Attainment of Household Members (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td rowspan="2">No Schooling</td>
             <td rowspan="2">Pre-Elementary</td>
             <td colspan="2">Elementary</td>
@@ -108,11 +108,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-4 Education Attainment of Household Members (Baranggay Level)</h3>
+    <h3>Table 4.3-4 Education Attainment of Household Members (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td rowspan="2">No Schooling</td>
             <td rowspan="2">Pre-Elementary</td>
             <td colspan="2">Elementary</td>

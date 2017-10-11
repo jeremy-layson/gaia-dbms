@@ -42,7 +42,7 @@
 <table border="1">
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Residential</td>
             <td>Commercial</td>
             <td>Industrial</td>

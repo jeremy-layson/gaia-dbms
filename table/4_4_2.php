@@ -42,7 +42,7 @@
     <h3>Table 4.4-2 Persons Who Need Special Assistance (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Physical &amp; Mental Disabilities</td>
             <td>Need Assistance to Walk</td>
             <td>Need Special Medicare</td>
@@ -89,11 +89,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.4-2 Persons Who Need Special Assistance (Baranggay Level)</h3>
+    <h3>Table 4.4-2 Persons Who Need Special Assistance (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Physical &amp; Mental Disabilities</td>
             <td>Need Assistance to Walk</td>
             <td>Need Special Medicare</td>

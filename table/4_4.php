@@ -42,7 +42,7 @@
     <h3>Table 4.4 Number of Legal PAFs per LGU by Type of Loss </h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="3">Land Owners</td>
             <td colspan="3">Structure Owners (Residential)</td>
             <td colspan="3">Structure Owners (Mixed Use)</td>

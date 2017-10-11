@@ -37,7 +37,7 @@
 <table border="1">
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Residential</td>
             <td>Commercial</td>
             <td>Industrial</td>
@@ -117,8 +117,8 @@
 <table border="1">
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Residential</td>
             <td>Commercial</td>
             <td>Industrial</td>

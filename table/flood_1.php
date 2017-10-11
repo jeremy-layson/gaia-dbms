@@ -82,11 +82,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 1. Flooding Experience (Baranggay Level)</h3>
+    <h3>Table 1. Flooding Experience (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>Yes</td>
             <td>No</td>
             <td>No Answer</td>

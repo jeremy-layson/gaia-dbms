@@ -42,8 +42,8 @@
 <table border="1">
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Affected Baranggays</td>
+            <td>City/Municipality</td>
+            <td>Affected Barangays</td>
             <td width="150px">Trees (Fruit Bearing)</td>
             <td width="150px">Trees (Timber, Non-Fruit Bearing)</td>
             <td width="150px">Plants / Cash Trees</td>

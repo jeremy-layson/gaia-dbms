@@ -106,7 +106,7 @@ class Class_4_3_19
         $wc = explode(',', $wildcard);
         foreach ($wc as $card) {
             // if (is_numeric(trim($card)) === TRUE) {
-            //     $card = 'Baranggay ' . trim($card);
+            //     $card = 'Barangay ' . trim($card);
             // }
             $ret = $ret . " baranggay = '" . trim($card) . "' OR";
         }

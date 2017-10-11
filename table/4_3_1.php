@@ -42,7 +42,7 @@
     <h3>Table 4.3-1 Affected population by Gender (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Male</td>
             <td>Female</td>
             <td>Total</td>
@@ -80,11 +80,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-1 Affected population by Gender (Baranggay Level)</h3>
+    <h3>Table 4.3-1 Affected population by Gender (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Male</td>
             <td>Female</td>
             <td>Total</td>

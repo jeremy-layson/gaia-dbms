@@ -42,7 +42,7 @@
     <h3>Table 4.3-2B Structure of Household (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Single-headed Household</td>
             <td>Widowed-head</td>
             <td>Separated-head</td>
@@ -99,11 +99,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-2B Structure of Household (Baranggay Level)</h3>
+    <h3>Table 4.3-2B Structure of Household (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Single-headed Household</td>
             <td>Widowed-head</td>
             <td>Separated-head</td>

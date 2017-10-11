@@ -42,7 +42,7 @@
     <h3>Table 4.5-4 Preference for Relocation Package or Cash Compensation (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="2">Relocation Package</td>
             <td colspan="2">Cash Compensation</td>
             <td colspan="2">No Answer</td>
@@ -90,11 +90,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.5-4 Preference for Relocation Package or Cash Compensation (Baranggay Level)</h3>
+    <h3>Table 4.5-4 Preference for Relocation Package or Cash Compensation (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="2">Relocation Package</td>
             <td colspan="2">Cash Compensation</td>
             <td colspan="2">No Answer</td>

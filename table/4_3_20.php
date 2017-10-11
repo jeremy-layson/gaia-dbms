@@ -42,7 +42,7 @@
     <h3>Table 4.3-20 Source of Fuel for Cooking (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Electricity</td>
             <td>Wood</td>
             <td>Kerosene (gas)</td>
@@ -85,11 +85,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-20 Source of Fuel for Cooking (Baranggay Level)</h3>
+    <h3>Table 4.3-20 Source of Fuel for Cooking (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Electricity</td>
             <td>Wood</td>
             <td>Kerosene (gas)</td>

@@ -42,7 +42,7 @@
 <table border="1">
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <?php 
                 foreach ($class->tbl_cols as $col) {
                     echo "<td>" . $class->definition[$col] . "</td>";

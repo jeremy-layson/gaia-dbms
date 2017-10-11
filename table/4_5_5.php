@@ -42,7 +42,7 @@
     <h3>Table 4.5-5 Preference for Possible Relocation Site (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="2">Within City</td>
             <td colspan="2">Bulacan</td>
             <td colspan="2">Cavite</td>
@@ -93,11 +93,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.5-5 Preference for Possible Relocation Site (Baranggay Level)</h3>
+    <h3>Table 4.5-5 Preference for Possible Relocation Site (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="2">Within City</td>
             <td colspan="2">Bulacan</td>
             <td colspan="2">Cavite</td>

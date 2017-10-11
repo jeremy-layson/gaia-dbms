@@ -44,7 +44,7 @@
 <body>
     <a href="/">Back</a>
 
-    <h3>Table 4.1-1 Affected Cities and Municipalities and Corresponding Baranggays by NSCR Project</h3>
+    <h3>Table 4.1-1 Affected Cities and Municipalities and Corresponding Barangays by NSCR Project</h3>
     <table border="1">
         <tr><td colspan="<?=count($data)+1?>" id="header">Cities and Municipalities</td></tr>
         <tr>

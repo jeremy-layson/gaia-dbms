@@ -42,12 +42,12 @@
     <h3>Table 4.12 Proof of Ownership Presented by Legal Landowners per LGU</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td rowspan="2">Title</td>
             <td rowspan="2">Real Estate Tax</td>
             <td rowspan="2">Deed/Mortgage</td>
             <td rowspan="2">Land Plan</td>
-            <td rowspan="2">Baranggay Residency Certificate</td>
+            <td rowspan="2">Barangay Residency Certificate</td>
             <td rowspan="2">Land Rights</td>
             <td rowspan="2">Lease Contact</td>
             <td rowspan="2">Certificate of Lot Award</td>

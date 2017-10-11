@@ -86,11 +86,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 8. Duration of Flood (Baranggay Level)</h3>
+    <h3>Table 8. Duration of Flood (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>&lt;6-hrs</td>
             <td>6-hrs - &lt;12-hrs</td>
             <td>12-hrs - &lt;24-hrs</td>

@@ -84,11 +84,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4. How many times a year (Baranggay Level)</h3>
+    <h3>Table 4. How many times a year (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>Once</td>
             <td>Twice</td>
             <td>Thrice</td>

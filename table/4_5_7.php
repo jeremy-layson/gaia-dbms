@@ -42,7 +42,7 @@
     <h3>Table 4.5-7 Most Desired Services and Facilities in Relocation Site (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Health Center</td>
             <td>Private Clinic</td>
             <td>Public Hospital</td>
@@ -50,7 +50,7 @@
             <td>Livelihood Center</td>
             <td>Market</td>
             <td>School</td>
-            <td>Baranggay Hall</td>
+            <td>Barangay Hall</td>
             <td>Transporation</td>
             <td>Others</td>
             <td>Total</td>
@@ -90,11 +90,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.5-7 Most Desired Services and Facilities in Relocation Site (Baranggay Level)</h3>
+    <h3>Table 4.5-7 Most Desired Services and Facilities in Relocation Site (Barangay Level)</h3>
     <thead>
         <tr>
-            <td width='200px'>Municipalities and Cities</td>
-            <td width="200px">Baranggay</td>
+            <td width='200px'>City/Municipality</td>
+            <td width="200px">Barangay</td>
             <td>Health Center</td>
             <td>Private Clinic</td>
             <td>Public Hospital</td>
@@ -102,7 +102,7 @@
             <td>Livelihood Center</td>
             <td>Market</td>
             <td>School</td>
-            <td>Baranggay Hall</td>
+            <td>Barangay Hall</td>
             <td>Transporation</td>
             <td>Others</td>
             <td>Total</td>

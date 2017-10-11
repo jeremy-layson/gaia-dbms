@@ -42,7 +42,7 @@
     <h3>Table 4.5-6 Factors Considered in Choosing Relocation Sites (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Proximity to current area of residence</td>
             <td>Proximity to current Job/Source of income</td>
             <td>Access and Proximity to basic social services</td>
@@ -87,11 +87,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.5-6 Factors Considered in Choosing Relocation Sites (Baranggay Level)</h3>
+    <h3>Table 4.5-6 Factors Considered in Choosing Relocation Sites (Barangay Level)</h3>
     <thead>
         <tr>
-            <td width='200px'>Municipalities and Cities</td>
-            <td width="200px">Baranggay</td>
+            <td width='200px'>City/Municipality</td>
+            <td width="200px">Barangay</td>
             <td>Proximity to current area of residence</td>
             <td>Proximity to current Job/Source of income</td>
             <td>Access and Proximity to basic social services</td>

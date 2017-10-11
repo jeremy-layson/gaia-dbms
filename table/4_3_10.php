@@ -42,7 +42,7 @@
     <h3>Table 4.3-10 Monthly Expenditure of Household (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td><3,000</td>
             <td>3,000-5,000</td>
             <td>5,001-10,000</td>
@@ -96,11 +96,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-10 Monthly Expenditure of Household (Baranggay Level)</h3>
+    <h3>Table 4.3-10 Monthly Expenditure of Household (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td><3,000</td>
             <td>3,000-5,000</td>
             <td>5,001-10,000</td>

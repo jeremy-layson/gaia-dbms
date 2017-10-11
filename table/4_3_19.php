@@ -42,7 +42,7 @@
     <h3>Table 4.3-19 Source of Lighting (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Owned Electric Meter</td>
             <td>Sharing (Neighborhood)</td>
             <td>Gaas/Kerosene</td>
@@ -85,11 +85,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-19 Source of Lighting (Baranggay Level)</h3>
+    <h3>Table 4.3-19 Source of Lighting (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Owned Electric Meter</td>
             <td>Sharing (Neighborhood)</td>
             <td>Gaas/Kerosene</td>

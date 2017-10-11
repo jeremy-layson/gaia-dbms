@@ -42,8 +42,8 @@
     <h3>Table 4.2-3 Affected Improvements</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Affected Baranggays</td>
+            <td>City/Municipality</td>
+            <td>Affected Barangays</td>
             <td>Type of Improvement</td>
             <td>Residential</td>
             <td>Institutional</td>

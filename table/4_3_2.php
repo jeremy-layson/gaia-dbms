@@ -42,7 +42,7 @@
     <h3>Table 4.3-2 Size of Household (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="4">Range of Household Member</td>
             <td rowspan="2">Total</td>
         </tr>
@@ -93,11 +93,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-2 Size of Household (Baranggay Level)</h3>
+    <h3>Table 4.3-2 Size of Household (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="4">Range of Household Member</td>
             <td rowspan="2">Total</td>
         </tr>

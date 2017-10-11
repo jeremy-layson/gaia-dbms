@@ -42,8 +42,8 @@
     <h3>Table 4.1-4 ISFs by LGUs</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Affected Baranggays</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Affected Barangays</td>
             <td colspan="2">Structure Owners (Residential)</td>
             <td colspan="2">Structure Owners (CIBEs)</td>
             <td colspan="2">Renters (Residential)</td>

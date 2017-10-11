@@ -42,7 +42,7 @@
     <h3>Table 4.18 Occupancy Arrangement</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td rowspan="2">Structure Owner</td>
             <td rowspan="2">Tenant/Lessee/Renter</td>
             <td rowspan="2">Rent Free Occupant</td>

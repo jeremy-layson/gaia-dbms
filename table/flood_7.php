@@ -86,11 +86,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 7. Damage Cost (Baranggay Level)</h3>
+    <h3>Table 7. Damage Cost (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>&lt;100</td>
             <td>100-1,000</td>
             <td>1,001-10,000</td>

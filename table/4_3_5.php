@@ -42,7 +42,7 @@
     <h3>Table 4.3-5 Length of Stay in Present Place (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>< 1 Year</td>
             <td>>1 year, < 10 Years</td>
             <td>> 10 Years</td>
@@ -106,11 +106,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-5 Length of Stay in Present Place (Baranggay Level)</h3>
+    <h3>Table 4.3-5 Length of Stay in Present Place (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>< 1 Year</td>
             <td>>1 year, < 10 Years</td>
             <td>> 10 Years</td>

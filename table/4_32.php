@@ -42,7 +42,7 @@
     <h3>Table 4.32 Ethnicity of Household Heads</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Tagalog</td>
             <td>Waray</td>
             <td>Ilonggo</td>

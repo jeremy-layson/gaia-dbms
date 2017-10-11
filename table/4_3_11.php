@@ -42,7 +42,7 @@
     <h3>Table 4.3-11 Place of Employment of Male Household Head (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="2">Within same baranggay</td>
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>
@@ -99,11 +99,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-11 Place of Employment of Male Household Head (Baranggay Level)</h3>
+    <h3>Table 4.3-11 Place of Employment of Male Household Head (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="2">Within same baranggay</td>
             <td colspan="2">Within same municipality or city</td>
             <td colspan="2">Within same province</td>

@@ -42,7 +42,7 @@
     <h3>Table 4.7 Number of ISFs at Valenzuela Depot by Type of Loss</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="2">Structure Owners (Residential)</td>
             <!-- <td colspan="2">Structure Owners (CIBEs)</td> -->
             <td colspan="2">Sharer</td>

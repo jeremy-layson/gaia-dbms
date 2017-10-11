@@ -42,7 +42,7 @@
     <h3>Table 4.11 Proof of Ownership for Legal Land Owners per LGU</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td rowspan="2">Yes</td>
             <td rowspan="2">No</td>
             <td rowspan="2">No Answer</td>

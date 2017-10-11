@@ -41,10 +41,10 @@
     <h3>Table ##. Relocation Experience (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
+            <td>City/Municipality</td>
             <td>Bagumbong, Caloocan City</td>
             <td>Langkiwa, Laguna</td>
-            <td>Malis, Baranggay Tabang Bulacan</td>
+            <td>Malis, Barangay Tabang Bulacan</td>
             <td>NorthVille 2B</td>
             <td>Northville VIII, Bancal Matimbo Malolos</td>
             <td>PNR (NHA)</td>
@@ -93,14 +93,14 @@
 </table>
 
 <table border="1">
-    <h3>Table ##. Relocation Experience (Baranggay Level)</h3>
+    <h3>Table ##. Relocation Experience (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Bagumbong, Caloocan City</td>
             <td>Langkiwa, Laguna</td>
-            <td>Malis, Baranggay Tabang Bulacan</td>
+            <td>Malis, Barangay Tabang Bulacan</td>
             <td>NorthVille 2B</td>
             <td>Northville VIII, Bancal Matimbo Malolos</td>
             <td>PNR (NHA)</td>

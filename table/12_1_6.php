@@ -42,7 +42,7 @@
     <h3>Table 12.1-6 Estimated Cost of ISF Structures based on RCS</h3>
     <thead>
         <tr>
-            <td rowspan="3">Municipalities and Cities</td>
+            <td rowspan="3">City/Municipality</td>
             <td colspan="12">Marginally Affected</td>
             <td colspan="12">Severely Affected</td>
             <td rowspan="3">Total Cost</td>

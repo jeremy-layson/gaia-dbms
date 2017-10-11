@@ -90,11 +90,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 3. Name of Typhoon (Baranggay Level)</h3>
+    <h3>Table 3. Name of Typhoon (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>Ondoy</td>
             <td>Yolanda</td>
             <td>Juaning</td>

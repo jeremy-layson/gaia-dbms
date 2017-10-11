@@ -42,7 +42,7 @@
     <h3>Table 4.3-23 Household Assets (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Tricycle</td>
             <td>Motorcycle</td>
             <td>Computer</td>
@@ -99,11 +99,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-23 Household Assets (Baranggay Level)</h3>
+    <h3>Table 4.3-23 Household Assets (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Tricycle</td>
             <td>Motorcycle</td>
             <td>Computer</td>

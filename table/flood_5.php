@@ -89,11 +89,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 5. Maximum height of flooding (Baranggay Level)</h3>
+    <h3>Table 5. Maximum height of flooding (Barangay Level)</h3>
     <thead>
         <tr>
             <td rowspan="2">Cities/Municipalities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="6">Range (in meters)</td>
             <td rowspan="2">No Idea</td>
             <td rowspan="2">Total</td>

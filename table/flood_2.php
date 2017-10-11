@@ -91,11 +91,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 2. Highest Flooding Experienced for the last 5 Years (Baranggay Level)</h3>
+    <h3>Table 2. Highest Flooding Experienced for the last 5 Years (Barangay Level)</h3>
     <thead>
         <tr>
             <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>Barangay</td>
             <td>Yearly</td>
             <td>2008</td>
             <td>2009</td>

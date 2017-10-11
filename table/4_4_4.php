@@ -42,7 +42,7 @@
     <h3>Table 4.4-4 Female Participation in Household Decision Making (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Financial Matters</td>
             <td>Education of Child</td>
             <td>Health care of Child</td>
@@ -84,11 +84,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.4-4 Female Participation in Household Decision Making (Baranggay Level)</h3>
+    <h3>Table 4.4-4 Female Participation in Household Decision Making (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Financial Matters</td>
             <td>Education of Child</td>
             <td>Health care of Child</td>

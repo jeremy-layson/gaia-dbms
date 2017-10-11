@@ -42,7 +42,7 @@
     <h3>Table 4.3-22 Sanitation (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Personal water sealed flush (inside)</td>
             <td>Personal water sealed flush (outside)</td>
             <td>Common water sealed flush</td>
@@ -85,11 +85,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-22 Sanitation (Baranggay Level)</h3>
+    <h3>Table 4.3-22 Sanitation (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Personal water sealed flush (inside)</td>
             <td>Personal water sealed flush (outside)</td>
             <td>Common water sealed flush</td>

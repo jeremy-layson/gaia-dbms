@@ -42,7 +42,7 @@
     <h3>Table ##. Access Blocks (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
+            <td>City/Municipality</td>
             <td>With Acecss</td>
             <td>No Access</td>
             <td>Total</td>
@@ -89,11 +89,11 @@
 </table>
 
 <table border="1">
-    <h3>Table ##. Access Blocks (Baranggay Level)</h3>
+    <h3>Table ##. Access Blocks (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Cities/Municipalities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>With Acecss</td>
             <td>No Access</td>
             <td>Total</td>

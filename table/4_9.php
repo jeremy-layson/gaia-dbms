@@ -42,7 +42,7 @@
     <h3>Table 4.9 Area of Affected Private Land by Use</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td rowspan="2">Residential</td>
             <td rowspan="2">Insitutional</td>
             <td rowspan="2">Industrial</td>

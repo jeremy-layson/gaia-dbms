@@ -42,7 +42,7 @@
     <h3>Table 4.33 Religious Affiliation</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Roman Catholic</td>
             <td>INC</td>
             <td>Born Again</td>

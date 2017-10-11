@@ -42,7 +42,7 @@
     <h3>Table 4.3-21 Water Supply (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Maynilad/Manila Water</td>
             <td>Sharing(Neighborhood)</td>
             <td>Deepwell</td>
@@ -86,11 +86,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-21 Water Supply (Baranggay Level)</h3>
+    <h3>Table 4.3-21 Water Supply (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Maynilad/Manila Water</td>
             <td>Sharing(Neighborhood)</td>
             <td>Deepwell</td>

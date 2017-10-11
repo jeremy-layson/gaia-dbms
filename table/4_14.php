@@ -42,7 +42,7 @@
     <h3>Table 4.14 Affected Structures and Improvements </h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="2">Legal</td>
             <td colspan="2">ISF</td>
             <td colspan="2">Total</td>

@@ -42,7 +42,7 @@
     <h3>Table 4.3-7 Employment Status and Source of Income (LGU Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
+            <td rowspan="2">City/Municipality</td>
             <td colspan="3">Employed</td>
             <td colspan="2">Business/Self-Employed</td>
             <td rowspan="2">Unemployed</td>
@@ -89,11 +89,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-7 Employment Status and Source of Income (Baranggay Level)</h3>
+    <h3>Table 4.3-7 Employment Status and Source of Income (Barangay Level)</h3>
     <thead>
         <tr>
-            <td rowspan="2">Municipalities and Cities</td>
-            <td rowspan="2">Baranggay</td>
+            <td rowspan="2">City/Municipality</td>
+            <td rowspan="2">Barangay</td>
             <td colspan="3">Employed</td>
             <td colspan="2">Business/Self-Employed</td>
             <td rowspan="2">Unemployed</td>

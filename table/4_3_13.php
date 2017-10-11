@@ -42,7 +42,7 @@
     <h3>Table 4.3-13 Average Daily Commutation Cost (PhP) (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>Male Household Head</td>
             <td>Female Household Head</td>
         </tr>
@@ -78,11 +78,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-13 Average Daily Commutation Cost (PhP) (Baranggay Level)</h3>
+    <h3>Table 4.3-13 Average Daily Commutation Cost (PhP) (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>Male Household Head</td>
             <td>Female Household Head</td>
         </tr>

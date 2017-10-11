@@ -42,7 +42,7 @@
     <h3>Table 4.3-3 Affected Population by Age (LGU Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
+            <td>City/Municipality</td>
             <td>0-5</td>
             <td>6-14</td>
             <td>15-30</td>
@@ -100,11 +100,11 @@
 </table>
 
 <table border="1">
-    <h3>Table 4.3-3 Affected Population by Age (Baranggay Level)</h3>
+    <h3>Table 4.3-3 Affected Population by Age (Barangay Level)</h3>
     <thead>
         <tr>
-            <td>Municipalities and Cities</td>
-            <td>Baranggay</td>
+            <td>City/Municipality</td>
+            <td>Barangay</td>
             <td>0-5</td>
             <td>6-14</td>
             <td>15-30</td>

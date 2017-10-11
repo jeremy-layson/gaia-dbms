@@ -1,7 +1,7 @@
 <?php 
 
 /**
-* 4.1-1 Affected Cities and Municipalities and COrresponding Baranggays by NSCR Project
+* 4.1-1 Affected Cities and Municipalities and COrresponding Barangays by NSCR Project
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
 * @since 2017 . 08. 17
 */
@@ -50,7 +50,7 @@ class Class_4_1_1
         $wc = explode(',', $wildcard);
         foreach ($wc as $card) {
             if (is_numeric(trim($card)) === TRUE) {
-                $card = 'Baranggay ' . trim($card);
+                $card = 'Barangay ' . trim($card);
             }
             $ret = $ret . " baranggay = '" . trim($card) . "' OR";
         }
