@@ -29,7 +29,7 @@ class Class_4_2b
     {
         $data = [];
         $columns = $this->getMunicipality();
-        unset($columns['Valenzuela (Depot)']);
+        // unset($columns['Valenzuela (Depot)']);
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
         
