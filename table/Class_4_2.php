@@ -18,7 +18,8 @@ class Class_4_2
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND (structure_use = 'Residential' || structure_use = 'Mixed use' || structure_use = 'Mixed Use') AND (structure_dp = 'Structure Owner' || structure_dp = 'Structure Renter')";
+        // $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND (structure_use = 'Residential' || structure_use = 'Mixed use' || structure_use = 'Mixed Use') AND (structure_dp = 'Structure Owner' || structure_dp = 'Structure Renter')";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -45,7 +46,7 @@ class Class_4_2
             foreach ($tbl_cols as $field) $data[$mun]['PAF'][$field] = array('COUNT' => 0);
             
             
-            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND (structure_use = 'Residential' || structure_use = 'Mixed use' || structure_use = 'Mixed Use') AND (structure_dp = 'Structure Owner' || structure_dp = 'Structure Renter') AND `address` LIKE '%" . $mun . "%' ";
+            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND `address` LIKE '%" . $mun . "%' ";
             if ($mun == "Valenzuela") $query = $query . " AND NOT `address` LIKE '%(Depot)%'";
             $result = $this->db->query($query);
 
