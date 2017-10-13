@@ -45,6 +45,7 @@ class Municipality
     }
 
     public function create($data) {
+        var_dump($data);
         if (!($stmt = $this->db->prepare("INSERT INTO municipality VALUES(NULL, ?, ?, ?, 0)"))) {
             echo "Prepare failed: (" . $this->db->errno . ") " . $this->db->error;
         }
