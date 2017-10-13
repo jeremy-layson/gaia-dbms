@@ -18,7 +18,7 @@ class Class_4_6
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND type='ISF'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND type='ISF' AND address NOT LIKE '%Depot%'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -31,7 +31,7 @@ class Class_4_6
         $columns = $this->getMunicipality();
         unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'vendors', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'vendors', 'coowner', 'sharer', 'insti', 'tenant', 'caretaker','total');
 
         $append = [];
 
@@ -54,12 +54,11 @@ class Class_4_6
 
                 $category = '';
 
-                $displacement = strtoupper(trim($row['displacement']));
+                $displacement = strtoupper(trim($row['extent']));
 
-                if (strpos($displacement, "STAY") != FALSE) {
+                if ($displacement == '< THAN 20%') {
                     $displacement = 'stay';
-                }
-                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
+                } else {
                     $displacement = 'move';
                 }
 
@@ -68,22 +67,31 @@ class Class_4_6
                     if ($category == '') {
                         if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
                             $category = 'owner_';
-                        } elseif ($dp == 'Structure Renter') {
+                        } elseif ($dp == 'Structure Renter' || $dp == 'structure renter' || $dp == 'Structure renter') {
                             $category = 'renter';
                         } elseif ($dp == 'Commercial Tenant') {
                             $category = 'tenants';
-                        }
+                        } elseif ($dp == 'Co-owner' || $dp == 'Co-Owner') {
+                            $category = 'coowner';
+                        } elseif ($dp == 'Sharer') {
+                            $category = 'sharer';
+                        } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
+                            $category = 'insti';
+                        } elseif ($dp == 'Commercial Tenant') {
+                            $category = 'tenant';
+                        } elseif ($dp == 'Caretaker') {
+                            $category = 'caretaker';
+                        } 
                     }
 
                     if ($category == 'owner_') {
-                        if ($use == 'Residential') {
+                        if ($use == 'Residential' || $use == 'residential') {
                             $category = $category . 'res';
                         } else {
                             $category = $category . 'cibe';
                         }
                     }
                 }
-
                 if ($category != '' && ($displacement == 'move' || $displacement == 'stay')) {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$category][$displacement][] = $row['uid'];

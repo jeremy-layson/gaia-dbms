@@ -46,7 +46,7 @@ class Class_4_3_13
                 while ($row = $result->fetch_assoc()) {
 
                     $gender = strtolower($row['family_head_gender']);
-                    $transpo_cost = (floatval($row['shi_total_transpo']) / 30);
+                    $transpo_cost = (floatval($row['shi_total_transpo']) / 26);
 
                     if ($gender == 'male' OR $gender == 'female') {
                         unset($this->unclaimed[$row['uid']]);

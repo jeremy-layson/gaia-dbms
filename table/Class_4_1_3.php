@@ -30,7 +30,7 @@ class Class_4_1_3
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'land_owner', 'tenant', 'insti_occ', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'owner_insti', 'renter', 'land_owner', 'tenant', 'insti_occ', 'caretaker', 'total');
 
         $append = [];
 
@@ -62,26 +62,29 @@ class Class_4_1_3
                     }
 
                     $displacement = 'none';
-                    if ($extent == '< than 20%' || $extent == 'Auxiliary') {
+                    if ($extent == '< than 20%' || $extent == 'Auxiliary' || $extent == 'Land owner' || $extent == 'Land Owner') {
                         $displacement = 'stay';
 
-                    } elseif ($extent != 'Land Lessee' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                    } elseif ($extent != 'Land Lessee') {
                         $displacement = 'move';
                     }
 
                     if ($displacement != 'none') {
                         //structure owners
                         if ($category == '') {
-                            if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner') {
+                            if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner' || $dp == 'Auxiliary') {
                                 $category = 'owner_';
                             } elseif ($dp == 'Structure Renter') {
                                 $category = 'renter';
                             } elseif ($dp == 'Land Owner') {
                                 $category = 'land_owner';
+                                $displacement = 'stay';
                             } elseif ($dp == 'Commercial Tenant') {
                                 $category = 'tenant';
                             } elseif ($dp == 'Institutional Occupant') {
                                 $category = 'insti_occ';
+                            } elseif ($dp == 'Caretaker' || $dp == 'Sharer') {
+                                $category = 'caretaker';
                             }
                         }
 

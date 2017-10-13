@@ -58,11 +58,11 @@ class Class_flood_6
                     $val = explode(",", $val);
                     $val = trim($val[0]); //get first answer only
 
-                    $street = array('ALONG THE ROAD', 'ALONG THE  HI-WAY', 'ALONG THE HI-WAY', 'ALONG THE ROAD', 'ALONG THE STREET', 'ROAD', 'STREET', 'ALONG ROAD');
+                    $street = array('ALONG THE ROAD', 'ALONG THE  HI-WAY', 'ALONG THE HI-WAY', 'ALONG THE ROAD', 'ALONG THE STREET', 'ROAD', 'STREET', 'ALONG ROAD', 'ENTIRE ROAD');
 
-                    $front = array('FRONT OF HOUSE', 'INSIDE COMPD.', 'OUSTIDE THE HOUSE', 'OUTSIDE', 'OUTSIDE THE HOUSE');
+                    $front = array('FRONT OF HOUSE', 'INSIDE COMPD.', 'OUSTIDE THE HOUSE', 'OUTSIDE', 'OUTSIDE THE HOUSE', 'IN FRONT OF THE HOUSE');
 
-                    $inside = array('INSIDDE THE HOUSE', 'INSIDE THE HOUSE');
+                    $inside = array('INSIDDE THE HOUSE', 'INSIDE THE HOUSE', 'INSIDE OF THE HOUSE');
 
                     $category = '';
                     if ($val == '') {

@@ -49,6 +49,8 @@
             <td>Institutional</td>
             <td>Industrial</td>
             <td>Mixed Use</td>
+            <td>Commercial</td>
+            <td>Agricultural</td>
             <td>Total</td>
         </tr>
     </thead>

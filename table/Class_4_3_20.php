@@ -71,7 +71,8 @@ class Class_4_3_20
                     if ($source == "NONE") $category = "others";
                     if ($source == "") $category = "noans";
                     if ($source == "NO ANSWER") $category = "noans";
-
+                    if ($source == "N/A") $category = "noans";
+                    
                     if ($category != "") {
                         unset($this->unclaimed[$row['uid']]);
                         $data[$mun][$col[0]][$category][] = $row['uid'];

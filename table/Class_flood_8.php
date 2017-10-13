@@ -58,9 +58,9 @@ class Class_flood_8
                     $h_6 = array('3 HRS', '30 MINUTES',);
                     $h_12 = array('0.5', '0.75');
                     $h_24 = array('24 HRS');
-                    $h_96 = array('48 HRS'); //3 days
+                    $h_96 = array('48 HRS', '2-3 DAYS'); //3 days
                     $h_168 = array('1 WEEK', '1-WEEK', '4-DAYS', '5-DAYS'); //7 days
-                    $h_week = array('1 WEEK OR MORE', '1-2 WEEKS', '1- 2 WEEKS', '1-3 WEEKS', '10-DAYS', 'DAYS AND MONTHS', 'WEEKS');
+                    $h_week = array('1 WEEK OR MORE', '1-2 WEEKS', '1- 2 WEEKS', '1-3 WEEKS', '10-DAYS', 'DAYS AND MONTHS', 'WEEKS', '2 WEEKS', '2-WEEKS', 'AS LONG AS RAILWAY HAVE WATER');
 
                     $category = '';
                     if ($val == '' || $val == '-') {
@@ -78,6 +78,23 @@ class Class_flood_8
                     } elseif (in_array($val, $h_week) === TRUE) {
                         $category = 'week';
                     } 
+
+                    if ($category == '') {
+                        $val = floatval($val);
+                        if ($val < 6) {
+                            $category = '6h';
+                        } elseif ($val >= 6 && $val <12) {
+                            $category = '12h';
+                        } elseif ($val >= 12 && $val <24) {
+                            $category = '24h';
+                        } elseif ($val >= 24 && $val <96) {
+                            $category = '96h';
+                        } elseif ($val >= 96 && $val <168) {
+                            $category = '168h';
+                        } else {
+                            $category = 'week';
+                        }
+                    }
 
                     if ($category != '') {
                         unset($this->unclaimed[$row['uid']]);

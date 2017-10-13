@@ -57,6 +57,7 @@ class Class_4_3_19
                     if (strpos($source, "Sharing") !== FALSE) $category = "share";
                     if (strpos($source, "none") !== FALSE) $category = "none";
                     if (strpos($source, "answer") !== FALSE) $category = "noans";
+                    if ($source == 'n/a') $category = "noans";
                     if (strpos($source, "solar") !== FALSE) $category = "solar";
                     if (strpos($source, "battery") !== FALSE) $category = "batt";
                     

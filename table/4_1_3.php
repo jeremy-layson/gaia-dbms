@@ -51,9 +51,12 @@
             <td colspan="2">Land Owners</td>
             <td colspan="2">Commercial Tenants</td>
             <td colspan="2">Institutional Occupant</td>
+            <td colspan="2">Sharer/Caretaker</td>
             <td colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Stay</td>
+            <td>Move</td>
             <td>Stay</td>
             <td>Move</td>
             <td>Stay</td>

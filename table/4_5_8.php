@@ -47,9 +47,12 @@
             <td colspan="2">Business Capital/Funds</td>
             <td colspan="2">Livelihood Program</td>
             <td colspan="2">Others</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>
@@ -102,9 +105,12 @@
             <td colspan="2">Business Capital/Funds</td>
             <td colspan="2">Livelihood Program</td>
             <td colspan="2">Others</td>
+            <td colspan="2">No Answer</td>
             <td rowspan="2" colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Number</td>
+            <td>%</td>
             <td>Number</td>
             <td>%</td>
             <td>Number</td>
@@ -130,7 +136,7 @@
                     if ($head == 0) echo "<td rowspan='" . count($value) . "'>$mun</td>";$head = 1;
                     echo "<td>$key</td>";
                     foreach ($class->tbl_cols as $col) {
-                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($nVals[$col], 1) . "</a></td>";
+                        echo "<td><a href='/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent,specific_business&id=" . implode(",", $value[$key][$col]) . "' target='_blank'>" . round($nVals[$col], 1) . "</a></td>";
                         echo "<td>" . round(($nVals[$col] / $vals[$col]) * 100, 1) . "%</td>";
                     }
                 echo "</tr>";
@@ -140,14 +146,14 @@
         echo "<tr>";
             echo "<td colspan='2'>Total</td>";
             foreach ($class->tbl_cols as $col) {
-                echo "<td><a href='/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
+                echo "<td><a href='/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent,specific_business&id=" . implode(",", $class->total[$col]) . "' target='_blank'>" . round($vals[$col], 1) . "</a></td>";
                 echo "<td>" . round(($vals[$col] / $vals['Total']) * 100, 1) . "%</td>";
             }
         echo "</tr>";
         ?>
     </tbody>
 </table>
-<a target="_blank" href="/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
+<a target="_blank" href="/viewer.php?field=uid,address,baranggay,ialsa_livelihood_assistance,extent,specific_business&id=<?=implode(',', $class->unclaimed)?>">Uncategorized Data</a>
 
 <script type="text/javascript">
     $("[data-id='Sub Total']").css('font-weight', 'bold');

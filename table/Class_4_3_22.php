@@ -64,6 +64,7 @@ class Class_4_3_22
                     if ($source == "PUBLIC TOILET (MARKET)") $category = "others";
                     if ($source == "SHARING") $category = "others";
                     if ($source == "NO ANSWER") $category = "noans";
+                    if ($source == "N/A") $category = "noans";
                     if ($source == "") $category = "noans";
                     
 

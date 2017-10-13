@@ -30,7 +30,7 @@ class Class_4_2_3
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('RESIDENTIAL', 'INSTITUTIONAL', 'INDUSTRIAL', 'MIXED USE', 'Total');
+        $this->tbl_cols = $tbl_cols = array('RESIDENTIAL', 'INSTITUTIONAL', 'INDUSTRIAL', 'MIXED USE', 'COMMERCIAL', 'AGRICULTURAL', 'Total');
         $this->improvements = $improvements = array('Fence', 'Gate', 'Others');
 
         foreach ($tbl_cols as $field) {

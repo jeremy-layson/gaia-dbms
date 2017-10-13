@@ -17,7 +17,7 @@ class Class_4_5_5
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]' AND rpo_relocation_option LIKE '%Relocation%'  AND extent != '< than 20%' AND type = 'ISF' AND (structure_use = 'Residential' OR structure_use = 'Mixed use' OR structure_use = 'Mixed Use') AND structure_dp = 'Structure Owner'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -47,7 +47,7 @@ class Class_4_5_5
                 }
                 
                 $wildcard = $this->getWildcard($brg[1]);
-                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0  AND rpo_relocation_option LIKE '%Relocation%' AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0  AND rpo_relocation_option LIKE '%Relocation%' AND extent != '< than 20%' AND type = 'ISF' AND (structure_use = 'Residential' OR structure_use = 'Mixed use' OR structure_use = 'Mixed Use') AND structure_dp = 'Structure Owner' AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $relocation = strtoupper($row['rpo_relocation_preferred']);
 

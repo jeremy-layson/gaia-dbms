@@ -44,8 +44,7 @@ class Class_4_3_6b
             $socio = explode(',', $row['hdi_reason_social']);
             $other = explode(',', $row['hdi_reason_other']);
             
-            $use = 
-            
+            $cat = '';
             $mun = '';
 
             foreach ($municipalities as $key => $value) {

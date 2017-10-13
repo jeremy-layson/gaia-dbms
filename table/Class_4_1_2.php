@@ -31,6 +31,10 @@ class Class_4_1_2
                                     'renter'    => [],
                                     'tenant'    => [],
                                     'absentee'   => [],
+                                    'coowner'   => [],
+                                    'insti'     => [],
+                                    'sharer'    => [],
+                                    'caretaker' => [],
                                     'subtotal'  => [],
                                         ),
                       'stay'     => array(
@@ -41,6 +45,10 @@ class Class_4_1_2
                                     'absentee'      => [],
                                     'worker'       => [],
                                     'lessee'        => [],
+                                    'coowner'   => [],
+                                    'insti'     => [],
+                                    'sharer'    => [],
+                                    'caretaker' => [],
                                     'subtotal'  => [],
                                     ));
 
@@ -53,6 +61,10 @@ class Class_4_1_2
             'land_owner' => 'Land Owners',
             'worker' => 'Workers (Employees of CIBEs)',
             'lessee'  => 'Land Lessee',
+            'coowner' => 'Co-Owners',
+            'insti'     => 'Institutional Occupant',
+            'sharer'    => 'Sharer',
+            'caretaker' => 'Caretaker',
             'subtotal' => 'Subtotal',
             
         );
@@ -81,14 +93,13 @@ class Class_4_1_2
             $hh_num = trim($row['hh_members']);
             $category = '';
 
-            if (strpos($row['structure_owner'], '(Absentee)') !== FALSE) {
+            if (strpos($row['structure_owner'], '(Absentee)') !== FALSE || $dp == 'Absentee Structure Owner') {
                 $category = 'absentee';
             }
 
             $displacement = 'none';
             if ($extent == '< than 20%' || $extent == 'Land Owner' || $extent == 'Land owner') {
                 $displacement = 'stay';
-
             } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary') {
                 $displacement = 'displace';
             } elseif ($extent == 'Auxiliary') {
@@ -96,6 +107,8 @@ class Class_4_1_2
             } elseif ($extent == 'Land Lessee') {
                 $displacement = 'stay';
                 $category = 'lessee';
+            } else {
+                $displacement = 'displace';
             }
 
             if ($displacement != 'none') {
@@ -109,7 +122,15 @@ class Class_4_1_2
                         $category = 'land_owner';
                     } elseif ($dp == 'Commercial Tenant' && $displacement == 'displace') {
                         $category = 'tenant';
-                    }
+                    } elseif ($dp == 'Co-Owner' || $dp == 'Co-owner') {
+                        $category = 'coowner';
+                    } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
+                        $category = 'insti';
+                    } elseif ($dp == 'Sharer') {
+                        $category = 'sharer';
+                    } elseif ($dp == 'Caretaker') {
+                        $category = 'caretaker';
+                    } 
                 }
 
                 if ($category == 'owner_') {

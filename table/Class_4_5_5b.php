@@ -17,7 +17,7 @@ class Class_4_5_5b
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]' AND rpo_relocation_option LIKE '%Relocation%'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -47,7 +47,7 @@ class Class_4_5_5b
                 }
                 
                 $wildcard = $this->getWildcard($brg[1]);
-                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0 AND rpo_relocation_option LIKE '%Relocation%' AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $relocation = trim(strtoupper($row['rpo_reloc_1stprio']));
 
@@ -58,10 +58,19 @@ class Class_4_5_5b
                     if ($relocation == "NORTHVILLE 5, NORTHEV ILLE 7, PANDI RESIDENCE, SJDM HEIHTS") $colKey = "northville5";
                     if ($relocation == "NORTHVILLE 7, BRGY. MALIS, GUIGUINTO BULACAN") $colKey = "northville7";
                     if ($relocation == "NORTHVILLE 7, BRGY.MALIS, GUIGUINTO BULACAN") $colKey = "northville7";
+                    if ($relocation == "NORTHVILLE 7, BARANGAY MALIS, GUIGUINTO BULACAN") $colKey = "northville7";
+                    if ($relocation == "NORTHVILLE 7, BARANGAYMALIS, GUIGUINTO BULACAN") $colKey = "northville7";
+
+
                     if ($relocation == "PANDI RESIDENCE") $colKey = "pandi";
                     if ($relocation == "PANDI RESIDENCES (BRGY. MAPULANG LUPA, PANDI, BULACAN)") $colKey = "pandi";
+                    if ($relocation == "PANDI RESIDENCES (BARANGAY MAPULANG LUPA, PANDI, BULACAN)") $colKey = "pandi";
+                    
+
                     if ($relocation == "SAN JOSE DEL MONTE HEIGHTS, (BRGY. MUZON, SJDM, BULACAN)") $colKey = "sjdm";
+                    if ($relocation == "SAN JOSE DEL MONTE HEIGHTS, (BARANGAY MUZON, SJDM, BULACAN)") $colKey = "sjdm";
                     if ($relocation == "UNDECIDED") $colKey = "noans";
+                    if ($relocation == "") $colKey = "noans";
                     
                     if ($colKey != "") {
                         unset($this->unclaimed[$row['uid']]);

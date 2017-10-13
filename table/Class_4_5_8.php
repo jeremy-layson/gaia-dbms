@@ -17,7 +17,7 @@ class Class_4_5_8
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND hh_head LIKE '%[322]' AND extent != '< than 20%'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND specific_business LIKE '%WITHLOSS%'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -28,7 +28,7 @@ class Class_4_5_8
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array('job', 'business', 'livelihood', 'other', 'Total');
+        $this->tbl_cols = $tbl_cols = array('job', 'business', 'livelihood', 'other', 'noans', 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total['Total']['Total'][$col] = array('COUNT' => 0);
@@ -47,7 +47,7 @@ class Class_4_5_8
                 }
                 
                 $wildcard = $this->getWildcard($brg[1]);
-                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0  AND extent != '< than 20%' AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
+                $result = $this->db->query($query = "SELECT * FROM survey WHERE is_deleted = 0 AND specific_business LIKE '%WITHLOSS%' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
                     $relocation = strtoupper($row['ialsa_livelihood_assistance']);
 
@@ -64,7 +64,7 @@ class Class_4_5_8
                     if (strpos($relocation, "JOB/EMPLOYMENT") !== FALSE) $col['job'] = TRUE;
                     if (strpos($relocation, "BUSINESSCAPITAL") !== FALSE) $col['business'] = TRUE;
                     
-                    
+                    if ($relocation == '' || $relocation == 'N/A') $col['noans'] = TRUE; 
                     
                     foreach ($col as $colKey => $field) {
                         unset($this->unclaimed[$row['uid']]);

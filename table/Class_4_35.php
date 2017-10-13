@@ -1,11 +1,11 @@
 <?php 
 
 /**
-* 4.33 Religious Affiliation
+* 4.35 Primary Occupation
 * @author Jeremy Layson <jeremy.b.layson@gmail.com>
-* @since 2017 . 09. 24
+* @since 2017 . 10. 11
 */
-class Class_4_33
+class Class_4_35
 {
     private $db;
     public $unclaimed;
@@ -28,7 +28,7 @@ class Class_4_33
     {
         $data = [];
         $columns = $this->getMunicipality();
-        $this->tbl_cols = $tbl_cols = array("rc", "inc", "bagain", "camacop", "miracle", "protestant", "christian", "add", "islam", "noans", 'Total');
+        $this->tbl_cols = $tbl_cols = array('husband', 'wife', 'member', 'Total');
 
         foreach ($tbl_cols as $col) {
             $col_total[$col] = array('COUNT' => 0);
@@ -48,21 +48,6 @@ class Class_4_33
                 $rel = trim(strtoupper($row['religion']));
                 $col = "";
 
-                if ($rel =="BORN AGAIN") $col = "bagain";
-                if ($rel =="BORN AGAIN CHRISTIAN") $col = "bagain";
-                if ($rel =="CAMACOP") $col = "camacop";
-                if ($rel =="CHRISTIAN") $col = "christian";
-                if ($rel =="MALINTA V.C.") $col = "christian";
-                if ($rel =="DATING DAAN") $col = "add";
-                if ($rel =="INC") $col = "inc";
-                if ($rel =="ISLAM") $col = "islam";
-                if ($rel =="MIRACLE CRUSADE") $col = "miracle";
-                if ($rel =="PROTESTANT") $col = "protestant";
-                if ($rel =="ROMAN CAHOLIC") $col = "rc";
-                if ($rel =="ROMAN CATHOIC") $col = "rc";
-                if ($rel =="ROMAN CATHOLIC") $col = "rc";
-                if ($rel =="") $col = "noans";
-                
                 if ($col != "") {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$col][] = $row['uid'];

@@ -47,9 +47,24 @@
             <td colspan="2">Structure Owners (Residential)</td>
             <td colspan="2">Structure Owners (CIBEs)</td>
             <td colspan="2">Renters (Residential)</td>
+            <td colspan="2">Co-Owners</td>
+            <td colspan="2">Sharer</td>
+            <td colspan="2">Institutional Occupant</td>
+            <td colspan="2">Tenant</td>
+            <td colspan="2">Caretaker</td>
             <td colspan="2">Total</td>
         </tr>
         <tr>
+            <td>Stay</td>
+            <td>Move</td>
+            <td>Stay</td>
+            <td>Move</td>
+            <td>Stay</td>
+            <td>Move</td>
+            <td>Stay</td>
+            <td>Move</td>
+            <td>Stay</td>
+            <td>Move</td>
             <td>Stay</td>
             <td>Move</td>
             <td>Stay</td>

@@ -189,3 +189,41 @@ DONE Relocation Experience - new_2.php
 DONE ISF Rental Fees - new_3.php
     QU > JP (he_rental_amort > dsa_rent_cost)
     Rows = LGU
+
+
+*******************************************
+****************ADJUSTMENTS****************
+
+4.1-4
+Co-owner
+Sharer
+Institutional Occupant
+Commercial Tenant
+Caretaker
+ADDED
+
+4.2-2
+Agricultural
+FOLLOW UP
+
+4.2-3
+Commercial
+Agricultural
+ED
+
+4.4
+Commercial
+Auxiliary (DP)
+FOLLOW UP
+
+4.6
+Institutional Occupant
+Sharer
+Co-owner
+Land Owner
+Caretaker
+ADDED
+
+4.9
+SKIP - Parcellary
+

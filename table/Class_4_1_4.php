@@ -30,7 +30,7 @@ class Class_4_1_4
         $data = [];
         $columns = $this->getMunicipality();
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'coowner', 'sharer', 'insti', 'tenant', 'caretaker', 'total');
 
         $append = [];
 
@@ -54,10 +54,10 @@ class Class_4_1_4
                     $category = '';
 
                     $displacement = 'none';
-                    if ($extent == '< than 20%') {
+                    if ($extent == '< than 20%' || $extent == 'Auxiliary') {
                         $displacement = 'stay';
 
-                    } elseif ($extent != 'Land Lessee' && $extent != 'Auxiliary' && $extent != 'Land owner' && $extent != 'Land Owner') {
+                    } elseif ($extent != 'Land Lessee' && $extent != 'Land owner' && $extent != 'Land Owner') {
                         $displacement = 'move';
                     }
 
@@ -66,13 +66,23 @@ class Class_4_1_4
                         if ($category == '') {
                             if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
                                 $category = 'owner_';
-                            } elseif ($dp == 'Structure Renter') {
+                            } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter' || $dp == 'structure renter') {
                                 $category = 'renter';
-                            }
+                            } elseif ($dp == 'Co-owner' || $dp == 'Co-Owner') {
+                                $category = 'coowner';
+                            } elseif ($dp == 'Sharer') {
+                                $category = 'sharer';
+                            } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
+                                $category = 'insti';
+                            } elseif ($dp == 'Commercial Tenant') {
+                                $category = 'tenant';
+                            } elseif ($dp == 'Caretaker') {
+                                $category = 'caretaker';
+                            } 
                         }
 
                         if ($category == 'owner_') {
-                            if ($use == 'Residential') {
+                            if ($use == 'Residential' || $use == 'residential') {
                                 $category = $category . 'res';
                             } else {
                                 $category = $category . 'cibe';

@@ -18,7 +18,7 @@ class Class_4_9
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND ownership='Private'";
+        $query = "SELECT * FROM `survey` WHERE type='LEGAL' AND is_deleted = 0 AND ownership='Private'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];

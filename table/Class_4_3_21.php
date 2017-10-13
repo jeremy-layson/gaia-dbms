@@ -66,8 +66,11 @@ class Class_4_3_21
                     if ($source == "SHARING") $category = "sharing";
                     if ($source == "SHARING (NEGHBOR)") $category = "sharing";
                     if ($source == "SHARING (NEIGHBOR)") $category = "sharing";
+                    if ($source == "SHARING (NEIGHBOR), WATER REFILL") $category = "sharing";
                     if ($source == "WATER REFILL") $category = "refill";
                     if ($source == "NO ANSWER") $category = "noans";
+                    if ($source == "N/A") $category = "noans";
+                    
                     if ($source == "") $category = "noans";
                     
 

@@ -54,12 +54,11 @@ class Class_4_7
 
                 $category = '';
 
-                $displacement = strtoupper(trim($row['displacement']));
+                $displacement = strtoupper(trim($row['extent']));
 
-                if (strpos($displacement, "STAY") != FALSE) {
+                if ($displacement == '< THAN 20%') {
                     $displacement = 'stay';
-                }
-                if (strpos($displacement, "DISPLACEMENT") != FALSE) {
+                } else {
                     $displacement = 'move';
                 }
 
