@@ -93,7 +93,7 @@ class Class_4_1_2
             $hh_num = trim($row['hh_members']);
             $category = '';
 
-            if (strpos($row['structure_owner'], '(Absentee)') !== FALSE || $dp == 'Absentee Structure Owner') {
+            if (strpos($row['structure_owner'], '(Absentee)') !== FALSE || $dp == 'Absentee Structure Owner' || $dp == 'Absentee Structure owner') {
                 $category = 'absentee';
             }
 
@@ -116,7 +116,7 @@ class Class_4_1_2
                 if ($category == '') {
                     if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
                         $category = 'owner_';
-                    } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter' || $dp == 'Strcuture renter') {
+                    } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter' || $dp == 'Strcuture renter' || $dp == 'structure renter') {
                         $category = 'renter';
                     } elseif ($dp == 'Land Owner' && $displacement == 'stay') {
                         $category = 'land_owner';
