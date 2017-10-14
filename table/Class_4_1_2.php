@@ -116,7 +116,7 @@ class Class_4_1_2
                 if ($category == '') {
                     if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
                         $category = 'owner_';
-                    } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter') {
+                    } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter' || $dp == 'Strcuture renter') {
                         $category = 'renter';
                     } elseif ($dp == 'Land Owner' && $displacement == 'stay') {
                         $category = 'land_owner';
