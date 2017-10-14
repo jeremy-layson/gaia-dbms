@@ -595,7 +595,7 @@ class Importer
         $query = "SELECT count(uid) as cnt FROM `survey`";
         $result = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
 
-        $query = "SELECT * FROM `survey` ORDER by `asset_num`";
+        $query = "SELECT * FROM `survey`";
         $data = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
 
         $writer = $objWriter->getPHPExcel()->getActiveSheet();
@@ -610,6 +610,9 @@ class Importer
 
     }
 }
+
+$_GET['function'] = 'export';
+$_GET['filename'] = 'data';
 
 if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $filename = '../data.xlsx';
