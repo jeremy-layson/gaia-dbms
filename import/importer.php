@@ -611,8 +611,9 @@ class Importer
     }
 }
 
-$_GET['function'] = 'export';
-$_GET['filename'] = 'data';
+//uncomment for export
+// $_GET['function'] = 'export';
+// $_GET['filename'] = 'data';
 
 if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $filename = '../data.xlsx';
