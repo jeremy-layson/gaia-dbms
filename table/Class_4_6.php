@@ -18,7 +18,7 @@ class Class_4_6
         require('../sql.php');
         $this->db = $link;
 
-        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND type='ISF' AND address NOT LIKE '%Depot%'";
+        $query = "SELECT * FROM `survey` WHERE is_deleted = 0 AND type='ISF'";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $this->unclaimed[$row['uid']] = $row['uid'];
@@ -29,7 +29,7 @@ class Class_4_6
     {
         $data = [];
         $columns = $this->getMunicipality();
-        unset($columns['Valenzuela (Depot)']);
+        // unset($columns['Valenzuela (Depot)']);
 
         $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'vendors', 'coowner', 'sharer', 'insti', 'tenant', 'caretaker','total');
 
@@ -56,7 +56,7 @@ class Class_4_6
 
                 $displacement = strtoupper(trim($row['extent']));
 
-                if ($displacement == '< THAN 20%') {
+                if ($displacement == '< THAN 20%' || $displacement == '< 20%') {
                     $displacement = 'stay';
                 } else {
                     $displacement = 'move';
@@ -65,7 +65,7 @@ class Class_4_6
                 if ($displacement == 'move' || $displacement == 'stay') {
                     //structure owners
                     if ($category == '') {
-                        if ($dp == 'Structure Owner' || $dp == 'Structure owner') {
+                        if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Absentee Structure Owner' || $dp == 'Absentee Structure owner') {
                             $category = 'owner_';
                         } elseif ($dp == 'Structure Renter' || $dp == 'structure renter' || $dp == 'Structure renter') {
                             $category = 'renter';

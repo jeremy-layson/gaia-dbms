@@ -68,11 +68,12 @@ class Class_4_3
 
             $type = $row['type'];
             $reloc = 'RELOC';
-            if (trim($row['extent']) == '< than 20%' || trim($row['extent']) == "Auxiliary") $reloc = 'STAY';
+            if (trim($row['extent']) == '< 20%' || trim($row['extent']) == '< than 20%' || trim($row['extent']) == "Auxiliary") $reloc = 'STAY';
 
             $extent = $row['extent'];
             $type = $row['type'];
             $dp = trim($row['structure_dp']);
+            $land_dp = trim($row['dp_type']);
             $use = trim($row['structure_use']);
 
             $category = '';
@@ -92,9 +93,9 @@ class Class_4_3
             if ($reloc == 'RELOC' || $reloc == 'STAY') {
                 //structure owners
                 if ($category == '') {
-                    if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner') {
+                    if ($dp == 'Structure Owner' || $dp == 'Structure owner' || $dp == 'Co-owner' || $dp == 'Co-Owner' || $dp == 'Absentee Structure Owner') {
                         $category = 'owner_';
-                    } elseif ($dp == 'Structure Renter') {
+                    } elseif ($dp == 'Structure Renter' || $dp == 'Structure renter') {
                         $category = 'renter';
                     } elseif ($dp == 'Land Owner') {
                         $category = 'land_owner';
@@ -106,11 +107,15 @@ class Class_4_3
                         $category = 'sharer';
                     } elseif ($dp == 'Caretaker') {
                         $category = 'sharer';
+                    } elseif ($land_dp == 'ISF') {
+                        $category = 'renter';
+                    } elseif ($land_dp == 'Land Lessee') {
+                        $category = 'owner_';
                     } 
                 }
 
                 if ($category == 'owner_') {
-                    if ($use == 'Residential') {
+                    if ($use == 'Residential' || $use == 'residential') {
                         $category = $category . 'res';
                     } elseif ($use == 'Mixed Use' || $use == 'Mixed use') {
                         $category = $category . 'mixed';

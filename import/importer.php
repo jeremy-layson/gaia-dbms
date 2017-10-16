@@ -62,7 +62,7 @@ class Importer
                 'C' => array('asset_num', 'Asset Number'),
                 'D' => array('asset_891', '891'),
                 'E' => array('asset_752', '752'),
-                'G' => array('asset_num_2', 'Asset Number (Column G)'),
+                'G' => array('asset_main', 'Asset Number (Column G)'),
                 'H' => array('hh_member', 'Name of HH Member'),
                 'I' => array('age', 'Age'),
                 'J' => array('gender', 'Gender'),
@@ -625,7 +625,7 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $import = new Importer($filename, 'survey');
     $import->$func();
 } else {
-    $maxRow = 792;
+    $maxRow = 767;
     $filename = '../data.xlsx';
     $table = "survey";
 
@@ -645,8 +645,8 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
     $import->createTableSurvey();
     $import->importData($maxRow);
 
-    // $maxRow = 2628;
-    // $import = new Importer($filename, 'hh_names');
-    // $import->createTableHHNames();
-    // $import->importData($maxRow);
+    $maxRow = 2599;
+    $import = new Importer('../hh.xlsx', 'hh_names');
+    $import->createTableHHNames();
+    $import->importData($maxRow);
 }

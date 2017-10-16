@@ -54,7 +54,18 @@ class Class_4_2
             while ($row = $result->fetch_assoc()) {
                 $reloc = 'RELOC';
                 $type = $row['type'];
-                if (trim($row['extent']) == '< than 20%') $reloc = 'STAY';
+                if (trim($row['extent']) == '< 20%' || trim($row['extent']) == '< than 20%' || trim($row['extent']) == "Auxiliary") $reloc = 'STAY';
+
+                //FOR LAND OWNERS
+                if (trim(strtoupper($row['dp_type'])) == 'LAND OWNER') {
+                    $category = 'land_owner';
+
+                    if (trim(strtoupper($row['alo_extent'])) == '< THAN 20%') {
+                        $reloc = 'STAY';
+                    } else {
+                        $reloc = 'RELOC';
+                    }
+                }
 
                 unset($this->unclaimed[$row['uid']]);
                 $data[$mun]['PAF'][$type . "_" . $reloc][] = $row['uid'];
