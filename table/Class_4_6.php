@@ -56,7 +56,7 @@ class Class_4_6
 
                 $displacement = strtoupper(trim($row['extent']));
 
-                if ($displacement == '< THAN 20%' || $displacement == '< 20%') {
+                if ($displacement == '< THAN 20%' || $displacement == '< 20%' || $displacement == 'AUXILIARY') {
                     $displacement = 'stay';
                 } else {
                     $displacement = 'move';
@@ -92,6 +92,18 @@ class Class_4_6
                         }
                     }
                 }
+
+                //FOR LAND OWNERS
+                if (trim(strtoupper($row['dp_type'])) == 'LAND OWNER') {
+                    $category = 'land_owner';
+
+                    if (trim(strtoupper($row['alo_extent'])) == '< THAN 20%') {
+                        $displacement = 'stay';
+                    } else {
+                        $displacement = 'move';
+                    }
+                }
+                
                 if ($category != '' && ($displacement == 'move' || $displacement == 'stay')) {
                     unset($this->unclaimed[$row['uid']]);
                     $data[$mun][$category][$displacement][] = $row['uid'];
