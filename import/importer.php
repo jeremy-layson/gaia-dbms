@@ -641,9 +641,9 @@ if (isset($_GET['function']) === true && $_GET['function'] != '') {
         $table = $_GET['table'];
     }
 
-    $import = new Importer($filename, $table);
-    $import->createTableSurvey();
-    $import->importData($maxRow);
+    // $import = new Importer($filename, $table);
+    // $import->createTableSurvey();
+    // $import->importData($maxRow);
 
     $maxRow = 2599;
     $import = new Importer('../hh.xlsx', 'hh_names');
