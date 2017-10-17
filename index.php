@@ -241,6 +241,9 @@
                 <div class="large-12 column">
                     <a href="/table/4_33.php" target="_blank" class="button success full-width">Table 4.33 Religious Affiliation</a>
                 </div>
+                <div class="large-12 column">
+                    <a href="/table/4_35.php" target="_blank" class="button success full-width">Table 4.35 Primary Occupatipn</a>
+                </div>
             </div>
             <div class="tools row">
                 <h3>Chapter 12</h3>

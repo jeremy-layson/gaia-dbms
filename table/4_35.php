@@ -42,7 +42,7 @@
     <h3>Table 4.35 Primary Occupation</h3>
     <thead>
         <tr>
-            <td>City/Municipality</td>
+            <td>Occupation</td>
             <td>Husband</td>
             <td>Wife</td>
             <td>Member</td>
@@ -50,7 +50,30 @@
         </tr>
     </thead>
     <tbody>
-        
+        <?php
+        foreach ($data as $key => $value) {
+            $husband = isset($value['husband']) === TRUE ? $value['husband']['COUNT'] : "0";
+            $wife = isset($value['wife']) === TRUE ? $value['wife']['COUNT'] : "0";
+            $member = isset($value['member']) === TRUE ? $value['member']['COUNT'] : "0";
+            $total = $value['Total']['COUNT'];
+
+            echo "<tr>";
+                echo "<td>" . $key . "</td>";
+                echo "<td>$husband</td>";
+                echo "<td>$wife</td>";
+                echo "<td>$member</td>";
+                echo "<td>$total</td>";
+            echo "</tr>";
+        }
+
+        echo "<tr>";
+            echo "<td>Grand Total</td>";
+            echo "<td>" . $class->total['husband']['COUNT'] . "</td>";
+            echo "<td>" . $class->total['wife']['COUNT'] . "</td>";
+            echo "<td>" . $class->total['member']['COUNT'] . "</td>";
+            echo "<td>" . $class->total['Total']['COUNT'] . "</td>";
+        echo "</tr>";
+        ?>
     </tbody>
 </table>
 

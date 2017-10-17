@@ -34,37 +34,52 @@ class Class_4_35
             $col_total[$col] = array('COUNT' => 0);
         }
 
+        $query = "SELECT * FROM survey WHERE is_deleted = 0 AND hh_head LIKE '%[322]'";
+        $result = $this->db->query($query);
 
-        foreach ($columns as $mun => $brgys) {
+        while ($row = $result->fetch_assoc()) {
+            $asset = $row['asset_num'];
 
+            //get hh
+            $query = "SELECT * FROM hh_names WHERE asset_main = '" . $asset . "'";
+            $hh = $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
 
-            foreach ($tbl_cols as $col) {
-                $data[$mun][$col] = array('COUNT' => 0);
-            }
-            $query = "SELECT * FROM survey WHERE is_deleted = 0 AND hh_head LIKE '%[322]' AND `address` LIKE '%" . $mun . "%'";
-            if ($mun == "Valenzuela") $query =  $query . " AND NOT `address` LIKE '%(Depot)%'";
-            $result = $this->db->query($query);
-            while ($row = $result->fetch_assoc()) {
-                $rel = trim(strtoupper($row['religion']));
-                $col = "";
+            foreach ($hh as $key => $value) {
+                $pos = strtoupper(trim($value['hh_position']));
+                $job = strtolower(trim($value['hh_job']));
+                $col = $job;
 
-                if ($col != "") {
+                if ($pos == "HUSBAND") {
+                    $pos = "husband";
+                } elseif ($pos == "WIFE") {
+                    $pos = "wife";
+                } else {
+                    $pos = "member";
+                }
+
+                if ($job != "") {
+                    if (isset($data[$col][$pos]) === FALSE) {
+                        $data[$col][$pos] = array('COUNT' => 0);
+                    }
+                    if (isset($data[$col]['Total']) === FALSE) {
+                        $data[$col]['Total'] = array('COUNT' => 0);
+                    }
+
                     unset($this->unclaimed[$row['uid']]);
-                    $data[$mun][$col][] = $row['uid'];
-                    $data[$mun][$col]['COUNT']++;
+                    $data[$col][$pos][] = $row['uid'];
+                    $data[$col][$pos]['COUNT']++;
 
-                    $data[$mun]['Total'][] = $row['uid'];
-                    $data[$mun]['Total']['COUNT']++;
+                    $data[$col]['Total'][] = $row['uid'];
+                    $data[$col]['Total']['COUNT']++;
                     
-                    $col_total[$col][] = $row['uid'];
-                    $col_total[$col]['COUNT']++;
+                    $col_total[$pos][] = $row['uid'];
+                    $col_total[$pos]['COUNT']++;
                     $col_total['Total'][] = $row['uid'];
                     $col_total['Total']['COUNT']++;
                        
                 }
-                   
             }
-
+               
         }
 
         $this->total = $col_total;
