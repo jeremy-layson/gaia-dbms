@@ -31,13 +31,14 @@ class Class_4_3
 
         $this->tbl_cols = $tbl_cols = array('LEGAL_RELOC', 'LEGAL_STAY', 'LEGAL_TOTAL', 'ISF_RELOC', 'ISF_STAY', 'ISF_TOTAL', 'TOTAL_RELOC', 'TOTAL_STAY', 'TOTAL_TOTAL');
 
-        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'renter',  'sharer', 'micro', 'sml', 'wage_earner');
+        $tbl_rows = array('owner_res', 'owner_cibe', 'owner_mixed', 'land_owner', 'renter', 'insti', 'micro', 'sml', 'wage_earner');
         
         $this->definition = array(
             'owner_res' => 'Structure Owners (Residential)', 
             'owner_cibe' => 'Structure Owners (CIBEs)', 
             'owner_mixed' => 'Structure Owners (Mixed Use)', 
             'land_owner' => 'Land Owners', 
+            'insti' => 'Institutional Occupant',
             'tenant' => 'Tenant Farmers', 
             'renter' => 'Renters of Residential Structure', 
             'wage_earner' => 'PAPs employed in displaced commercial/industrial establishments losing job due to closure of business', 
@@ -102,11 +103,11 @@ class Class_4_3
                     } elseif ($dp == 'Commercial Tenant') {
                         $category = 'wage_earner';
                     } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
-                        $category = 'wage_earner';
+                        $category = 'insti';
                     } elseif ($dp == 'Sharer') {
-                        $category = 'sharer';
+                        // $category = 'sharer';
                     } elseif ($dp == 'Caretaker') {
-                        $category = 'sharer';
+                        // $category = 'sharer';
                     } elseif ($land_dp == 'ISF') {
                         $category = 'renter';
                     } elseif ($land_dp == 'Land Lessee') {

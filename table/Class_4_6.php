@@ -31,7 +31,7 @@ class Class_4_6
         $columns = $this->getMunicipality();
         // unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'vendors', 'coowner', 'sharer', 'insti', 'tenant', 'caretaker','total');
+        $this->tbl_cols = $tbl_cols = array('owner_res', 'owner_cibe', 'renter', 'tenants', 'insti', 'tenant', 'caretaker','total');
 
         $append = [];
 
@@ -72,9 +72,9 @@ class Class_4_6
                         } elseif ($dp == 'Commercial Tenant') {
                             $category = 'tenants';
                         } elseif ($dp == 'Co-owner' || $dp == 'Co-Owner') {
-                            $category = 'coowner';
+                            $category = 'owner_';
                         } elseif ($dp == 'Sharer') {
-                            $category = 'sharer';
+                            // $category = 'sharer';
                         } elseif ($dp == 'Institutional Occupant' || $dp == 'Institutional occupant') {
                             $category = 'insti';
                         } elseif ($dp == 'Commercial Tenant') {

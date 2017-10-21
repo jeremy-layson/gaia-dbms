@@ -31,7 +31,7 @@ class Class_4_4
         $columns = $this->getMunicipality();
         unset($columns['Valenzuela (Depot)']);
 
-        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'workers', 'insti', 'sharer', 'micro', 'sml', 'employed', 'total');
+        $this->tbl_cols = $tbl_cols = array('land_owner', 'owner_res', 'owner_mixed', 'owner_cibe', 'renter', 'workers', 'insti', 'micro', 'sml', 'employed', 'total');
 
         $append = [];
 
@@ -81,7 +81,7 @@ class Class_4_4
                         } elseif ($dp == 'Institutional Occupant') {
                             $category = 'insti';
                         } elseif ($dp == 'Sharer' || $dp == 'Caretaker') {
-                            $category = 'sharer';
+                            // $category = 'sharer';
                         } elseif ($land_dp == 'ISF') {
                             $category = 'renter';
                         } elseif ($land_dp == 'Land Lessee') {
