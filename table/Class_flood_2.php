@@ -62,7 +62,7 @@ class Class_flood_2
                     if ($val == '20114') $val = '2014';
 
                     $category = '';
-                    if ($val == '' || $val == 'NO IDEA') {
+                    if ($val == '' || $val == 'NO IDEA' || $val == 'No answer') {
                         $category = 'noans';
                     } elseif ($val == 'EVERY YEAR' || $val == 'YEARLY') {
                         $category = 'yearly';

@@ -50,7 +50,7 @@ class Class_flood_3
                 $wildcard = $this->getWildcard($col[1]);
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,flood_typhoon FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard) AND (flood_5years = 'Y' OR flood_5years = 'y')");
                 while ($row = $result->fetch_assoc()) {
-                    unset($this->unclaimed[$row['uid']]);
+                    
                     
                     $val = strtoupper($row['flood_typhoon']);
                     $val = explode("/", $val);
@@ -84,6 +84,7 @@ class Class_flood_3
                     }
 
                     if ($category != '') {
+                        unset($this->unclaimed[$row['uid']]);
                         $data[$mun][$col[0]][$category][] = $row['uid'];
                         $data[$mun][$col[0]][$category]['COUNT']++;
                         $data[$mun][$col[0]]['total'][] = $row['uid'];

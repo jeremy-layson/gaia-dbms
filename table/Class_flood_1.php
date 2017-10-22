@@ -50,19 +50,20 @@ class Class_flood_1
                 $wildcard = $this->getWildcard($col[1]);
                 $result = $this->db->query($query = "SELECT uid,address,baranggay,flood_5years FROM survey WHERE is_deleted = 0 AND `hh_head` LIKE '%[322]' AND `address` LIKE '%" . $mun . "%' AND ($wildcard)");
                 while ($row = $result->fetch_assoc()) {
-                    unset($this->unclaimed[$row['uid']]);
+                    
                     
                     $val = $row['flood_5years'];
                     $category = '';
                     if ($val == 'Y' || $val == 'y') {
                         $category = 'yes';
-                    } elseif ($val == 'No') {
+                    } elseif ($val == 'No' || $val == 'No answer') {
                         $category = 'no';
                     } elseif ($val == '') {
                         $category = 'noans';
                     }
 
                     if ($category != '') {
+                        unset($this->unclaimed[$row['uid']]);
                         $data[$mun][$col[0]][$category][] = $row['uid'];
                         $data[$mun][$col[0]][$category]['COUNT']++;
                         $data[$mun][$col[0]]['total'][] = $row['uid'];

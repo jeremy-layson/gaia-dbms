@@ -60,9 +60,9 @@ class Class_flood_6
 
                     $street = array('ALONG THE ROAD', 'ALONG THE  HI-WAY', 'ALONG THE HI-WAY', 'ALONG THE ROAD', 'ALONG THE STREET', 'ROAD', 'STREET', 'ALONG ROAD', 'ENTIRE ROAD');
 
-                    $front = array('FRONT OF HOUSE', 'INSIDE COMPD.', 'OUSTIDE THE HOUSE', 'OUTSIDE', 'OUTSIDE THE HOUSE', 'IN FRONT OF THE HOUSE');
+                    $front = array('FRONT OF THE HOUSE', 'FRONT OF HOUSE', 'INSIDE COMPD.', 'OUSTIDE THE HOUSE', 'OUTSIDE', 'OUTSIDE THE HOUSE', 'IN FRONT OF THE HOUSE');
 
-                    $inside = array('INSIDDE THE HOUSE', 'INSIDE THE HOUSE', 'INSIDE OF THE HOUSE');
+                    $inside = array('INSIDE', 'INSIDE HOUSE', 'INSIDDE THE HOUSE', 'INSIDE THE HOUSE', 'INSIDE OF THE HOUSE');
 
                     $category = '';
                     if ($val == '') {
